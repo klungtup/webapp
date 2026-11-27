@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 390" fill="none">
+<defs><pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0v30" stroke="#9bb6a7" stroke-opacity=".22" stroke-width="1"/></pattern><linearGradient id="land" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e0eee4"/><stop offset="1" stop-color="#b9d2c2"/></linearGradient></defs>
+<rect x="0" width="560" height="390" fill="url(#grid)"/>
+<g stroke-linejoin="round">
+<path d="M37 262 278 125l247 137-241 107z" fill="#9bbbad" opacity=".45" transform="translate(0 10)"/>
+<path d="M37 250 278 113l247 137-241 107z" fill="url(#land)" stroke="#79a18e" stroke-width="1.5"/>
+<path d="m37 250 247 107v15L37 266z" fill="#95b4a1"/><path d="m284 357 241-107v15L284 372z" fill="#6d9882"/>
+<path d="m70 255 98-55 97 53-98 52z" fill="#c7dbca" stroke="#71997f" stroke-width="1.5" stroke-dasharray="5 4"/>
+<path d="m180 190 96-55 88 48-93 54z" fill="#c5d7b7" stroke="#a5af81" stroke-width="1.5" stroke-dasharray="5 4"/>
+<path d="m289 249 93-52 112 60-99 48z" fill="#dce4cc" stroke="#a6b48a" stroke-width="1.5" stroke-dasharray="5 4"/>
+<path d="m180 316 95-53 100 53-92 42z" fill="#edf0d9" stroke="#b7b187" stroke-width="1.5" stroke-dasharray="5 4"/>
+<path d="M62 239 274 120M177 314l214-120" stroke="#f4f8f2" stroke-width="9" opacity=".8"/>
+<!-- architectural structures -->
+<g>
+<path d="M116 202V134l75-41 68 39v68l-69 39z" fill="#fcfefd" stroke="#426e59" stroke-width="2"/>
+<path d="M116 134l74 40 69-42-68-39z" fill="#e0e9dd" stroke="#426e59" stroke-width="2"/>
+<path d="M190 174v65l69-39v-68z" fill="#7ba692" stroke="#426e59" stroke-width="2"/>
+<path d="m126 143 55 31v48l-55-31z" fill="#f3f8f2"/>
+<path d="M130 151v38m17-29v38m17-28v38" stroke="#8eb5a2" stroke-width="6"/>
+<path d="m202 181 12-7v32l-12 7zm22-12 12-7v32l-12 7z" fill="#e1ecdf"/>
+</g>
+<g>
+<path d="M306 183v-62l73-41 73 41v62l-73 42z" fill="#fbfcf9" stroke="#4d806a" stroke-width="1.8"/>
+<path d="m306 121 73 41 73-41-73-41z" fill="#e6eee4" stroke="#4d806a" stroke-width="1.8"/>
+<path d="M379 162v63l73-42v-62z" fill="#739e89" stroke="#4d806a" stroke-width="1.8"/>
+<path d="m319 132 48 27v45l-48-27z" fill="#d4e5d7"/>
+<path d="m331 139 1 43m12-35v43m12-36v43" stroke="#729e88" stroke-width="5"/>
+<path d="m389 167 51-29v8l-51 29zm0 14 51-29v8l-51 29z" fill="#d9e8dc"/>
+</g>
+<!-- location marker -->
+<path d="M279 161c-16 0-29 12-29 28 0 22 29 43 29 43s29-21 29-43c0-16-13-28-29-28Z" fill="#12634f" stroke="#fff" stroke-width="3"/><circle cx="279" cy="189" r="10" fill="#f7faf7"/>
+<!-- abstract evidence sheet, no live data -->
+<g transform="translate(315 234) rotate(-8)"><rect width="158" height="92" rx="7" fill="#fcfefc" stroke="#86a494" stroke-width="1.5"/><path d="M16 17h36m-36 9h60" stroke="#396e57" stroke-width="4" stroke-linecap="round"/><path d="M16 40h125M16 53h125M16 66h125M16 79h125M55 40v39M104 40v39" stroke="#c6dacb" stroke-width="1.4"/><path d="M20 47h22m21 0h32m17 0h19M21 60h24m18 0h22m24 0h25M21 73h21m21 0h30m17 0h17" stroke="#89ac96" stroke-width="3" stroke-linecap="round"/></g>
+<g stroke="#5e8773" stroke-width="2" fill="#aac9b4"><path d="m478 216 6-17 8 17z"/><path d="m96 278 8-20 9 20z"/></g>
+</g>
+</svg>
