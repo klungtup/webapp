@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Property · Pearl White v2.0</title>
+<style>
+:root{
+  --bg:#eef4f3;
+  --bg-2:#f8fbfa;
+  --panel:#ffffff;
+  --panel-soft:#f4f8f7;
+  --ink:#0f2f33;
+  --ink-2:#18464b;
+  --muted:#6f8385;
+  --line:#dbe7e3;
+  --line-2:#c7d7d3;
+  --brand:#0f5b52;
+  --brand-2:#157363;
+  --brand-3:#1f8a74;
+  --brand-soft:#e4f4ef;
+  --hero-a:#0f5b52;
+  --hero-b:#1a7566;
+  --accent:#e8b76d;
+  --accent-soft:#fff6e8;
+  --danger:#c95b5b;
+  --danger-soft:#fff1f1;
+  --shadow:0 14px 38px rgba(16,63,57,.08);
+  --shadow-sm:0 6px 18px rgba(16,63,57,.06);
+  --radius-xl:24px;
+  --radius-lg:18px;
+  --radius-md:14px;
+  --radius-sm:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#f4f8f7 0%, #eef4f3 100%);
+  color:var(--ink);
+  font:14px/1.6 'Noto Sans Thai','Sarabun',system-ui,sans-serif;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:var(--brand-2);text-decoration:none}
+a:hover{text-decoration:underline}
+.app{display:flex;min-height:100vh}
+.side{
+  width:270px;
+  background:linear-gradient(180deg,#0b3f39 0%, #0f5b52 56%, #114840 100%);
+  color:#f4fffc;
+  position:sticky;top:0;height:100vh;
+  display:flex;flex-direction:column;
+  padding:24px 18px 20px;
+  flex-shrink:0;
+  box-shadow:inset -1px 0 0 #ffffff10;
+}
+.logo{
+  display:flex;align-items:center;gap:14px;
+  padding:6px 8px 24px;margin-bottom:4px;
+}
+.logo-mark{
+  background:linear-gradient(135deg,#effaf5,#d4efe3);
+  color:var(--brand);
+  border-radius:16px;width:42px;height:42px;
+  display:grid;place-items:center;font-size:19px;
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+}
+.logo b{font-size:22px;line-height:1;letter-spacing:-.4px}
+.logo small{display:block;opacity:.82;font-size:10px;letter-spacing:.6px;margin-top:6px;text-transform:uppercase}
+.side nav{display:flex;flex-direction:column;gap:4px}
+.nav{
+  background:transparent;border:1px solid transparent;color:#d8ebe6;
+  display:flex;align-items:center;gap:12px;text-align:left;padding:13px 14px;
+  border-radius:14px;width:100%;margin:0;
+  transition:.18s ease;
+}
+.nav:hover{background:#ffffff12;color:#fff;border-color:#ffffff10;text-decoration:none;transform:translateX(2px)}
+.nav.active{background:linear-gradient(135deg,#1a7566,#1c8a75);color:#fff;box-shadow:0 12px 30px rgba(0,0,0,.16)}
+.nav span{font-size:16px;width:18px;text-align:center;opacity:.95}
+.nav label{font-weight:700;letter-spacing:-.1px}
+.side-foot{
+  margin-top:auto;color:#b6d1ca;font-size:11px;padding:16px 12px 4px;
+  border-top:1px solid #ffffff1c;line-height:1.8
+}
+.main{flex:1;min-width:0;padding:28px clamp(20px,3vw,48px) 72px;max-width:1840px;margin:0 auto}
+.top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:28px}
+.top h1{font-size:36px;letter-spacing:-1.1px;line-height:1.15;margin:0 0 4px}
+.top p{margin:0;color:var(--muted);font-size:15px}
+.top-right{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:999px;box-shadow:var(--shadow-sm)}
+.avatar{background:linear-gradient(135deg,#d8f0e7,#bddfd4);border-radius:50%;width:40px;height:40px;display:grid;place-items:center;color:var(--brand);font-weight:800}
+.user{max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;color:#4f6766}
+.view{display:none}.view.active{display:block}
+.hero{
+  background:linear-gradient(135deg,var(--hero-a) 0%, var(--hero-b) 58%, #216c66 100%);
+  color:white;border-radius:28px;padding:34px 34px;
+  display:flex;justify-content:space-between;gap:18px;align-items:flex-end;
+  position:relative;overflow:hidden;margin-bottom:24px;box-shadow:0 22px 56px rgba(15,91,82,.18)
+}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:999px;pointer-events:none}
+.hero:before{width:320px;height:320px;border:58px solid #ffffff0a;right:-40px;top:-150px}
+.hero:after{width:180px;height:180px;background:radial-gradient(circle,#ffffff14 0%, transparent 70%);right:210px;top:20px}
+.hero .tag{display:inline-flex;align-items:center;gap:8px;color:#d3efe4;letter-spacing:1.7px;font-size:11px;font-weight:800;text-transform:uppercase}
+.hero .tag:before{content:"";width:28px;height:2px;background:#d3efe4;border-radius:20px;display:inline-block}
+.hero h2{font-size:40px;letter-spacing:-1.2px;margin:10px 0 10px;line-height:1.1;max-width:700px}
+.hero p{color:#deeee8;margin:0;max-width:680px;font-size:15px}
+.hero .btn{min-width:180px}
+.btn{
+  border:1px solid var(--line-2);border-radius:14px;padding:11px 17px;
+  background:#fff;color:var(--ink);font-weight:800;display:inline-flex;gap:8px;
+  align-items:center;justify-content:center;transition:.16s ease;box-shadow:var(--shadow-sm)
+}
+.btn:hover{border-color:#94cbbd;background:#f7fffb;text-decoration:none;transform:translateY(-1px)}
+.btn.primary{background:#ebf7ef;border-color:#d2e9db;color:#0f564c}
+.btn.dark{background:linear-gradient(135deg,var(--brand),var(--brand-2));border-color:transparent;color:#fff}
+.btn.dark:hover{background:linear-gradient(135deg,#0d5048,#156659)}
+.btn.ghost{background:transparent;color:var(--brand);box-shadow:none;border-color:transparent}
+.btn:disabled{opacity:.58;cursor:wait;transform:none}
+.flex{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.split{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.split h2{font-size:20px;margin:0}.split small{color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:24px}
+.stat{
+  background:linear-gradient(180deg,#fff 0%, #fbfdfc 100%);
+  border:1px solid var(--line);border-radius:20px;padding:18px 22px;
+  box-shadow:var(--shadow-sm);position:relative;overflow:hidden
+}
+.stat:after{content:"";position:absolute;right:-18px;top:-18px;width:86px;height:86px;border-radius:50%;background:radial-gradient(circle,#f0f8f5 0%, transparent 72%)}
+.stat small{color:var(--muted);font-size:12px;font-weight:700}
+.stat strong{display:block;font-size:37px;line-height:1.25;margin-top:6px;letter-spacing:-1px}
+.stat .dot{width:8px;height:8px;border-radius:50%;background:#2e8a74;display:inline-block;margin-right:7px;box-shadow:0 0 0 4px #ebf7f2}
+.stat:nth-child(2) .dot{background:#d39a44;box-shadow:0 0 0 4px #fff3dd}.stat:nth-child(3) .dot{background:#7388cf;box-shadow:0 0 0 4px #eef1ff}.stat:nth-child(4) .dot{background:#d77e7e;box-shadow:0 0 0 4px #fff1f1}
+.panel{
+  background:linear-gradient(180deg,#fff 0%, #fcfefd 100%);
+  border:1px solid var(--line);border-radius:20px;padding:22px;
+  box-shadow:var(--shadow-sm);margin-bottom:18px
+}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:16px}.panel-head h3{font-size:18px;margin:0;letter-spacing:-.3px}
+.muted{color:var(--muted)}.small{font-size:12px}
+.input{width:100%;border:1px solid #d3e1de;border-radius:12px;background:#fff;padding:11px 13px;outline:none;color:var(--ink);transition:.15s ease}
+.input:focus{border-color:#5fae96;box-shadow:0 0 0 4px #6aaf9917}textarea.input{min-height:112px;resize:vertical}
+.toolbar{display:grid;grid-template-columns:minmax(180px,2fr) minmax(135px,1fr) minmax(135px,1fr);gap:10px;margin-bottom:12px}
+.table-wrap{overflow-x:auto;border-radius:16px;border:1px solid #e5edeb}
+.table{width:100%;border-collapse:separate;border-spacing:0;text-align:left;min-width:760px}
+.table th{
+  font-size:11px;color:#6b7d7a;white-space:nowrap;background:#f5f9f7;font-weight:800;
+  position:sticky;top:0;z-index:1;text-transform:uppercase;letter-spacing:.35px
+}
+.table td,.table th{border-bottom:1px solid #edf1ef;padding:13px 14px;vertical-align:middle}
+.table tbody tr:hover{background:#f8fcfa}.table tbody tr:last-child td{border-bottom:none}.table th:first-child{border-top-left-radius:14px}.table th:last-child{border-top-right-radius:14px}
+.row-link{font-weight:800;color:var(--brand);cursor:pointer}
+.pill{display:inline-flex;align-items:center;border:1px solid #d3e8de;border-radius:999px;background:#eef8f4;color:#3e7862;padding:4px 10px;font-size:11px;white-space:nowrap;font-weight:700}
+.pill.warn{background:#fff7e8;border-color:#f0deb7;color:#8e5e1a}.pill.gray{background:#f3f6f5;border-color:#e0e6e4;color:#63716e}.pill.dark{background:#ebf1f4;border-color:#cddfe4;color:#3d6372}
+.empty{padding:56px 16px;text-align:center;color:#738481}.empty b{display:block;color:var(--ink);font-size:18px;margin-bottom:8px}
+.back{color:var(--brand);padding:0;border:0;background:transparent;font-weight:800;margin-bottom:13px}
+.case-title{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;flex-wrap:wrap;margin-bottom:18px}.case-title h2{font-size:28px;letter-spacing:-.8px;margin:0}.case-title p{margin:4px 0;color:var(--muted)}
+.case-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}.case-meta>div{background:linear-gradient(180deg,#fff,#fbfefd);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow-sm)}.case-meta span{display:block;color:#84948f;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}.case-meta strong{font-size:15px;word-break:break-word;line-height:1.45}
+.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);margin-bottom:18px;overflow:auto;padding-bottom:4px}.tab{border:1px solid transparent;background:transparent;color:var(--muted);padding:10px 16px;font-weight:800;white-space:nowrap;border-radius:12px}.tab.active{color:#fff;border-color:transparent;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow-sm)}
+.galleria{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.photo{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#f2f7f4;min-height:148px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:var(--shadow-sm)}.photo img{width:100%;height:138px;object-fit:cover}.photo .file-label{padding:8px 10px;background:#fff;width:100%;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.photo button{border:0;background:transparent;color:var(--brand);font-weight:800;font-size:12px}
+.subsection{margin:24px 0 12px;font-size:16px;font-weight:800}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.fact{background:#f7fbf9;padding:12px 13px;border-radius:12px;border:1px solid #e6eeeb}.fact small{display:block;color:var(--muted);font-weight:700}.fact b{word-break:break-word;font-size:14px}
+.comps-table{min-width:1180px}.comps-table td{font-size:12px}.mono{font-variant-numeric:tabular-nums;font-feature-settings:'tnum'}.number{text-align:right!important;white-space:nowrap}.report{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.9 'Noto Sans Thai',system-ui;background:#fafcfb;border:1px solid #e7eeeb;border-radius:14px;padding:20px;max-height:700px;overflow-y:auto}.note{border-bottom:1px solid var(--line);padding:14px 0}.note:last-child{border:0}.note p{margin:6px 0;white-space:pre-wrap}.note .small{color:var(--muted)}
+.hint{padding:13px 15px;background:#f2f8f5;border:1px solid #d8e7df;border-radius:12px;color:#476861;font-size:12px;margin:12px 0}.warnbox{padding:13px 15px;background:#fff8ec;border:1px solid #f0dec0;border-radius:12px;color:#795726;font-size:12px;margin:12px 0}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:6px}.field.wide{grid-column:1/-1}.field small{color:var(--muted)}.form-actions{padding-top:18px;display:flex;gap:10px}
+.loader{width:17px;height:17px;display:inline-block;border:2px solid #cfe7d5;border-top-color:var(--brand);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.status-line{display:flex;align-items:center;gap:10px;margin-bottom:15px}.toast{position:fixed;right:20px;bottom:24px;z-index:99;max-width:460px;background:#173f39;color:#fff;box-shadow:0 18px 50px rgba(20,62,56,.28);border-radius:14px;padding:14px 18px;display:none}.toast.error{background:#8d3d36}.hidden{display:none!important}
+@media print{.side,.top,.back,.case-title .btn,.tabs,.hero,.toast,.btn,.hint,.warnbox{display:none!important}.main{padding:0!important}.panel{box-shadow:none!important;border:0!important}.app{display:block!important}.view:not(.active){display:none!important}.report{max-height:none!important;overflow:visible!important}.table-wrap{overflow:visible!important;border:0!important}.table{min-width:0!important;font-size:10px!important}body{background:#fff!important;color:#111!important}}
+@media(max-width:1120px){.hero h2{font-size:32px}.stats{grid-template-columns:repeat(2,1fr)}.case-meta{grid-template-columns:repeat(2,1fr)}.galleria{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:1040px){.side{width:86px;padding:18px 11px}.logo{padding:5px 6px 22px}.logo .brand{display:none}.nav{justify-content:center}.nav label{display:none}.main{padding:24px 18px}.top h1{font-size:30px}.top-right{padding:8px 12px}.hero{padding:28px}.hero h2{font-size:30px}.case-title h2{font-size:24px}}
+@media(max-width:760px){.app{display:block}.side{position:relative;width:100%;height:auto;flex-direction:row;align-items:center;padding:10px 10px;gap:8px}.side .logo{padding:0 6px 0 0;margin-bottom:0}.side nav{display:flex;flex-direction:row;gap:6px;overflow:auto;flex:1}.nav{min-width:max-content;padding:10px 12px;border-radius:12px}.nav label{display:block;font-size:12px}.side-foot{display:none}.main{padding:18px 14px 44px}.top{flex-direction:column;align-items:flex-start}.top h1{font-size:28px}.top-right{width:100%;justify-content:space-between}.hero{padding:24px 20px;align-items:flex-start;flex-direction:column}.hero h2{font-size:27px;max-width:none}.hero p{font-size:14px}.hero .btn{width:100%}.grid2,.form-grid,.stats,.case-meta{grid-template-columns:1fr}.galleria{grid-template-columns:repeat(2,1fr)}.toolbar{grid-template-columns:1fr}.facts{grid-template-columns:1fr}}
+@media(max-width:480px){.galleria{grid-template-columns:1fr}.logo b{font-size:18px}.logo-mark{width:38px;height:38px}.panel{padding:18px}.table td,.table th{padding:11px 10px}}
+
+.investor-modal{position:fixed;inset:0;z-index:999;background:#102c2dcc;display:flex;align-items:center;justify-content:center;padding:20px;overflow:auto}
+.investor-dialog{background:#fff;color:#143b3c;border-radius:22px;padding:24px;width:min(1140px,96vw);max-height:95vh;overflow:auto;box-shadow:0 32px 90px #041e1fb8}
+.investor-head{display:flex;align-items:start;justify-content:space-between;gap:12px;margin-bottom:14px}.investor-head h2{font-size:23px;margin:0}.investor-head p{margin:3px 0;color:#6d817d}
+.investor-preview{background:#e9f0ec;border-radius:14px;padding:10px;overflow:auto}.investor-preview canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:8px;box-shadow:0 8px 32px #102c2d29}
+.investor-info{margin:10px 0;color:#516c63;font-size:13px}.investor-consent{display:flex;align-items:start;gap:10px;font-size:13px;line-height:1.6;margin:10px 0 16px;padding:12px;background:#f1f7f4;border-radius:10px}.investor-consent input{margin-top:5px}
+.investor-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+@media(max-width:760px){.investor-modal{padding:8px}.investor-dialog{padding:14px}.investor-head h2{font-size:18px}.investor-preview{padding:4px}.investor-actions .btn{width:100%}}
+@media print{.investor-modal{display:none!important}}
+
+/* v1.2 — Document AI review with explicit human confirmation */
+.wi-status{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 16px}
+.wi-row{display:grid;grid-template-columns:34px minmax(130px,1fr) minmax(160px,1.5fr) minmax(180px,1.5fr);gap:12px;padding:14px 10px;align-items:center;border-bottom:1px solid var(--line)}
+.wi-row:hover{background:var(--panel-soft)}
+.wi-row-header{font-size:11px;letter-spacing:.2px;font-weight:800;color:var(--muted);background:var(--panel-soft);border-radius:12px 12px 0 0}
+.wi-source{font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.wi-evidence{display:block;font-size:11px;color:var(--muted);margin-top:5px;overflow-wrap:anywhere}
+.wi-field{background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 10px;width:100%;min-width:0}
+.wi-alert{padding:14px 17px;border:1px solid #edd7b0;background:#fff8eb;border-radius:13px;color:#795726;margin:14px 0}
+.wi-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:18px}
+.wi-row input[type=checkbox]{width:18px;height:18px;accent-color:var(--brand)}
+@media(max-width:900px){.wi-row{grid-template-columns:32px minmax(110px,1fr) minmax(140px,1.3fr)}.wi-row>div:last-child{grid-column:2/-1}}
+@media(max-width:520px){.wi-row{grid-template-columns:26px 1fr}.wi-row>div:nth-child(3),.wi-row>div:last-child{grid-column:2/-1}.wi-row-header{display:none}}
+/* MY PROPERTY v1.3 — Dark Emerald design system. No backend behavior changed. */
+:root{
+ --bg:#061214;--bg-2:#09181a;--panel:#0b1d20;--panel-soft:#11272a;
+ --ink:#e9f8f3;--ink-2:#d6eee6;--muted:#91aba7;
+ --line:#234043;--line-2:#36575a;--brand:#40dcc0;--brand-2:#2db99c;
+ --brand-3:#74efd3;--brand-soft:#143a36;
+ --hero-a:#0d302e;--hero-b:#10433c;--accent:#ecc07d;
+ --accent-soft:#342a1c;--danger:#fb8d85;
+ --shadow:0 20px 44px rgba(0,0,0,.24);--shadow-sm:0 7px 26px rgba(0,0,0,.20);
+ color-scheme:dark;
+}
+html{background:#061214}
+body{
+ background:radial-gradient(ellipse 60% 55% at 86% 5%,rgba(19,101,89,.13),transparent 74%),
+ linear-gradient(145deg,#061214 0%,#081719 54%,#071315 100%);
+ color:var(--ink);font-size:13px;line-height:1.65;
+}
+::selection{background:#2cd8b073;color:#fff}
+button,input,textarea,select{color-scheme:dark}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #52e7cf;outline-offset:3px}
+a{color:#67e7cb}a:hover{color:#a7ffed}
+.app{min-height:100vh}
+.side{
+ width:246px;padding:24px 16px 18px;
+ background:linear-gradient(170deg,#061315 0%,#081b1c 65%,#092721 100%);
+ border-right:1px solid #1c4240;box-shadow:8px 0 42px #00000019;
+}
+.side:after{content:"";position:absolute;bottom:0;left:0;right:0;height:180px;pointer-events:none;
+ background:radial-gradient(ellipse 90% 100% at 0% 100%,#1cd3b117,transparent 75%)}
+.logo{padding:4px 7px 30px;border-bottom:1px solid #1f3939;margin-bottom:24px}
+.logo-mark{background:#103e38;color:#6deacb;border:1px solid #23766a;width:47px;height:47px;border-radius:14px;box-shadow:0 0 30px #37e0ba17;font-size:25px}
+.logo b{font-size:18px;letter-spacing:.3px;color:#fff}
+.logo small{font-size:9px;color:#8eb9ae;letter-spacing:1px}
+.side nav{gap:8px}
+.nav{border:1px solid transparent;border-radius:11px;color:#a1bcb6;padding:13px 12px;font-weight:750;transition:.18s}
+.nav span{width:25px;height:25px;font-size:17px;color:#78a69a}
+.nav:hover{background:#173735;border-color:#2a5850;color:#fff;transform:none}
+.nav.active{background:linear-gradient(115deg,#0e4f46,#12685a);border-color:#2c927f;color:#fff;box-shadow:inset 3px 0 #54f3d0,0 8px 25px #0cbe9d12}
+.nav.active span{color:#63ffdb}
+.side-foot{position:relative;z-index:1;color:#87b6ac;border-top:1px solid #255046;font-size:10px;letter-spacing:.5px;padding:20px 10px}
+.side-foot b{color:#ecfff9;font-size:12px}.system-indicator,.online-dot{width:7px;height:7px;background:#4eefd0;border-radius:50%;box-shadow:0 0 0 4px #37e7c019;display:inline-block;margin-right:6px}
+.main{max-width:none;padding:27px clamp(20px,2.45vw,42px) 70px;background:transparent}
+.top{margin-bottom:27px;align-items:center;gap:12px}
+.top h1{font-size:30px;color:#f0fff9;letter-spacing:-.8px;margin:7px 0 2px}
+.top p{color:#95b4ad;font-size:13px}
+.workspace-crumb{display:flex;gap:10px;align-items:center;font:700 10px/1.5 system-ui,sans-serif;letter-spacing:1.15px;color:#839f98}
+.workspace-crumb .crumb-current{color:#51e2c6}.crumb-separator{font-size:16px;color:#55736e}
+.top-right{border-radius:14px;padding:8px 10px 8px 15px;background:#0b2525;border-color:#20433e;box-shadow:0 8px 22px #00000013}
+.top-right .session-label{font-size:9px;letter-spacing:.8px;color:#65c6af;font-weight:850;border-right:1px solid #285048;padding-right:13px;white-space:nowrap}
+.user{color:#b9d4cb}.avatar{width:33px;height:33px;background:#1c5149;border:1px solid #378276;color:#9bf7dc}
+.hero{min-height:230px;margin-bottom:22px;padding:32px 36px;border:1px solid #296259;border-radius:20px;
+ background:radial-gradient(ellipse 43% 120% at 87% 100%,#238d7447,transparent 100%),linear-gradient(114deg,#092824,#123f38 65%,#104b42 100%);
+ box-shadow:inset 0 0 0 1px #ffffff06,0 20px 50px #001b181f;align-items:center}
+.hero:before{right:0;top:-120px;width:345px;height:345px;border:1px solid #7dddc52b;box-shadow:0 0 0 30px #2baf9e0d,0 0 0 64px #2baf9e0a,0 0 0 100px #2baf9e06}
+.hero:after{right:11%;top:34px;width:120px;height:120px;background:radial-gradient(circle,#3ae7c91b,transparent 70%)}
+.hero .tag{letter-spacing:1.5px;color:#66e6c7;font-size:10px}
+.hero .tag:before{background:#42ddb8}
+.hero h2{font-size:34px;letter-spacing:-.8px;line-height:1.22;max-width:730px;margin:13px 0 10px;color:#f2fff9}
+.hero h2 em{font-style:normal;color:#81f0d3}
+.hero p{color:#a5cbc1;font-size:13px;max-width:750px}
+.hero .btn{min-width:163px}
+.btn{box-shadow:none;background:#122a2c;border:1px solid #33575a;color:#dff9f1;border-radius:11px;padding:10px 14px;font-weight:780}
+.btn:hover{background:#1c3c3b;border-color:#4d9c8c;color:#fff;transform:translateY(-1px)}
+.btn.primary{background:#b9f4e1;border-color:#a7ecd5;color:#083b33}
+.btn.primary:hover{background:#ddfff2;border-color:#ddfff2;color:#073f35}
+.btn.dark{background:linear-gradient(110deg,#20ae94,#32c5a7);border-color:#32cfb0;color:#052a26;box-shadow:0 8px 28px #13cbaa26}
+.btn.dark:hover{background:linear-gradient(110deg,#3ac6aa,#5fe8ca);color:#052721;border-color:#50e8c6}
+.btn.ghost,.back{color:#71ead0}.btn.ghost:hover{background:#12302b;color:#fff}
+.btn:disabled{opacity:.48}
+.stats{gap:14px;margin-bottom:22px}
+.stat{background:linear-gradient(145deg,#0d2528,#0d2023 75%);border:1px solid #244548;border-radius:16px;padding:18px 20px;box-shadow:var(--shadow-sm);min-height:121px}
+.stat:before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#42d8ba70,transparent 75%)}
+.stat:after{background:radial-gradient(circle,#49cead19,transparent 72%);width:155px;height:155px;right:-70px;top:-72px}
+.stat small{font-size:12px;color:#a3c6bd;font-weight:650}
+.stat strong{font-size:35px;line-height:1.2;margin-top:10px;color:#edfff8}
+.stat .dot{background:#42e0ba;box-shadow:0 0 0 4px #2dd1a919}
+.stat:nth-child(2) .dot{background:#ebba74;box-shadow:0 0 0 4px #ebba7419}
+.stat:nth-child(3) .dot{background:#a5b8ff;box-shadow:0 0 0 4px #a5b8ff19}
+.stat:nth-child(4) .dot{background:#f19b96;box-shadow:0 0 0 4px #f19b9619}
+.panel{background:linear-gradient(165deg,#0c2023,#0b1b1e);border:1px solid #274448;border-radius:17px;padding:23px;box-shadow:var(--shadow-sm)}
+.panel-head{margin-bottom:18px}.panel-head h3{color:#f0fff9;font-size:17px;font-weight:800}
+.panel-head small{color:#8aada4}.muted,.small.muted{color:#8daaa4}
+.input,.wi-field{background:#09191b;border:1px solid #355052;color:#ebfff7;border-radius:10px;padding:11px 13px}
+.input::placeholder,.wi-field::placeholder{color:#738f8a}
+.input:focus,.wi-field:focus{border-color:#42cdaa;box-shadow:0 0 0 3px #32dab222}
+select.input{background:#0d2224}
+.table-wrap{border:1px solid #254348;border-radius:12px}
+.table{color:#d7f1eb}.table th{color:#93b5ad;background:#102b2c;border-bottom:1px solid #2c5652;font-size:11px}
+.table td,.table th{border-bottom-color:#203839;padding:14px 14px}
+.table tbody tr:hover{background:#173134}.table tbody tr:nth-child(2n){background:#0c2224}.table tbody tr:nth-child(2n):hover{background:#173134}
+.row-link{color:#69ead0;font-weight:800}
+.pill{background:#113b36;border-color:#2e6c5e;color:#8df0d2;font-weight:750}
+.pill.warn{background:#35291b;border-color:#74502e;color:#ffcb86}
+.pill.gray{background:#1b2c2d;border-color:#385051;color:#adc3be}
+.pill.dark{background:#152d35;border-color:#356171;color:#8bcbe0}
+.empty{color:#8da7a2}.empty b{color:#eafff7}
+.case-title h2{color:#effff8}.case-title p{color:#8eaaa4}
+.case-meta>div{background:#0b2426;border-color:#2a4a49;box-shadow:none;border-radius:13px}
+.case-meta span{color:#86aba2}.case-meta strong{color:#f1fff9}
+.tabs{border-bottom-color:#2d4446;gap:8px;flex-wrap:nowrap}
+.tab{color:#90b4ab;background:#0c2224;border:1px solid #254247;border-radius:10px;margin-bottom:6px;font-size:12px}
+.tab:hover{background:#183e39;color:#d3f8ec}
+.tab.active{color:#09352e;background:linear-gradient(110deg,#80eed1,#3fd0b2);border-color:#77f1d4;box-shadow:0 4px 18px #34e4b01b}
+.photo{background:#10272a;border-color:#2c494c;box-shadow:none}.photo .file-label{background:#10272a;color:#b0d2c9}.photo button{color:#79ebd3}
+.subsection{color:#ddfff3}.fact{background:#10292b;border-color:#29494a}.fact small{color:#90b2aa}.fact b{color:#f0fff9}
+.report{background:#071718;border-color:#254144;color:#d4ebe3;max-height:680px}
+.note{border-bottom-color:#2c4445}.note b{color:#ddfff4}
+.hint{background:#102b29;border-color:#2c6153;color:#a5dfcf}
+.warnbox,.wi-alert{background:#30271b;border-color:#755432;color:#f3d39d}
+.field label{color:#c6e4d9}.field small{color:#8dacaa}.form-grid{gap:17px}
+.intake-panel{max-width:1120px;margin-left:auto;margin-right:auto;padding:30px}
+.intake-panel .panel-head{padding-bottom:17px;border-bottom:1px solid #284544}
+.intake-panel .field.wide textarea{min-height:128px}
+.intake-panel .form-actions{border-top:1px solid #284544;margin-top:22px;padding-top:22px}
+input[type="checkbox"]{accent-color:#30cfa9}
+.loader{border-color:#2b7062;border-top-color:#71f9d5}
+.status-line{color:#bdebd9}.toast{background:#12544a;border:1px solid #31ad92;color:#f1fff9}.toast.error{background:#753832;border-color:#c86a65}
+/* Modal surface inherits the same dark palette. Canvas print/export stays high-contrast and independent. */
+.investor-modal{background:rgba(1,10,12,.86);backdrop-filter:blur(7px)}
+.investor-dialog{background:#0b1d20;color:#eafff7;border:1px solid #2b5a55;box-shadow:0 36px 100px #000b}
+.investor-head p{color:#96b8ae}.investor-preview{background:#061316;border:1px solid #274548}
+.investor-info{color:#a0cabb}.investor-consent{background:#122c2b;border:1px solid #2a544e;color:#ccece1}
+/* Document Intelligence: source / extraction / validation */
+.wi-workspace{display:grid;grid-template-columns:minmax(260px,.95fr) minmax(400px,1.5fr) minmax(245px,.85fr);gap:13px;align-items:stretch;margin-top:13px}
+.wi-workspace .wi-pane,.wi-side-stack{min-width:0}
+.wi-pane{background:#091d20;border:1px solid #24464a;border-radius:14px;padding:17px 16px;box-shadow:0 10px 28px #0000001b}
+.wi-document-pane{display:flex;flex-direction:column}
+.wi-pane-head{display:flex;justify-content:space-between;align-items:center;gap:7px;border-bottom:1px solid #264447;padding-bottom:15px;margin-bottom:15px}
+.wi-pane-head h3{font-size:16px;line-height:1.3;margin:3px 0 0;color:#edfff7}.wi-overline{font:700 10px/1.2 system-ui,sans-serif;letter-spacing:1.35px;color:#57d6b9}
+.wi-counter{font-size:11px;font-weight:800;white-space:nowrap;padding:4px 8px;border-radius:9px;background:#103932;border:1px solid #296f5e;color:#93edd4}
+.wi-file-list{display:grid;gap:7px;margin-bottom:12px;max-height:190px;overflow:auto}
+.wi-file-option{background:#10292b;border:1px solid #2a4a4c;border-radius:9px;padding:8px;text-align:left;display:flex;align-items:center;gap:9px;color:#cee9e1;width:100%;min-width:0}
+.wi-file-option:hover,.wi-file-option.is-active{border-color:#39bca0;background:#133d38;color:#fff}
+.wi-file-icon{display:grid;place-items:center;flex-shrink:0;width:31px;height:35px;border-radius:8px;background:#0c4b42;color:#69ffda;font-size:20px}
+.wi-file-text{min-width:0;flex:1}.wi-file-text b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px}.wi-file-text small{display:block;font-size:9px;color:#83aaa1}.wi-file-arrow{font-size:18px;color:#70eacc}
+.wi-document-viewer{flex:1;min-height:380px;max-height:610px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#0a1a1c,#0a1a1c 12px,#0b1e1f 12px,#0b1e1f 24px);border:1px solid #294c4b;border-radius:11px;overflow:hidden;padding:9px}
+.wi-file-placeholder{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;gap:11px;color:#a7c8bc;max-width:100%}
+.wi-file-placeholder>span:not(.loader){font-size:50px;color:#4fdcbe;line-height:1}.wi-file-placeholder b{color:#d9f4e9}.wi-file-placeholder small{color:#8ab4a6}.wi-file-placeholder .btn{margin-top:10px}
+.wi-preview-image{display:block;max-width:100%;max-height:590px;width:auto;height:auto;object-fit:contain;border-radius:6px;box-shadow:0 9px 30px #0008}
+.wi-pane-caption{color:#749b94;font-size:11px;line-height:1.6;margin:10px 0 0}
+.wi-extracted-pane .wi-intro{background:#10302d;border:1px solid #2b685a;border-radius:11px;padding:15px;color:#c2ecdf}
+.wi-extracted-pane .wi-intro p{font-size:12px;color:#95c8b9;margin:6px 0 0}
+.wi-extract-grid{border:1px solid #244b48;border-radius:11px;overflow:auto;max-height:660px;margin-top:14px;background:#0b2224}
+.wi-row{grid-template-columns:25px minmax(92px,.86fr) minmax(155px,1.22fr) minmax(120px,1fr);gap:9px;padding:12px 10px;border-bottom-color:#224346;font-size:12px}
+.wi-row:hover{background:#123230}
+.wi-row-header{background:#10322f;color:#8fcdbb;font-size:10px;letter-spacing:0;border-bottom:1px solid #285c4f;border-radius:0}
+.wi-row b{color:#dcf8ee}.wi-source{color:#98bbb2;font-size:11px}
+.wi-evidence{color:#70aaa0;font-size:10px}.wi-field{font-size:12px;padding:9px 10px}
+.wi-actions{border-top:1px solid #2b4848;margin-top:15px;padding-top:15px;gap:9px}
+.wi-actions .btn{font-size:12px}
+.wi-side-stack{display:grid;grid-template-rows:auto 1fr;gap:13px}
+.wi-check-ring{display:flex;align-items:center;gap:10px;padding:5px 2px 14px;justify-content:space-between}
+.wi-circle{width:95px;height:95px;flex-shrink:0;border-radius:50%;border:9px solid #1d6156;border-top-color:#40e3be;border-right-color:#40e3be;box-shadow:0 0 20px #24d4af14;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}
+.wi-circle strong{font-size:28px;color:#eafff6}.wi-circle span{font-size:9px;color:#87baa9;margin-top:4px}
+.wi-check-stats{flex:1;min-width:0;display:grid;gap:10px;font-size:11px;color:#bfdad1}
+.wi-check-stats div{display:flex;align-items:center;gap:7px}.wi-check-stats b{margin-left:auto;color:#fff;font-size:14px}
+.wi-stat-dot{width:7px;height:7px;border-radius:100%;background:#859d9b;flex-shrink:0}.wi-stat-dot.good{background:#42dbb6}.wi-stat-dot.warn{background:#edb86e}.wi-stat-dot.neutral{background:#9dbbd5}
+.wi-check-notes{padding-top:13px;border-top:1px solid #284748;font-size:11px;max-height:170px;overflow:auto;color:#e8c69b}.wi-check-notes p{margin:7px 0}.wi-check-notes .wi-soft{color:#8eafa6}
+.wi-timeline{padding-top:3px}.wi-timeline-item{display:flex;align-items:flex-start;gap:10px;padding:11px 0;position:relative}
+.wi-timeline-item:not(:last-child):after{content:"";position:absolute;left:15px;top:36px;bottom:-5px;width:1px;background:#286455}
+.wi-timeline-icon{width:31px;height:31px;border-radius:50%;display:grid;place-items:center;background:#0e4a3e;color:#65edc9;border:1px solid #237e68;flex-shrink:0;font-size:11px;font-weight:800}
+.wi-timeline-item b{display:block;font-size:12px;color:#d9f5eb}.wi-timeline-item small{display:block;color:#7faaa0;font-size:10px;margin-top:3px}
+.wi-history-foot{color:#678f85;font-size:10px;border-top:1px solid #244443;padding-top:10px}
+/* Responsive: preserve readable tables rather than compressing numbers */
+@media(max-width:1420px){.wi-workspace{grid-template-columns:minmax(230px,.88fr) minmax(360px,1.4fr)}.wi-side-stack{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto}.wi-document-viewer{min-height:360px}.wi-row{grid-template-columns:24px minmax(80px,.9fr) minmax(135px,1fr) minmax(95px,1fr)}}
+@media(max-width:1120px){.top .session-label{display:none}.main{padding:24px 20px 60px}.hero h2{font-size:29px}.wi-workspace{grid-template-columns:minmax(210px,.85fr) minmax(340px,1.3fr)}.wi-check-ring{justify-content:flex-start}}
+@media(max-width:1040px){.side{width:78px}.side .logo{padding:6px 0 23px}.side .nav{padding:12px}.logo-mark{width:39px;height:39px}.nav label{display:none}.side-foot{font-size:0}.side-foot b,.system-indicator{display:none}}
+@media(max-width:760px){.side{width:100%;height:auto;background:#071b1b;padding:10px;border-right:0;border-bottom:1px solid #2b4f48}.side .logo{border:0;margin:0;padding:0 5px}.side nav{flex-direction:row;flex:1;gap:5px}.nav{min-width:max-content;padding:8px 9px;font-size:11px}.nav label{display:block}.nav span{width:auto}.top{align-items:start}.top h1{font-size:28px}.workspace-crumb{font-size:9px}.top-right{padding:6px 9px}.hero{padding:24px}.hero h2{font-size:25px}.panel{padding:16px}.stat{min-height:105px}.stat strong{font-size:30px}.stats,.case-meta{grid-template-columns:repeat(2,minmax(0,1fr))}.wi-workspace{grid-template-columns:1fr}.wi-side-stack{grid-column:auto;grid-template-columns:1fr}.wi-document-viewer{min-height:230px;max-height:420px}.wi-preview-image{max-height:400px}.wi-file-list{max-height:135px}.wi-row{grid-template-columns:28px minmax(105px,1fr) minmax(120px,1fr)}.wi-row>div:last-child{grid-column:2/-1}.wi-row-header{display:none}}
+@media(max-width:490px){.top-right .user{max-width:155px}.hero{padding:20px}.hero h2{font-size:23px}.stats,.case-meta,.grid2,.form-grid{grid-template-columns:1fr}.wi-check-ring{justify-content:space-between}.tabs{gap:6px}.tab{padding:8px 10px}.panel-head{flex-wrap:wrap}.investor-dialog{padding:12px}}
+@media print{
+ html,body{background:#fff!important;color:#111!important;color-scheme:light}
+ .main,.view,.panel,.table,.report,.fact,.case-meta>div{color:#111!important;background:#fff!important}
+ .report{border-color:#aaa!important}.table th,.table td{color:#111!important;background:#fff!important;border-color:#ddd!important}
+ .wi-workspace,.wi-pane,.wi-row{background:#fff!important;color:#111!important}
+ .panel{box-shadow:none!important;border:0!important}
+}
+@media(max-width:760px){
+ .side .logo{display:none}
+ .side nav{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:5px;overflow:visible}
+ .side .nav{display:flex;min-width:0;width:100%;justify-content:center;gap:5px;padding:9px 5px;white-space:nowrap}
+ .side .nav label{font-size:10px}
+ .side .nav span{font-size:14px}
+}
+
+
+/* v1.3.1 — semantic colors, editorial hierarchy, and reliable investor media controls */
+:root{
+  --type-land:#52e0a8;--type-house:#84c5ff;--type-condo:#c7a4ff;
+  --type-apartment:#ffc182;--price:#f5c87d;--area:#b4b4ff;
+  --status-done:#49dbd0;--status-reviewed:#8dc5ff;
+  --status-pending:#ffce78;--status-hold:#ffad78;--status-error:#ff858d;
+}
+body{font-size:14px;line-height:1.65}
+.table td{font-size:13px;line-height:1.5}
+.table th{font-size:11px;letter-spacing:.35px;color:#a9c8c0}
+.table tbody tr:nth-child(even){background:#0b2325}
+.table tbody tr:hover{background:#143437}
+.table tbody tr:focus-within{background:#153b3a;box-shadow:inset 3px 0 #4ae7c1}
+.table tbody tr{transition:background .15s ease}
+.row-link{font-weight:850;font-size:14px;color:#7af4da}
+.ui-case-caption{margin-top:5px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.ui-badge{display:inline-flex;align-items:center;gap:5px;border:1px solid currentColor;border-radius:8px;padding:3px 8px;font-size:11px;font-weight:800;line-height:1.4;white-space:nowrap;background:#ffffff0a}
+.ui-badge-type-land{color:var(--type-land);background:#28a9771d}
+.ui-badge-type-house{color:var(--type-house);background:#298edc1e}
+.ui-badge-type-condo{color:var(--type-condo);background:#886cd91c}
+.ui-badge-type-apartment{color:var(--type-apartment);background:#d88e311c}
+.ui-badge-type-unknown{color:#b9c6c4;background:#9da5a51c}
+.ui-badge-src-telegram{color:#83d6ff;background:#268db51e}
+.ui-badge-src-line{color:#8ce998;background:#359a451e}
+.ui-badge-src-web{color:#bea6ff;background:#7e64c71f}
+.ui-badge-src-other{color:#b8c8c5;background:#6a85801a}
+.ui-badge-status-analyzed{color:var(--status-done);background:#27bca91a}
+.ui-badge-status-screened{color:var(--status-reviewed);background:#3692e51c}
+.ui-badge-status-running{color:#78dff3;background:#2199b71e}
+.ui-badge-status-hold{color:var(--status-hold);background:#d978391c}
+.ui-badge-status-pending{color:var(--status-pending);background:#be923020}
+.ui-badge-status-error{color:var(--status-error);background:#a7344521}
+.ui-badge-status-neutral{color:#bacdca;background:#7f9e9615}
+.ui-value-price{color:var(--price);font-size:14px;font-weight:850;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ui-value-area{color:var(--area);font-weight:750;font-variant-numeric:tabular-nums}
+.ui-location{color:#e4f4ee}
+.ui-muted-data{color:#819c97;font-style:normal}
+.table .ui-action{font-size:11px;font-weight:800;border-color:#376f66;color:#e3fff5}
+.comps-table .ui-group-a{color:#5be0ad}
+.comps-table .ui-group-b{color:#9dc4ff}
+.comps-table .ui-group-c{color:#ffc57f}
+.comps-table .ui-group-d{color:#b9c2bf}
+.comps-table .ui-compact-price{color:var(--price);font-weight:800}
+.comps-table .ui-compact-area{color:var(--area);font-weight:700}
+.comps-table .ui-zone{color:#bcd4e9;font-weight:700}
+.comps-table .ui-evidence{color:#87e7d5}
+.case-meta>div:nth-child(1) strong{color:var(--area)}
+.case-meta>div:nth-child(2) strong{color:var(--price)}
+.case-meta>div:nth-child(3) strong{color:#a8d8ff}
+.case-meta>div:nth-child(4) strong{color:#75e5bf}
+.investor-photo-controls{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:end;margin:9px 0}
+.investor-photo-controls .field{min-width:0}
+.investor-photo-failure{background:#452622;border:1px solid #aa5a4f;color:#ffd2bb;padding:12px 14px;border-radius:11px;line-height:1.6}
+.investor-photo-good{background:#14392f;border:1px solid #318f78;color:#a5f0d9;padding:10px 13px;border-radius:10px}
+.investor-photo-pending{background:#273431;border:1px solid #587b70;color:#d4eadf;padding:10px 13px;border-radius:10px}
+.investor-photo-upload{background:#0d2829;border:1px dashed #39786d;border-radius:13px;padding:12px 14px;display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:10px 0}
+.investor-photo-upload input[type=file]{max-width:360px;min-width:0}
+.investor-photo-upload .btn{flex-shrink:0}
+.investor-photo-caption{color:#b8d7cc;font-size:12px;margin-top:5px}
+.investor-dialog{max-width:1180px}
+@media(max-width:760px){.investor-photo-controls{grid-template-columns:1fr}.investor-photo-upload{display:grid;grid-template-columns:1fr}.ui-badge{font-size:10px;padding:2px 6px}.table td{font-size:12px}}
+
+
+/* v1.3.2 — case edit modal */
+.wce-modal{position:fixed;inset:0;z-index:160;background:rgba(0,12,15,.82);display:flex;align-items:center;justify-content:center;padding:22px;backdrop-filter:blur(5px)}
+.wce-modal.hidden{display:none!important}
+.wce-dialog{background:#0b2225;border:1px solid #2a6560;border-radius:22px;width:min(1040px,100%);max-height:94vh;overflow:auto;color:#edfffa;box-shadow:0 24px 90px #0009}
+.wce-head{display:flex;justify-content:space-between;gap:16px;align-items:start;padding:22px 26px;border-bottom:1px solid #2a4949;position:sticky;top:0;background:#0b2225;z-index:2}
+.wce-head h2{margin:0;font-size:23px}.wce-body{padding:22px 26px}.wce-section{font-size:14px;color:#7fe8cd;font-weight:800;margin:18px 0 12px}.wce-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.wce-grid .field.wide{grid-column:1/-1}
+.wce-grid .field label{color:#bcdcd4;font-size:12px}.wce-grid .field .input{background:#102e30;color:#f0fffb;border-color:#345955}.wce-grid .field .input:focus{border-color:#61d9b7}.wce-grid .field .input::placeholder{color:#759e99}
+.wce-help{font-size:12px;color:#a9c7bf;line-height:1.7}.wce-warning{border:1px solid #84613c;background:#312920;color:#ffe0ad;padding:12px 15px;border-radius:11px;margin:14px 0}.wce-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;padding:16px 26px 22px;border-top:1px solid #2a4949;position:sticky;bottom:0;background:#0b2225}
+.wce-saving{opacity:.7;pointer-events:none}.wce-updated{color:#7ee6c5;font-weight:700}.wce-edit-highlight{border:1px solid #2d766d;background:linear-gradient(130deg,#112f30,#104039);border-radius:13px;padding:12px 16px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+@media(max-width:860px){.wce-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.wce-body{padding:16px}.wce-head,.wce-actions{padding:15px}}
+@media(max-width:540px){.wce-modal{padding:0}.wce-dialog{border-radius:0;max-height:100vh;height:100vh}.wce-grid{grid-template-columns:1fr}.wce-head h2{font-size:20px}}
+
+/* v1.3.3: more readable investor photo + comparable discovery controls */
+.comp-coverage{margin:14px 0;padding:16px 18px;border:1px solid #285d55;background:linear-gradient(135deg,#0c2929,#102f2b);border-radius:16px}
+.comp-coverage .comp-cover-title{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.comp-coverage h4{margin:0;font-size:15px;color:#d6fff4}
+.comp-coverage .cover-metrics{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+.comp-coverage .cover-metrics span{border:1px solid #2b554c;border-radius:10px;padding:7px 10px;color:#cbebde;font-size:12px;background:#112f2b}
+.comp-coverage .cover-lead{border-top:1px solid #2b5148;padding:11px 3px;color:#d7f4e9}
+.comp-coverage .cover-lead small{display:block;color:#a5beb7}
+.comp-coverage .cover-lead a{color:#7edecb;text-decoration:underline;overflow-wrap:anywhere}
+.comp-coverage .cover-alert{color:#f6ce8d;font-size:12px;margin-top:10px}
+.investor-photo-format{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 12px;color:#ccece1}
+.investor-photo-format select{max-width:310px}
+.investor-actions .btn{min-height:44px}
+@media(max-width:700px){.comp-coverage .comp-cover-title .btn{width:100%}.investor-photo-format select{max-width:100%}}
+
+/* v1.3.4 — staged comparable review, separate from approved valuation */
+.comp-review134{border:1px solid #25645b;border-radius:16px;padding:17px;margin-top:20px;background:linear-gradient(145deg,rgba(18,81,72,.52),rgba(8,40,41,.5))}
+.comp-review134 .cr134-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:9px}
+.comp-review134 .cr134-head h4{margin:0;font-size:17px;color:#dcfff7}
+.comp-review134 .cr134-head .cr134-actions{display:flex;flex-wrap:wrap;gap:8px}
+.comp-review134 .cr134-kpis{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+.comp-review134 .cr134-kpis span{border:1px solid #3b615d;padding:5px 9px;border-radius:8px;background:#0f3938;font-size:12px;color:#e0f7f2}
+.comp-review134 .cr134-hint{font-size:12px;line-height:1.8;color:#afcac3;margin:8px 0}
+.cr134-grid{overflow-x:auto;border:1px solid #26524d;border-radius:12px}
+.cr134-grid table{width:100%;min-width:890px;border-collapse:collapse;font-size:12px}
+.cr134-grid th{background:#143c39;color:#91c7ba;font-weight:800;text-align:left;padding:12px}
+.cr134-grid td{padding:12px;border-top:1px solid #2b4e49;vertical-align:top;color:#d9f2ec}
+.cr134-grid tr:hover{background:#143b39}
+.cr134-grid tr.cr134-row-selected{background:#173f3b}
+.cr134-grid .cr134-source{font-weight:750;display:block;color:#e0fff6;max-width:330px}
+.cr134-grid small{color:#9fbcb5;display:block;margin-top:3px}
+.cr134-state{display:inline-block;border:1px solid #53635e;color:#d4e8e4;border-radius:7px;padding:3px 7px;white-space:nowrap;font-size:11px;font-weight:800}
+.cr134-state.READING{color:#9dd6ff;border-color:#366b85;background:#12394c}
+.cr134-state.READY_REVIEW,.cr134-state.TEAM_REVIEWED{color:#7bf1c8;border-color:#257b66;background:#093d32}
+.cr134-state.PARTIAL,.cr134-state.PENDING{color:#ffd085;border-color:#8a6b30;background:#40311c}
+.cr134-state.BLOCKED,.cr134-state.MANUAL,.cr134-state.UNAVAILABLE,.cr134-state.ERROR{color:#ffb2aa;border-color:#8c4242;background:#492323}
+.cr134-editor{background:#0b2b2a;border:1px solid #315c55;border-radius:12px;padding:14px;margin:8px 0 2px}
+.cr134-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.cr134-fields label{font-size:11px;color:#accbc3;display:block}
+.cr134-fields input,.cr134-editor textarea{font:inherit;border:1px solid #396760;background:#092423;color:#fff;border-radius:8px;padding:9px;width:100%;outline:none}
+.cr134-fields input:focus,.cr134-editor textarea:focus{border-color:#37c8aa}
+.cr134-editor textarea{margin-top:10px;min-height:66px}
+.cr134-link{display:inline-block;color:#65e6c9;margin-top:4px}
+@media(max-width:700px){.cr134-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.comp-review134{padding:12px}}
+
+.cr134-excluded{padding:12px 14px;border:1px solid #28544e;border-radius:12px;margin:14px 0;background:rgba(18,75,65,.2)}.cr134-excluded summary{cursor:pointer;font-weight:750;color:#a8ede0}.cr134-excluded .cover-lead{margin:10px 0}.cr134-excluded button{margin-left:8px;font-size:12px}
+
+.cr134-state.PROMOTED{background:#104d45;border-color:#218a78;color:#adffdf}
+</style>
+
+<style>
+.e2e-shade{position:fixed;inset:0;z-index:9998;background:rgba(0,10,12,.82);display:none;align-items:center;justify-content:center;padding:22px}
+.e2e-shade.open{display:flex}.e2e-box{width:min(1050px,100%);max-height:92vh;overflow:auto;background:#092426;color:#e5f8f3;border:1px solid #37756b;border-radius:22px;box-shadow:0 22px 80px #0009;padding:26px}
+.e2e-header{display:flex;align-items:start;justify-content:space-between;gap:12px}.e2e-header h2{margin:0;font-size:25px;color:#d9fff3}.e2e-note{color:#a6ccc6;font-size:13px;margin:8px 0 16px}
+.e2e-actions{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}.e2e-actions button{padding:11px 15px;border:1px solid #36756c;border-radius:11px;background:#123b3a;color:#dffbf1;font-weight:700;cursor:pointer}.e2e-actions button:hover{background:#1f6155}.e2e-actions button:disabled{opacity:.5;cursor:wait}.e2e-actions .e2e-full{background:#b5f2dc;color:#07382e;border-color:#b5f2dc}
+.e2e-input{border:1px solid #327067;border-radius:10px;background:#082123;color:#effff9;padding:10px 12px;width:min(320px,100%)}
+.e2e-results{display:flex;flex-direction:column;gap:8px;margin-top:14px}.e2e-result{border:1px solid #2b5551;border-radius:12px;background:#103032;padding:12px 15px}.e2e-result header{display:flex;justify-content:space-between;gap:9px;align-items:center}.e2e-result small{color:#a3cdc4}.e2e-result pre{font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere;color:#bddece;margin:8px 0 0}.e2e-pass{color:#73e4ba}.e2e-fail{color:#ff9b96}.e2e-warn{color:#ffce82}.e2e-skip{color:#a2b4b6}.e2e-running{color:#98d9e9}
+@media(max-width:680px){.e2e-box{padding:16px}.e2e-header h2{font-size:19px}.e2e-actions button{width:100%}.e2e-shade{padding:7px}}
+</style>
+<style>[hidden]{display:none!important}</style></head>
+<body>
+<div class="app">
+ <aside class="side"><div class="logo"><span class="logo-mark">⌂</span><span class="brand"><b>MY PROPERTY</b><small>MANAGEMENT SYSTEM</small></span></div>
+ <nav style="flex:1"><button class="nav" onclick="location.href='/'"><span>⌂</span><label>หน้าแรก</label></button><button class="nav active" data-view="dashboard" onclick="navigate('dashboard')"><span>▦</span><label>ภาพรวมระบบ</label></button><button class="nav" data-view="cases" onclick="navigate('cases')"><span>▤</span><label>แฟ้มทรัพย์ทั้งหมด</label></button><button class="nav" data-view="new" onclick="navigate('new')"><span>＋</span><label>รับทรัพย์ใหม่</label></button><button class="nav" id="mpMemberNav" hidden onclick="location.href='/members'"><span>♙</span><label>จัดการสมาชิก</label></button><button class="nav" onclick="runWebDiagnostics()"><span>✓</span><label>ตรวจสุขภาพระบบ</label></button><button class="nav" onclick="MP.logout()"><span>↪</span><label>ออกจากระบบ</label></button></nav>
+ <div class="side-foot"><span class="system-indicator"></span> INTERNAL WORKSPACE<br><b>MY PROPERTY</b> · Pearl White v2.0</div></aside>
+ <main class="main"><div id="mpDemoNotice" hidden style="margin-bottom:14px;padding:11px 16px;border:1px solid #d9b16c;border-radius:12px;color:#775015;background:#fff9ea;font-weight:700">พื้นที่ทดสอบ · ข้อมูลจำลอง ไม่ใช่ประกาศจริง ไม่ใช้ประเมินหรือเสนอนายทุน</div>
+  <header class="top"><div><div class="workspace-crumb"><span>INTELLIGENCE WORKSPACE</span><span class="crumb-separator">›</span><span>MY PROPERTY</span><span class="crumb-separator">›</span><span class="crumb-current">WORKSPACE DASHBOARD</span></div><h1 id="pageTitle">ภาพรวมทรัพย์สิน</h1><p id="pageSubtitle">รวบรวมข้อมูลจาก Telegram, LINE และเว็บไซต์ในระบบเดียว</p></div><div class="top-right"><span class="session-label"><span class="online-dot"></span> PRIVATE TEAM</span><span class="user" id="loggedUser"></span><div class="avatar">MP</div></div></header>
+  <section id="view-dashboard" class="view active"><div class="hero"><div><div class="tag">PROPERTY INTELLIGENCE PLATFORM</div><h2>อสังหาริมทรัพย์ทุกเคส<br><em>วิเคราะห์ได้ในมุมมองเดียว</em></h2><p>ดูแฟ้มทรัพย์และหลักฐานจากระบบเดิม โดยไม่ต้องค้นเว็บใหม่เพียงเพื่อเปิดรายงาน</p></div><button class="btn primary" onclick="navigate('new')">＋ รับทรัพย์ใหม่</button></div><div id="statCards" class="stats"></div><div id="diagnosticResult" class="hidden"></div><div class="panel cases-panel"><div class="panel-head"><h3>แฟ้มทรัพย์ล่าสุด</h3><div class="flex"><button class="btn" onclick="runWebDiagnostics()">✓ ตรวจสุขภาพระบบ</button><button class="btn" onclick="navigate('cases')">ดูทั้งหมด ↗</button></div></div><div id="recentCases"></div></div></section>
+  <section id="view-cases" class="view"><div class="panel"><div class="panel-head"><h3>ค้นหาและจัดการแฟ้มทรัพย์</h3><div class="flex"><button id="v152BatchBtn" class="btn primary" onclick="v152RefreshAll()">↻ เปรียบเทียบใหม่ทุกแฟ้ม (0 เครดิต)</button><button class="btn" onclick="refreshDashboard()">↻ รีเฟรช</button></div></div><div class="hint">ค้นข้อมูลจากแฟ้มเดิมทุกช่องทางทีละรายการ ไม่ต้องสร้างเคสใหม่; ผลค้นยังต้องตรวจหลักฐานก่อนใช้ตีราคา</div><div id="v152BatchPanel" class="panel hidden"><div class="panel-head"><h3>ผลค้นเปรียบเทียบใหม่ทุกแฟ้ม</h3><button id="v152BatchStop" class="btn" onclick="v152Stop()">หยุดหลังแฟ้มปัจจุบัน</button></div><p id="v152BatchSummary" class="hint" aria-live="polite"></p><div class="table-wrap"><table class="table"><thead><tr><th>แฟ้มเดิม</th><th>สถานะ</th><th>ใกล้เคียง</th><th>ประกอบ</th><th>หมายเหตุ</th></tr></thead><tbody id="v152BatchList"></tbody></table></div></div><div class="toolbar"><input class="input" id="caseSearch" oninput="renderCases()" placeholder="ค้นหาเลขเคสหรือพื้นที่..."><select class="input" id="sourceFilter" onchange="renderCases()"><option value="">ทุกช่องทาง</option><option>TELEGRAM</option><option>LINE</option><option>WEB</option></select><select class="input" id="statusFilter" onchange="renderCases()"><option value="">ทุกสถานะ</option><option value="running">กำลังวิเคราะห์</option><option value="hold">Hold / รอตรวจ</option></select></div><div id="caseRows"></div></div></section>
+  <section id="view-detail" class="view"><button class="back" onclick="navigate('cases')">← กลับรายการเคส</button><div class="case-title"><div><h2 id="caseHeading">แฟ้มทรัพย์</h2><p id="caseLocation"></p></div><div class="flex"><span class="pill warn" id="detailStatus">กำลังโหลด</span><button class="btn primary" id="editCaseBtn" onclick="openCaseEditV132()">✎ แก้ไข / เพิ่มข้อมูล</button><button id="v152RefreshBtn" class="btn primary" onclick="refreshCaseComparisonV152()">↻ เปรียบเทียบใหม่ (0 เครดิต)</button><button class="btn" onclick="setTab('review')">▤ ตรวจเอกสาร AI</button><button class="btn primary" onclick="openInvestorExport()">▣ ภาพเสนอนายทุน</button><button class="btn dark" id="analyzeBtn" onclick="analyzeCurrent()">◈ วิเคราะห์ / ตรวจอีกครั้ง</button></div></div><div class="case-meta" id="caseMeta"></div><div id="statusPanel" class="hint"></div><div id="v152CaseResult" class="hint hidden" aria-live="polite"></div>
+  <div class="tabs" role="tablist" aria-label="เมนูรายละเอียดแฟ้มทรัพย์"><button class="tab active" onclick="setTab('overview')" data-tab="overview">ข้อมูลและรูปภาพ</button><button class="tab" onclick="setTab('review')" data-tab="review">ตรวจเอกสาร AI</button><button class="tab" onclick="setTab('compare')" data-tab="compare">ตารางเปรียบเทียบ</button><button class="tab" onclick="setTab('report')" data-tab="report">รายงานฉบับเต็ม</button><button class="tab" onclick="setTab('notes')" data-tab="notes">หมายเหตุทีม</button></div>
+  <div id="detailContent"></div></section>
+  <section id="view-new" class="view"><div class="panel intake-panel"><div class="panel-head"><div><h3>เพิ่มทรัพย์ใหม่จากเว็บไซต์</h3><small>สร้างเลขเคสใน Google Sheets เดิม และเก็บเอกสารใน Google Drive</small></div></div><form id="newForm" onsubmit="submitNew(event)"><div class="form-grid">
+   <div class="field"><label>ประเภททรัพย์ *</label><select id="inType" class="input" required onchange="updateAreaHint()"><option value="land">ที่ดิน</option><option value="house">บ้าน</option><option value="condo">คอนโด</option><option value="apartment">อพาร์ตเมนต์ (รอตรวจรายได้)</option></select></div>
+   <div class="field"><label>ประเภทดีล</label><select id="inDeal" class="input"><option>ขายขาด</option><option>ขายฝาก</option><option>ประสานจำนอง</option><option>ซื้อเพื่อพัฒนา</option></select></div>
+   <div class="field"><label>จังหวัด (กรอกได้ก่อน หรือให้ AI อ่านจากไฟล์)</label><input id="inProvince" class="input" placeholder="เช่น สมุทรปราการ"></div><div class="field"><label>อำเภอ / เขต</label><input id="inDistrict" class="input" placeholder="เช่น เมืองสมุทรปราการ"></div><div class="field"><label>ตำบล / แขวง</label><input id="inSubdistrict" class="input" placeholder="เช่น บางปู"></div><div class="field"><label>ราคาเสนอขายรวม (บาท)</label><input id="inPrice" type="number" min="1" step="any" class="input" placeholder="เว้นว่างหากยังไม่ทราบ"></div>
+   <div class="field"><label>ขนาดทรัพย์</label><input id="inArea" type="number" min=".01" step="any" class="input" placeholder="ระบุเป็นตัวเลข"></div><div class="field"><label>หน่วย</label><select id="inAreaUnit" class="input"><option value="sqw">ตารางวา</option><option value="rai">ไร่</option><option value="sqm">ตารางเมตร</option></select></div>
+   <div class="field"><label>ละติจูด</label><input id="inLat" type="number" step="any" class="input" placeholder="13.50766657"></div><div class="field"><label>ลองจิจูด</label><input id="inLon" type="number" step="any" class="input" placeholder="100.76911291"></div>
+   <div class="field"><label>เบอร์ติดต่อ (ภายในทีม)</label><input id="inPhone" class="input" placeholder="เก็บส่วนตัว ไม่แสดงในรายงานนายทุน"></div><div class="field"><label>เอกสารสิทธิ</label><input id="inDoc" class="input" placeholder="โฉนด / น.ส.3 / ยังไม่ทราบ"></div>
+   <div class="field wide"><label>รายละเอียดจากเจ้าของทรัพย์</label><textarea id="inDescription" class="input" placeholder="รายละเอียดถนน ทางเข้า สภาพทรัพย์ ข้อจำกัด และข้อมูลอื่น ๆ ที่เจ้าของแจ้ง"></textarea></div>
+   <div class="field wide"><label>รูปภาพหรือ PDF (สูงสุด 4 MB ต่อไฟล์)</label><input type="file" id="inFiles" class="input" accept="image/jpeg,image/png,image/webp,application/pdf" multiple><small>ไฟล์เก็บใน Drive เคสเดิม • v1.2 อ่าน JPG/PNG/WEBP/PDF ได้สูงสุด 3 ไฟล์ รวมไม่เกิน 6 MB • AI สกัดเบื้องต้นเท่านั้น ต้องตรวจยืนยันก่อนวิเคราะห์ • ตรวจสิทธิส่งไฟล์ให้ Gemini และปิดบังข้อมูลส่วนตัวที่ไม่จำเป็นก่อนแนบ</small></div>
+  </div><label class="flex small" style="margin-top:17px"><input type="checkbox" id="autoAnalyze" checked> เมื่อแนบไฟล์ ให้อ่านด้วย Gemini และเปิดหน้าตรวจยืนยันก่อนวิเคราะห์ตลาด (ถ้าไม่มีไฟล์ ให้เข้าคิวจากข้อมูลที่กรอก)</label><div class="hint">ข้อมูลจากภาพ/โฉนดต้องผ่านการตรวจของทีมก่อน • ไม่ยืนยันภาระกรรมสิทธิ์จากหน้าโฉนด • ใช้เครดิต Gemini ตอนอ่านไฟล์และอาจใช้เครดิตเพิ่มในการวิเคราะห์ตลาด</div><div class="form-actions"><button type="submit" class="btn dark" id="submitCaseBtn">บันทึกและเปิดแฟ้มทรัพย์</button><button type="reset" class="btn">ล้างข้อมูล</button></div></form></div></section>
+ </main>
+</div>
+
+
+<div id="wceModal" class="wce-modal hidden" role="dialog" aria-modal="true" aria-labelledby="wceTitle" aria-hidden="true">
+ <div class="wce-dialog" id="wceDialog">
+  <div class="wce-head"><div><h2 id="wceTitle">แก้ไขข้อมูลแฟ้มทรัพย์</h2><div class="wce-help" id="wceSummary">กำลังโหลดข้อมูลล่าสุด...</div></div><button class="btn" type="button" onclick="closeCaseEditV132()">ปิด ✕</button></div>
+  <form id="wceForm" onsubmit="saveCaseEditV132(event)">
+   <div class="wce-body">
+    <div class="wce-warning">ตรวจสอบข้อมูลกับหลักฐานก่อนบันทึก • การแก้ไขทำเล เนื้อที่ ราคา ประเภท หรือพิกัด จะต้องวิเคราะห์ตลาดใหม่ก่อนนำผลไปใช้อ้างอิง</div>
+    <div class="wce-section">01 — ข้อมูลหลัก</div>
+    <div class="wce-grid">
+      <div class="field"><label for="wce_type">ประเภททรัพย์ *</label><select class="input" id="wce_type" required><option value="land">ที่ดิน</option><option value="house">บ้าน</option><option value="condo">คอนโด</option><option value="apartment">อพาร์ตเมนต์</option></select></div>
+      <div class="field"><label for="wce_deal">ประเภทดีล</label><input class="input" id="wce_deal" list="wceDealOptions" maxlength="60" placeholder="ขายขาด / ขายฝาก / ประสานจำนอง"><datalist id="wceDealOptions"><option value="ขายขาด"><option value="ขายฝาก"><option value="ประสานจำนอง"><option value="ซื้อเพื่อพัฒนา"><option value="ฝากขาย"></datalist></div>
+      <div class="field"><label for="wce_price">ราคาตั้งขายรวม (บาท)</label><input class="input" id="wce_price" type="number" step="any" min="1" placeholder="ยังไม่ทราบให้เว้นว่าง"></div>
+      <div class="field"><label for="wce_province">จังหวัด *</label><input class="input" id="wce_province" maxlength="80" required></div>
+      <div class="field"><label for="wce_district">อำเภอ / เขต *</label><input class="input" id="wce_district" maxlength="80" required></div>
+      <div class="field"><label for="wce_subdistrict">ตำบล / แขวง</label><input class="input" id="wce_subdistrict" maxlength="80"></div>
+      <div class="field"><label for="wce_land">เนื้อที่ (ตร.ว.)</label><input class="input" id="wce_land" type="number" min="0.01" step="any"></div>
+      <div class="field"><label for="wce_usable">พื้นที่ใช้สอย (ตร.ม.)</label><input class="input" id="wce_usable" type="number" min="0.01" step="any"></div>
+      <div class="field"><label for="wce_deed">เลขโฉนด / เอกสารสิทธิ</label><input class="input" id="wce_deed" maxlength="120"></div>
+      <div class="field"><label for="wce_lat">ละติจูด</label><input class="input" id="wce_lat" type="number" step="any" placeholder="13.50766657"></div>
+      <div class="field"><label for="wce_lon">ลองจิจูด</label><input class="input" id="wce_lon" type="number" step="any" placeholder="100.76911291"></div>
+      <div class="field"><label for="wce_doc">ประเภทเอกสารสิทธิ</label><input class="input" id="wce_doc" maxlength="120"></div>
+    </div>
+    <div class="wce-section">02 — ข้อมูลเพิ่มเติมและหลักฐาน</div>
+    <div class="wce-grid">
+      <div class="field"><label for="wce_zone">ผังเมืองตามเอกสาร/ผู้แจ้ง (ยังไม่ยืนยัน)</label><input class="input" id="wce_zone" maxlength="180" placeholder="ไม่ใช่ผลตรวจจากผังเมืองทางการ"></div>
+      <div class="field"><label for="wce_phone">เบอร์ติดต่อ (เก็บภายในเท่านั้น)</label><input class="input" id="wce_phone" maxlength="90"></div>
+      <div class="field wide"><label for="wce_access">ถนน / ทางเข้า / ภาระจำยอม (ตามข้อมูลที่ได้รับ)</label><textarea class="input" id="wce_access" maxlength="1200" rows="2"></textarea></div>
+      <div class="field wide"><label for="wce_desc">รายละเอียดเพิ่มเติมจากทีมงาน</label><textarea class="input" id="wce_desc" maxlength="6000" rows="4" placeholder="ข้อมูลที่ตรวจสอบเพิ่ม ไม่เขียนทับข้อความต้นทางเดิม"></textarea></div>
+    </div>
+    <div class="field" style="margin-top:18px"><label for="wce_files">แนบไฟล์เพิ่มเติมเข้ากับแฟ้มนี้ (JPG / PNG / WEBP / PDF ไม่เกิน 4 MB ต่อไฟล์)</label><input class="input" id="wce_files" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" multiple><div class="wce-help">ไฟล์จะเก็บใน Google Drive ของเลขเคสนี้ และแสดงในแกลเลอรีเมื่ออัปโหลดเสร็จ</div></div>
+    <p class="wce-help">ข้อมูลต้นทางจาก Telegram/LINE และผลวิเคราะห์เก่ายังคงอยู่ในแฟ้ม • การเปลี่ยนข้อมูลสำคัญทำให้ต้องวิเคราะห์ใหม่ • ไม่เรียก AI หรือค้นเว็บเพียงเพราะกดบันทึก</p>
+   </div>
+   <div class="wce-actions"><button type="button" class="btn" onclick="closeCaseEditV132()">ยกเลิก</button><button type="submit" id="wceSave" class="btn">✓ บันทึกอัปเดตแฟ้ม</button><button type="submit" id="wceSaveRefresh" class="btn primary" disabled>✓ บันทึกและเปรียบเทียบใหม่ (0 เครดิต)</button></div>
+  </form>
+ </div>
+</div>
+
+<div id="investorModal" class="investor-modal hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="investorModalTitle">
+ <div class="investor-dialog">
+  <div class="investor-head"><div><h2 id="investorModalTitle">รายงานภาพสำหรับนายทุน</h2><p id="investorCaseName">ภาพสรุป 1920 × 1080</p></div><button class="btn" onclick="closeInvestorExport()">ปิด ✕</button></div>
+  <div class="investor-preview"><canvas id="investorCanvas" width="1920" height="1080" aria-label="ภาพรายงานสรุปนายทุน"></canvas></div>
+  <div class="investor-info" id="investorModalStatus">กำลังเตรียมภาพ</div><div class="small muted" style="margin:4px 0 12px">แหล่งตรวจผังรายแปลง: <a href="https://townsquare.dpt.go.th/lup/" target="_blank" rel="noopener">กรมโยธาธิการและผังเมือง ↗</a> · <a href="https://landsmaps.dol.go.th/" target="_blank" rel="noopener">LandsMaps กรมที่ดิน ↗</a> · <a href="https://www.reic.or.th/Upload/4_536_1756804759_9326.pdf" target="_blank" rel="noopener" id="investorSmpLawLink" class="hidden">ผังเมืองสมุทรปราการ 2568 ↗</a></div>
+  <details id="investorLandmarkPanelV156" style="margin:10px 0 18px;padding:12px;border:1px solid #d7e5dd;border-radius:10px;background:#fff"><summary><b>＋ สถานที่สำคัญจากประกาศ / เก็บหลักฐาน (0 เครดิต)</b></summary><p class="small muted">เลือกประกาศรายแปลงที่อยู่ในคิว เปิดลิงก์อ่านจริงหรือดึงข้อความที่อาจเป็นชื่อสถานที่ แล้วตรวจแก้ก่อนบันทึก ระยะที่ประกาศระบุเป็นระยะของแปลงประกาศ ไม่ใช่ระยะของทรัพย์เป้าหมาย</p><div class="field"><label for="invLmSourceV156">ประกาศต้นทาง</label><select class="input" id="invLmSourceV156" onchange="invLmSelectV156()"></select></div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0"><a id="invLmLinkV156" href="#" target="_blank" rel="noopener noreferrer">เปิดประกาศต้นทาง ↗</a><button class="btn" id="invLmReadV156" onclick="invLmReadV156()">↻ อ่านสถานที่จากหน้า</button></div><textarea class="input" id="invLmTextV156" rows="5" maxlength="1450" placeholder="หนึ่งสถานที่ต่อบรรทัด เช่น ตลาดชื่อ... (ประกาศระบุห่าง 900 ม.)"></textarea><label class="small"><input type="checkbox" id="invLmCheckedV156" onchange="invLmConsentV156()"> ตรวจชื่อและระยะจากประกาศต้นทางแล้ว ไม่ใช่ระยะจากทรัพย์เป้าหมาย</label> <button type="button" class="btn primary" id="invLmSaveV156" disabled onclick="invLmSaveV156()">บันทึกและอัปเดตภาพ</button><p class="small muted" id="invLmStatusV156"></p></details>
+  <div class="investor-photo-controls"><div class="field"><label for="investorPhotoChoice">เลือกภาพทรัพย์ที่ได้รับอนุญาตให้ส่งต่อนายทุน</label><select id="investorPhotoChoice" class="input" onchange="investorSelectPhoto(this.value)"><option value="">ไม่ใส่ภาพ — ใช้กราฟิกข้อมูล</option></select><div class="investor-photo-caption" id="investorPhotoCount">กำลังตรวจไฟล์ภาพที่บันทึกไว้ในแฟ้ม</div></div><button class="btn" type="button" onclick="investorSelectPhoto(q('investorPhotoChoice').value)">↻ ตรวจภาพที่เลือกอีกครั้ง</button></div>
+  <div class="investor-photo-upload"><label for="investorAddPhoto"><b>ไม่มีภาพในแฟ้ม?</b> แนบรูปทรัพย์จริง (JPG/PNG/WEBP ไม่เกิน 4 MB)</label><input type="file" id="investorAddPhoto" accept="image/jpeg,image/png,image/webp"><button class="btn" type="button" id="investorUploadBtn" onclick="investorUploadPhoto()">＋ เพิ่มภาพในแฟ้มและนำมาใช้</button></div>
+  <div class="investor-photo-format"><label for="investorPhotoFitV133">การแสดงภาพในรายงาน</label><select class="input" id="investorPhotoFitV133" onchange="investorPhotoFitChangedV133()"><option value="contain">เห็นภาพทั้งใบ ไม่ตัดขอบ</option><option value="cover">เต็มกรอบ อาจตัดขอบ</option></select></div>
+  <div id="investorPhotoFeedback" class="investor-photo-pending" role="status">ยังไม่ได้เลือกภาพประกอบ หากต้องการให้ปรากฏใน PNG ให้เลือกหรือแนบภาพก่อนดาวน์โหลด</div>
+  <p class="investor-photo-caption">ห้ามส่งภาพโฉนด บัตรประชาชน หมายเลขติดต่อ หรือข้อมูลส่วนบุคคลโดยไม่มีสิทธิ์ ภาพทุกภาพต้องได้รับอนุญาตก่อนเผยแพร่ และการเลือกภาพไม่ได้หมายความว่าระบบตรวจยืนยันตัวแปลงแล้ว</p>
+  <label class="investor-consent"><input type="checkbox" id="investorConfirm" onchange="investorSetConsent()"> ฉันตรวจสอบข้อมูลและรับผิดชอบการอนุมัติส่งต่อภาพนี้แล้ว (ภาพนี้ไม่ใช่ราคาประเมินหรืออนุมัติวงเงิน)</label>
+  <div class="investor-actions"><button id="investorDownload" class="btn dark" onclick="investorDownloadPNG()" disabled>↓ ดาวน์โหลดภาพ PNG</button><button id="investorDownloadPhotoV133" class="btn" onclick="investorDownloadFullPhotoV133()" disabled>↓ ดาวน์โหลดภาพใหญ่แยกแผ่น</button><button class="btn" onclick="investorCopyLinks()">⧉ คัดลอกลิงก์หลักฐานแนบท้าย</button><button class="btn" onclick="closeInvestorExport()">กลับไปแก้ไข</button></div>
+  <textarea class="input hidden" id="investorLinkText" rows="5" aria-label="ข้อความลิงก์ประกาศที่คัดลอกได้"></textarea>
+  <p class="muted small">ภาพ PNG ไม่สามารถกดเปิดลิงก์ภายในภาพได้ จึงควรแนบข้อความลิงก์หลักฐานทุกครั้ง รวมทุกรายการแม้เกินจำนวนที่แสดงบนภาพ สามารถใช้ภาพที่บันทึกอยู่ใน Drive ของเคสได้โดยอัตโนมัติถ้าระบบอ่านได้</p>
+ </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="/client.js"></script><script>
+'use strict';
+var app={cases:[],summary:null,detail:null,tab:'overview',view:'dashboard',timer:null};
+const q=id=>document.getElementById(id), fmt=x=>(x===null||x===undefined||x==='')?'—':Number(x).toLocaleString('en-US',{maximumFractionDigits:2});
+const esc=x=>String(x==null?'':x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const link=x=>/^https:\/\//.test(String(x||''))?String(x):'';
+function call(name,...args){return MP.rpc(name,...args);}
+function toast(text,isError){const t=q('toast');t.textContent=text;t.className='toast'+(isError?' error':'');t.style.display='block';clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.style.display='none',5500);}
+
+async function runWebDiagnostics(){
+ const target=q('diagnosticResult');target.classList.remove('hidden');
+ target.className='panel';target.innerHTML='<span class="loader"></span> กำลังตรวจการอ่านข้อมูลโดยไม่สั่ง AI...';
+ try{const data=await call('webDiagnostics');
+ const a=data.counts||{},items=[['เคส',a.cases],['ตัวเทียบในชีต',a.comparables],['คิวงาน',a.pending],['ยังไม่มีราคา',a.missingPrice],['ยังไม่มีหมุด',a.missingPin],['ทรัพย์ข้อมูลคล้ายกัน',a.possibleDuplicatePairs]];
+ target.innerHTML='<div class="panel-head"><h3>ผลตรวจระบบ (อ่านอย่างเดียว)</h3><span class="pill '+(data.ok?'':'warn')+'">'+(data.ok?'ตรวจผ่านเงื่อนไขเบื้องต้น':'พบข้อควรตรวจ')+'</span></div>'+
+ '<div class="flex">'+items.map(x=>'<span class="pill gray">'+esc(x[0])+': '+esc(x[1])+'</span>').join('')+'</div>'+
+ '<div class="subsection">ข้อควรตรวจ</div><p>'+esc((data.issues||[]).length?data.issues.join(' • '):'ไม่พบข้อผิดพลาดในรายการที่ตรวจ')+'</p>'+
+ '<p class="small muted">ยังไม่ได้ทดสอบ: '+esc((data.notTested||[]).join(' · '))+'</p>';
+ }catch(e){target.innerHTML='<div class="warnbox">ตรวจสุขภาพระบบไม่ได้: '+esc(e.message)+'</div>';}
+}
+function busy(btn,state,label){if(btn){btn.disabled=state;btn.innerHTML=state?'<span class="loader"></span> '+esc(label||'กำลังทำงาน...'):esc(label||'ทำรายการ');}}
+function navigate(view){app.view=view;document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+view));document.querySelectorAll('.nav').forEach(v=>v.classList.toggle('active',v.dataset.view===view));q('pageTitle').textContent=({dashboard:'ภาพรวมทรัพย์สิน',cases:'แฟ้มทรัพย์ทั้งหมด',new:'รับทรัพย์ใหม่',detail:'รายละเอียดแฟ้มทรัพย์'})[view]||'My Property';q('pageSubtitle').textContent=view==='detail'?'เปิดดูรูปภาพ ตารางราคา และรายงานฉบับเต็ม':view==='new'?'เพิ่มช่องทางรับข้อมูลโดยใช้ชีตและระบบวิเคราะห์เดิม':'ศูนย์รวมข้อมูลและผลวิเคราะห์อสังหาริมทรัพย์';if(view==='cases')renderCases();if(view==='dashboard')renderDashboard();}
+function uiStatusInfo(s){
+ let v=String(s||'').toUpperCase();
+ if(/ERROR|FAILED/.test(v))return ['error','ผิดพลาด'];
+ if(/HOLD/.test(v))return ['hold','Hold · ต้องตรวจ'];
+ if(/CONFIRMED/.test(v))return ['pending','ข้อมูลพร้อม · รอวิเคราะห์ใหม่'];
+ if(/NEEDS_INPUT|DRAFT/.test(v))return ['pending','รอข้อมูล / ตรวจทาน'];
+ if(/RUNNING|QUEUED|READY/.test(v))return ['running','กำลังวิเคราะห์'];
+ if(/ANALYZED/.test(v))return ['analyzed','วิเคราะห์แล้ว'];
+ if(/SCREENED/.test(v))return ['screened','คัดกรองแล้ว'];
+ return ['neutral',v||'รอตรวจ'];
+}
+function uiTypeInfo(s){let v=String(s||'').toLowerCase();
+ if(v==='ที่ดิน'||v==='land')return ['land','ที่ดิน'];
+ if(v==='บ้าน'||v==='house')return ['house','บ้าน'];
+ if(v==='คอนโด'||v==='condo')return ['condo','คอนโด'];
+ if(v==='อพาร์ตเมนต์'||v==='apartment')return ['apartment','อพาร์ตเมนต์'];
+ return ['unknown',String(s||'รอประเภท')];}
+function uiSourceInfo(s){let v=String(s||'').toUpperCase();
+ return /^(LINE|TELEGRAM|WEB)$/.test(v)?[v.toLowerCase(),v==='WEB'?'WEBSITE':v]:['other',v||'ไม่ทราบ'];}
+function uiBadge(kind,info){return '<span class="ui-badge ui-badge-'+esc(kind)+'-'+esc(info[0])+'">'+esc(info[1])+'</span>';}
+function statusPill(s){return uiBadge('status',uiStatusInfo(s));}
+function uiApplyStatusBadge(el,status){if(!el)return;const info=uiStatusInfo(status);el.className='ui-badge ui-badge-status-'+info[0];el.textContent=info[1];}
+function uiCompGroup(c){let g=String(c.group||'').toUpperCase();if(/^A/.test(g))return 'a';if(/^B/.test(g))return 'b';if(/^C/.test(g))return 'c';return 'd';}
+
+function uiApplyStatusBadge(el,status){if(!el)return;const info=uiStatusInfo(status);el.className='ui-badge ui-badge-status-'+info[0];el.textContent=info[1];}
+async function refreshDashboard(){try{var result=await call('webGetDashboard');app.summary=result;app.cases=result.cases||[];q('loggedUser').textContent=result.user;renderDashboard();renderCases();MP.session().then(u=>{q("mpMemberNav").hidden=!u.admin;q("mpDemoNotice").hidden=!u.demo;}).catch(()=>{});}catch(e){toast(e.message,true);q('recentCases').innerHTML='<div class="empty"><b>ไม่สามารถโหลดข้อมูลได้</b>'+esc(e.message)+'</div>';}}
+function renderDashboard(){let cases=app.cases||[];let items=[['เคสทั้งหมด',app.summary?app.summary.count:cases.length],['กำลังวิเคราะห์',cases.filter(c=>/RUNNING|QUEUED|READY/.test(c.status)).length],['รอตรวจ / ข้อมูลไม่ครบ',cases.filter(c=>/DRAFT|NEEDS_INPUT|HOLD/.test(c.status)).length],['รับจากเว็บไซต์',app.summary&&app.summary.bySource?(app.summary.bySource.WEB||0):cases.filter(c=>c.source==='WEB').length]];q('statCards').innerHTML=items.map(x=>'<div class="stat"><small><i class="dot"></i>'+esc(x[0])+'</small><strong class="mono">'+fmt(x[1])+'</strong></div>').join('');q('recentCases').innerHTML=caseTable(cases.slice(0,8));}
+function renderCases(){let filter=q('caseSearch').value.toLowerCase().trim(),src=q('sourceFilter').value,sts=q('statusFilter').value;let cases=app.cases.filter(c=>(!filter||[c.id,c.location,c.type].join(' ').toLowerCase().includes(filter))&&(!src||c.source===src)&&(!sts||(sts==='running'?/RUNNING|QUEUED|READY/.test(c.status):/DRAFT|NEEDS_INPUT|HOLD/.test(c.status))));q('caseRows').innerHTML=caseTable(cases);}
+function caseTable(data){
+ if(!data.length)return '<div class="empty"><b>ไม่พบรายการตามเงื่อนไข</b>ลองค้นด้วยเลขเคสหรือพื้นที่อื่น</div>';
+ return '<div class="table-wrap"><table class="table"><thead><tr><th>รหัสเคส / ประเภท</th><th>ทำเล</th><th>เนื้อที่</th><th>ราคาตั้งขาย</th><th>ช่องทาง</th><th>สถานะ</th><th></th></tr></thead><tbody>'+data.map(c=>{
+  const price=(c.price==null||c.price==='')?'<span class="ui-muted-data">ยังไม่ระบุราคา</span>':'<strong class="ui-value-price">'+fmt(c.price)+' บาท</strong>';
+  return '<tr><td><a href="#" class="row-link" data-id="'+esc(c.id)+'" onclick="openCase(this.dataset.id);return false">'+esc(c.id)+'</a><div class="ui-case-caption">'+uiBadge('type',uiTypeInfo(c.type))+'</div></td><td class="ui-location">'+esc(c.location||'รอตรวจ')+'</td><td><span class="ui-value-area">'+esc(c.area_label||'—')+'</span></td><td>'+price+'</td><td>'+uiBadge('src',uiSourceInfo(c.source))+'</td><td>'+statusPill(c.status)+'</td><td><button class="btn ui-action" data-id="'+esc(c.id)+'" onclick="openCase(this.dataset.id)">เปิดแฟ้ม ↗</button> <button class="btn" type="button" data-v152-id="'+esc(c.id)+'" onclick="v152OpenExisting(this.dataset.v152Id,true)">↻ เปรียบเทียบใหม่</button></td></tr>';
+ }).join('')+'</tbody></table></div>';
+}
+function primaryCompsV142(d){return (d.comps||[]).filter(c=>d.subject.property_type!=='land'||c.quality&&c.quality.bucket==='primary');}
+function extraCompsV142(d){
+ if(d.subject.property_type!=='land')return '';
+ const all=d.comps||[],extra=(bucket)=>all.filter(c=>(c.quality&&c.quality.bucket||'context')===bucket);
+ const row=c=>'<div class="note"><b>'+esc(c.title||'ประกาศ')+'</b><div class="small muted">'+esc(c.area_label||'รอตรวจเนื้อที่')+' | '+(c.total_price==null?'—':fmt(c.total_price/1e6)+' ลบ.')+' | '+fmt(c.price_per_sqw)+' บาท/ตร.ว.'+(c.quality&&c.quality.size_ratio!=null?' | ขนาด '+fmt(c.quality.size_ratio*100)+'% ของเป้าหมาย':'')+(c.quality&&c.quality.price_ratio!=null?' | ราคาต่อ ตร.ว. '+fmt(c.quality.price_ratio)+' เท่าของราคาตั้งขาย':'')+'</div><p>'+esc(c.quality?c.quality.reason:'รอตรวจคุณภาพ')+'</p><p class="small muted">'+esc(c.evidence||'')+'</p>'+(link(c.url)?'<a target="_blank" rel="noopener" href="'+esc(link(c.url))+'">เปิดหลักฐานประกาศ ↗</a>':'')+'</div>';
+ const context=extra('context'),excluded=extra('excluded');
+ return '<div class="subsection">หลักฐานประกอบ / รอตรวจ ('+context.length+')</div><div class="hint">ไม่ใช่ตัวเทียบหลัก: ข้อมูลยังไม่ครบ ขนาด/ราคาแตกต่าง หรือยังไม่ผ่านเกณฑ์หลัก</div>'+(context.length?context.map(row).join(''):'<div class="empty">ไม่มีรายการ</div>')+'<details class="comp-coverage"><summary>ไม่เข้าเกณฑ์ / หลักฐานเดิม ('+excluded.length+') — เปิดเพื่อดูเหตุผล</summary>'+excluded.map(row).join('')+'</details>';
+}
+async function openCase(id){const seq=++v152OpenSeq;app.detail=null;q('v152CaseResult').classList.add('hidden');navigate('detail');q('caseHeading').textContent='แฟ้มทรัพย์ '+id;q('detailContent').innerHTML='<div class="panel"><span class="loader"></span> กำลังเปิดแฟ้ม...</div>';try{const detail=await call('webGetCase',id);if(seq!==v152OpenSeq||app.view!=='detail')return;app.detail=detail;app.tab='overview';q('caseHeading').textContent='แฟ้มทรัพย์ '+id;q('caseLocation').textContent=app.detail.case.location+' · '+app.detail.case.type;q('detailStatus').textContent=app.detail.status;q('caseMeta').innerHTML=[['เนื้อที่',app.detail.case.area_label],['ราคาตั้งขาย',app.detail.case.price===null?'ยังไม่ยืนยัน':fmt(app.detail.case.price)+' บาท'],['แหล่งที่มา',app.detail.case.source],[app.detail.subject.property_type==='land'?'ตัวเทียบหลักที่ใช้ประเมิน':'รายการเทียบเดิม',primaryCompsV142(app.detail).length+' รายการ']].map(z=>'<div><span>'+esc(z[0])+'</span><strong>'+esc(z[1])+'</strong></div>').join('');showStatus();setTab('overview');}catch(e){toast(e.message,true);q('detailContent').innerHTML='<div class="warnbox">'+esc(e.message)+'</div>';}}
+function showStatus(){if(!app.detail)return;let d=app.detail,processing=/READY|RUNNING|QUEUED/.test(d.status);q('statusPanel').innerHTML=(processing?'<span class="loader"></span> ':'')+'สถานะงาน: <b>'+esc(d.status)+'</b> '+(d.stage?' · ขั้นตอน '+esc(d.stage):'')+' · อัปเดต '+esc((d.case.updated_at||'').replace('T',' ').slice(0,19))+(d.hasResult?' · มีผลวิเคราะห์ที่บันทึกแล้ว':' · ยังไม่มีผลล่าสุด');q('analyzeBtn').disabled=processing; if(d.analysisCurrent===false){q('statusPanel').innerHTML+='<div class="wce-warning">มีข้อมูลหลักเปลี่ยนหลังรายงานเดิม ผลราคาและทรัพย์เทียบเดิมเป็นข้อมูลเก่า กรุณากดวิเคราะห์/ตรวจอีกครั้งก่อนส่งรายงานนายทุน</div>';}}
+function setTab(tab){app.tab=tab;document.querySelectorAll('.tab').forEach(e=>e.classList.toggle('active',e.dataset.tab===tab));if(!app.detail)return;var d=app.detail;var html='';if(tab==='overview'){
+ let s=d.subject||{}, fields=[['ประเภท',d.case.type],['จังหวัด',s.province],['เขต / อำเภอ',s.district],['ตำบล / แขวง',s.subdistrict],['ขนาดที่ดิน (ตร.ว.)',s.land_sqw],['พื้นที่ใช้สอย (ตร.ม.)',s.usable_sqm],['สีผังเมืองที่บันทึก',s.zoning||'ยังไม่ตรวจ'],['สีผังตามเอกสาร (ยังไม่ยืนยัน)',s.zoning_claim||'ไม่ระบุ'],['พิกัด',d.pin.lat!==null?d.pin.lat+', '+d.pin.lon:'ยังไม่ระบุ']];
+ html='<div class="wce-edit-highlight"><div><b>ต้องการเพิ่มหรือแก้ข้อมูลทรัพย์?</b><div class="wce-help">แก้ไขข้อมูลที่บันทึกไว้ในเคสเดิม โดยไม่ต้องสร้างแฟ้มใหม่</div></div><button class="btn primary" onclick="openCaseEditV132()">✎ แก้ไขข้อมูลแฟ้มนี้</button></div>'+(s.web_description?'<div class="panel"><div class="panel-head"><h3>ข้อมูลเพิ่มเติมที่ทีมอัปเดต</h3></div><div class="report">'+esc(s.web_description)+'</div></div>':'')+'<div class="grid2"><div class="panel"><div class="panel-head"><h3>รายละเอียดทรัพย์</h3></div><div class="facts">'+fields.map(f=>'<div class="fact"><small>'+esc(f[0])+'</small><b>'+esc(f[1]===undefined||f[1]===null?'—':f[1])+'</b></div>').join('')+'</div>'+(d.pin.lat!==null?'<p><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query='+encodeURIComponent(d.pin.lat+','+d.pin.lon)+'">◎ เปิดหมุด Google Maps ↗</a></p>':'')+'</div><div class="panel"><div class="panel-head"><h3>ข้อมูลต้นทาง</h3></div><div class="report" style="max-height:390px">'+esc(d.originalText||'ไม่มีคำบรรยาย')+'</div></div></div><div class="panel"><div class="panel-head"><h3>แกลเลอรีภาพและเอกสาร</h3><span class="muted small">'+d.files.length+' ไฟล์</span></div><div class="galleria">'+(d.files.length?d.files.map(f=>'<div class="photo" id="ph-'+esc(f.id)+'"><div style="font-size:35px">'+(/^image\//.test(f.mime_type)?'▧':'▤')+'</div><button data-id="'+esc(f.id)+'" onclick="loadPreview(this.dataset.id)">'+(/^image\//.test(f.mime_type)?'ดูภาพใหญ่':'ดูเอกสาร')+'</button><div class="file-label" title="'+esc(f.name)+'">'+esc(f.name)+'</div></div>').join(''):'<div class="muted small">ยังไม่มีไฟล์ภาพหรือเอกสารในแฟ้ม</div>')+'</div><div class="hint">ภาพจาก Telegram จะแสดงได้เมื่อบอตบันทึกลง Google Drive แล้ว • ไฟล์ส่วนตัวเปิดตามสิทธิ์ที่ตั้งไว้</div></div>';
+ }else if(tab==='compare'){
+ let sorted=primaryCompsV142(d), condoUnit=d.subject.property_type==='condo'||d.subject.property_type==='apartment', rateTitle=condoUnit?'บาท/ตร.ม.':'บาท/ตร.ว.', secondTitle=condoUnit?'—':'ลบ./ไร่';html='<div class="panel"><div class="panel-head"><h3>เปรียบเทียบทรัพย์ · ผลค้นและผลประเมิน</h3><div class="flex"><span class="pill">'+sorted.length+(d.subject.property_type==='land'?' ตัวเทียบหลักที่ใช้ประเมิน':' รายการจากแฟ้มเดิม')+'</span><button class="btn primary" onclick="openInvestorExport()">▣ ส่งออก PNG</button></div></div><div class="hint">ค้น 0–5 กม. เป็นวงปกติ / มากกว่า 5–8 กม. เป็นวงเสริม • ระยะจากหมุดทั้งสองแปลงเป็นเส้นตรง ส่วนระยะที่บันทึกไว้แต่ไม่มีหมุดต้องตรวจยืนยันอีกครั้ง • ราคาประกาศไม่ใช่ราคาซื้อขายจริง</div><div id="v154DiscoveredPanel" class="v154-findings" aria-live="polite"><span class="loader"></span> กำลังโหลดผลค้นที่บันทึกไว้...</div>'+ (d.subject.property_type==='land'?'<div class="hint">ตัวเทียบหลัก: ขนาด 80–120% ของเป้าหมาย · มีหลักฐานที่ตรวจแล้วในชุดคำนวณล่าสุด · หมุดอยู่ใน 0–5 กม. · ราคา/ตร.ว. แตกต่างมากให้ตรวจแยก ไม่ใช้ราคาตั้งขายเป็นข้อสรุปมูลค่าตลาด</div>'+(!sorted.length?'<div class="warnbox">ยังไม่มีตัวเทียบหลักที่ผ่านทุกเงื่อนไขในฐานประเมินเดิม · ผลค้นที่รอตรวจแสดงในตารางด้านบน ไม่ใช่ผลประเมินที่อนุมัติแล้ว</div>':''):'')+'<div id="compCoverageV133" class="comp-coverage"><div class="comp-cover-title"><h4>ตรวจความครอบคลุมทรัพย์เทียบ</h4><div class="flex"><button class="btn primary" type="button" onclick="refreshCaseComparisonV152()">↻ เปรียบเทียบใหม่ (0 เครดิต)</button><button class="btn" type="button" onclick="webCompSearchV133UI()">⌕ ขยายค้นเมื่อหลักฐานไม่พอ</button></div></div><div id="compCoverageDetailV133" class="small muted">กำลังอ่านบันทึกรอบค้นเดิม...</div></div><div class="table-wrap"><table class="table comps-table"><thead><tr><th>รายการ / กลุ่ม</th><th>ระยะ กม.</th><th>เนื้อที่</th><th class="number">ราคา (ลบ.)</th><th class="number">'+esc(rateTitle)+'</th><th class="number">'+esc(secondTitle)+'</th><th>ผังเมือง</th><th>หลักฐาน</th></tr></thead><tbody><tr><td><b>T0 ทรัพย์เป้าหมาย</b></td><td>จุดอ้างอิง</td><td>'+esc(d.case.area_label)+'</td><td class="number">'+(d.case.price!==null?fmt(d.case.price/1e6):'—')+'</td><td colspan="2" class="muted">รอฐานราคาเปรียบเทียบ</td><td>'+esc(d.subject.zoning||'ยังไม่ตรวจ')+'</td><td>ทรัพย์ที่วิเคราะห์</td></tr>'+sorted.map((c,i)=>'<tr><td><b>'+esc(c.title||'ทรัพย์เทียบ')+'</b><div><span class="pill '+(c.tier==='วงเสริม'?'warn':'gray')+' ui-group-'+uiCompGroup(c)+'">'+esc(c.group+' / '+c.tier)+'</span></div></td><td class="mono">'+(c.distance_km===null?'รอยืนยันระยะ':fmt(c.distance_km))+'<div class="muted small">'+esc(c.distance_basis)+'</div></td><td class="mono ui-compact-area">'+fmt(c.area_value)+' '+esc(c.area_unit)+'<div class="muted small">'+esc(c.area_label)+'</div></td><td class="number mono ui-compact-price">'+(c.total_price===null?'—':fmt(c.total_price/1e6))+'</td><td class="number mono ui-compact-price">'+fmt(c.price_per_sqw)+'</td><td class="number mono ui-compact-price">'+(c.price_per_rai===null?'—':fmt(c.price_per_rai/1e6))+'</td><td class="ui-zone">'+esc(c.zoning||'ยังไม่ยืนยัน')+'</td><td><span class="muted small">'+esc(c.verified)+'</span><div>'+ (link(c.url)?'<a target="_blank" rel="noopener" href="'+esc(link(c.url))+'">เปิดประกาศ ↗</a>':'—')+'</div></td></tr>').join('')+'</tbody></table></div><div class="subsection">เหตุผลและข้อจำกัดรายแปลง</div>'+sorted.map((c,i)=>'<div class="note"><b>'+(i+1)+'. '+esc(c.title||'ประกาศ')+'</b><div class="small muted">'+esc(c.group)+' • '+esc(c.tier)+' • '+esc(c.verified)+'</div><p>'+esc(c.evidence||'ยังไม่มีหลักฐานเพิ่มเติมสำหรับการใช้ตีราคา')+'</p>'+(link(c.url)?'<a target="_blank" rel="noopener" href="'+esc(link(c.url))+'">หลักฐานประกาศ ↗</a>':'')+'</div>').join('')+extraCompsV142(d)+'</div>';
+ }else if(tab==='review'){html='<div class="panel"><div class="panel-head"><div><h3>ตรวจข้อมูลจากรูปและเอกสาร PDF</h3><p class="muted small">AI สกัดข้อมูลเพื่อให้ทีมตรวจเท่านั้น ไม่แก้ข้อมูลในแฟ้มจนกว่าจะกดยืนยัน</p></div></div><div id="wiReviewArea"><span class="loader"></span> กำลังอ่านสถานะเอกสาร...</div></div>';
+ }else if(tab==='report'){html='<div class="panel"><div class="panel-head"><h3>รายงานวิเคราะห์จากบอต</h3><div class="flex"><button class="btn" onclick="copyReport()">คัดลอกรายงาน</button><button class="btn" onclick="window.print()">พิมพ์ / บันทึก PDF</button></div></div><div class="warnbox">รายงานนี้เป็นข้อมูลที่บันทึกไว้ในแฟ้ม ยังไม่ใช่การรับรองมูลค่าโดยผู้ประเมินอิสระ และไม่สั่งค้นใหม่เมื่อเปิดหน้านี้</div><div class="report">'+esc(d.report||'ยังไม่มีรายงานวิเคราะห์')+'</div></div>';}
+ else{html='<div class="grid2"><div class="panel"><h3>เพิ่มหมายเหตุ / ข้อคิดเห็นทีม</h3><div class="field" style="margin-top:12px"><label>ประเภท</label><select class="input" id="noteCategory"><option>ข้อสังเกต</option><option>ข้อมูลแก้ไข</option><option>ตรวจเอกสาร</option><option>ข้อเสนอนายทุน</option></select></div><div class="field" style="margin-top:12px"><label>รายละเอียด</label><textarea id="noteText" class="input" placeholder="หลักฐานที่ตรวจ ข้อแตกต่างที่พบ หรือคำแนะนำก่อนเสนอ..."></textarea></div><label class="flex small" style="margin-top:10px"><input id="noteShare" type="checkbox"> ทำเครื่องหมายว่าความคิดเห็นนี้เปิดเผยต่อนายทุนได้หลังทีมตรวจอนุมัติ</label><button class="btn dark" style="margin-top:16px" onclick="saveNote()">＋ บันทึกหมายเหตุ</button></div><div class="panel"><h3>ประวัติความคิดเห็น</h3>'+ (d.notes.length?d.notes.map(n=>'<div class="note"><span class="pill gray">'+esc(n.category)+'</span><span class="small muted"> · '+esc(n.created_at||'')+' · '+esc(n.author||'')+'</span><p>'+esc(n.note||'')+'</p>'+(String(n.share_in_investor_report)==='true'?'<span class="small muted">อนุญาตให้ใช้ในร่างนายทุน</span>':'')+'</div>').join(''):'<div class="empty">ยังไม่มีความคิดเห็น</div>')+'</div></div>';}
+ if(d.analysisCurrent===false&&['compare','report'].includes(tab)){html='<div class="wce-warning">ข้อมูลสำคัญถูกแก้ไขแล้ว ตาราง/รายงานด้านล่างเป็นผลก่อนแก้ไข กรุณาวิเคราะห์ใหม่ก่อนนำไปอ้างอิง</div>'+html;}q('detailContent').innerHTML=html;if(tab==='review')refreshFileReview();if(tab==='compare')webCompCoverageLoadV133();}
+async function copyReport(){if(!app.detail||!await v153InvestorGate())return;const t=app.detail.report||'';if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast('คัดลอกรายงานแล้ว'));else toast('ไม่รองรับการคัดลอกอัตโนมัติ',true);}
+async function loadPreview(id){let d=app.detail,f=d.files.find(x=>x.id===id);if(!f)return;if(!/^image\//.test(f.mime_type)){if(link(f.url))window.open(f.url,'_blank','noopener');return;}let box=document.getElementById('ph-'+id);box.innerHTML='<span class="loader"></span> กำลังโหลดภาพ...';try{let ret=await call('webImageData',d.case.id,id);box.innerHTML='<img alt="'+esc(f.name)+'" src="data:'+esc(ret.mime)+';base64,'+ret.data+'" onclick="window.open(this.src,\'_blank\')" style="cursor:zoom-in"><div class="file-label">'+esc(f.name)+'</div>';}catch(e){box.innerHTML='<div class="file-label">'+esc(e.message)+'</div>'+(f.url?'<a target="_blank" rel="noopener" href="'+esc(f.url)+'">เปิดใน Drive ↗</a>':'');}}
+async function saveNote(){var btn=document.querySelector('#detailContent .btn.dark'),txt=q('noteText').value.trim();if(!txt){toast('กรุณาใส่หมายเหตุ',true);return;}busy(btn,true,'กำลังบันทึก...');try{await call('webAddNote',app.detail.case.id,q('noteCategory').value,txt,q('noteShare').checked);toast('บันทึกหมายเหตุแล้ว (ไม่ใช้เครดิต AI)');await openCase(app.detail.case.id);setTab('notes');}catch(e){toast(e.message,true);busy(btn,false,'บันทึกหมายเหตุ');}}
+async function analyzeCurrent(){if(!app.detail)return;var b=q('analyzeBtn');busy(b,true,'ส่งเข้าคิว...');try{let r=await call('webStartAnalysis',app.detail.case.id);toast(r.message,!r.ok&&!r.running);await openCase(app.detail.case.id);if(r.reviewRequired)setTab('review');}catch(e){toast(e.message,true);busy(b,false,'วิเคราะห์ / ตรวจอีกครั้ง');}}
+function updateAreaHint(){const t=q('inType').value;q('inAreaUnit').value=t==='condo'||t==='apartment'?'sqm':'sqw';}
+function fileBase64(file){return new Promise((ok,fail)=>{var r=new FileReader();r.onload=()=>ok(String(r.result).split(',')[1]);r.onerror=()=>fail(Error('อ่านไฟล์ไม่ได้'));r.readAsDataURL(file);});}
+async function submitNew(e){
+ e.preventDefault();
+ const btn=q('submitCaseBtn'),files=Array.from(q('inFiles').files||[]),wantAI=q('autoAnalyze').checked;
+ const invalid=files.find(f=>f.size>4*1024*1024||!/^(image\/jpeg|image\/png|image\/webp|application\/pdf)$/.test(f.type));
+ if(invalid){toast('ไฟล์ '+invalid.name+' ไม่รองรับหรือเกิน 4 MB กรุณาแก้ก่อนสร้างเคส',true);return;}
+ if(wantAI&&files.length&&(files.length>3||files.reduce((n,f)=>n+f.size,0)>6*1024*1024)){
+  toast('อ่าน AI ได้ไม่เกิน 3 ไฟล์ และรวมไม่เกิน 6 MB กรุณาลดจำนวนหรือขนาดไฟล์',true);return;
+ }
+ if(!files.length&&(!q('inProvince').value.trim()||!q('inDistrict').value.trim()||!q('inArea').value.trim())){
+  toast('กรณีไม่มีไฟล์ กรุณากรอกจังหวัด อำเภอ และขนาดทรัพย์ให้ครบ',true);return;
+ }
+ if(files.length&&!wantAI&&(!q('inProvince').value.trim()||!q('inDistrict').value.trim()||!q('inArea').value.trim())){
+  toast('ถ้าไม่สกัดไฟล์ด้วย AI ต้องกรอกจังหวัด อำเภอ และขนาดทรัพย์ให้ครบ',true);return;
+ }
+ busy(btn,true,'กำลังบันทึกข้อมูล...');
+ let id=null;
+ try{
+  const payload={property_type:q('inType').value,deal_type:q('inDeal').value,province:q('inProvince').value,district:q('inDistrict').value,subdistrict:q('inSubdistrict').value,asking_price:q('inPrice').value,area:q('inArea').value,area_unit:q('inAreaUnit').value,latitude:q('inLat').value,longitude:q('inLon').value,contact_phone:q('inPhone').value,document_type:q('inDoc').value,description:q('inDescription').value,intake_mode:files.length&&wantAI?'file_review':'manual'};
+  const created=await call('webCreateCase',payload);id=created.id;
+  let uploadErrors=[];
+  for(const f of files){try{busy(btn,true,'อัปโหลด '+f.name+'...');await call('webUploadFile',id,f.name,f.type,await fileBase64(f));}
+   catch(ex){uploadErrors.push(f.name+': '+ex.message);}}
+  await refreshDashboard();await openCase(id);
+  if(uploadErrors.length){toast('สร้างเคส '+id+' แล้ว แต่ไฟล์บางรายการอัปโหลดไม่สำเร็จ',true);setTab('review');return;}
+  if(files.length&&wantAI){
+   setTab('review');
+   busy(btn,true,'Gemini กำลังอ่านเอกสาร...');
+   try{await call('webExtractCaseFiles',id);toast('อ่านไฟล์แล้ว กรุณาตรวจข้อมูลและกดยืนยันก่อนวิเคราะห์');await refreshFileReview();}
+   catch(ex){toast(ex.message,true);await refreshFileReview();}
+  }else if(files.length){
+   toast('สร้างเคสและเก็บไฟล์แล้ว กรุณาเปิดเมนูตรวจเอกสาร AI หรือเลือกข้ามการอ่านไฟล์');setTab('review');
+  }else if(wantAI){
+   const r=await call('webStartAnalysis',id);toast(r.message,!r.ok);await openCase(id);
+  }else toast('สร้างเคส '+id+' แล้ว ยังไม่ได้สั่งวิเคราะห์');
+  q('newForm').reset();
+ }catch(err){toast((id?'สร้างเคส '+id+' แล้ว แต่ขั้นตอนถัดไปผิดพลาด: ':'')+err.message,true);}
+ finally{busy(btn,false,'บันทึกและเปิดแฟ้มทรัพย์');}
+}
+const wiReviewLabels={property_type:'ประเภททรัพย์',province:'จังหวัด',district:'อำเภอ / เขต',subdistrict:'ตำบล / แขวง',land_sqw:'เนื้อที่ (ตร.ว.)',usable_sqm:'พื้นที่ใช้สอย (ตร.ม.)',asking_price:'ราคาตั้งขายรวม (บาท)',latitude:'ละติจูด',longitude:'ลองจิจูด',deed_number:'เลขโฉนด',document_type:'ประเภทเอกสารสิทธิ',zoning_claim:'สีผังเมืองตามเอกสาร',road_access:'รายละเอียดทางเข้า'};
+var wiReview=null;
+async function refreshFileReview(){
+ if(!app.detail||app.tab!=='review')return;
+ const area=q('wiReviewArea');if(!area)return;
+ try{wiReview=await call('webGetFileReview',app.detail.case.id);drawFileReview();}
+ catch(e){area.innerHTML='<div class="warnbox">ตรวจสถานะไฟล์ไม่ได้: '+esc(e.message)+'</div>';}
+}
+function wiReviewFilePanel(r){
+ const files=Array.isArray(r.files)?r.files:[];
+ const fileList=files.map((f,i)=>{
+  const name=esc(f.name||('ไฟล์ '+(i+1)));
+  const ext=/\.pdf$/i.test(f.name||'')?'PDF':'IMAGE';
+  return '<button type="button" class="wi-file-option '+(i===0?'is-active':'')+'" data-file-id="'+esc(f.id||'')+'" onclick="wiSelectReviewFile(this.dataset.fileId)"><span class="wi-file-icon">'+(ext==='PDF'?'▤':'▧')+'</span><span class="wi-file-text"><b>'+name+'</b><small>'+ext+'</small></span><span class="wi-file-arrow">›</span></button>';
+ }).join('');
+ return '<section class="wi-pane wi-document-pane"><header class="wi-pane-head"><div><span class="wi-overline">SOURCE DOCUMENTS</span><h3>เอกสารต้นทาง</h3></div><span class="wi-counter">'+files.length+' ไฟล์</span></header><div class="wi-file-list">'+fileList+'</div><div id="wiDocumentViewer" class="wi-document-viewer"><div class="wi-file-placeholder"><span>▤</span><b>เลือกเอกสารเพื่อดูรายละเอียด</b><small>ภาพเปิดในหน้านี้ · PDF เปิดผ่าน Google Drive</small></div></div><p class="wi-pane-caption">ข้อมูลส่วนบุคคลในเอกสารมีไว้สำหรับทีมตรวจเท่านั้น ไม่รวมในภาพส่งนายทุน</p></section>';
+}
+function wiReviewInfoPanel(r){
+ const f=Array.isArray(r.fields)?r.fields:[];
+ const present=f.filter(x=>Boolean(wiReviewLabels[x.key]));
+ const missing=Array.isArray(r.missing)?r.missing:[];
+ const warnings=Array.isArray(r.warnings)?r.warnings:[];
+ const events=[['บันทึกไฟล์ในแฟ้ม',r.fileCount+' รายการ'],[r.status==='REVIEW_REQUIRED'?'AI อ่านเอกสารแล้ว':'ขั้นตอนสกัดข้อมูล',r.status],[r.status==='APPROVED'?'ทีมยืนยันข้อมูลแล้ว':'รอเจ้าหน้าที่ตรวจทาน',present.length+' ช่องที่อ่านได้']];
+ const items=events.map((e,i)=>'<div class="wi-timeline-item"><div class="wi-timeline-icon">'+(i+1)+'</div><div><b>'+esc(e[0])+'</b><small>'+esc(e[1])+'</small></div></div>').join('');
+ return '<aside class="wi-side-stack"><section class="wi-pane wi-check-pane"><header class="wi-pane-head"><div><span class="wi-overline">VALIDATION CHECKS</span><h3>ผลตรวจข้อมูล</h3></div></header><div class="wi-check-ring"><div class="wi-circle"><strong>'+present.length+'</strong><span>ค่าที่อ่านได้</span></div><div class="wi-check-stats"><div><span class="wi-stat-dot good"></span>พบจาก AI <b>'+present.length+'</b></div><div><span class="wi-stat-dot warn"></span>ต้องตรวจ <b>'+warnings.length+'</b></div><div><span class="wi-stat-dot neutral"></span>ข้อมูลขาด <b>'+missing.length+'</b></div></div></div><div class="wi-check-notes">'+(warnings.length?warnings.map(x=>'<p>⚠ '+esc(x)+'</p>').join(''):'<p class="wi-soft">ไม่มีข้อเตือนที่ระบบบันทึกไว้ (ยังต้องตรวจข้อมูลจริง)</p>')+'</div></section><section class="wi-pane wi-history-pane"><header class="wi-pane-head"><div><span class="wi-overline">WORKFLOW STATUS</span><h3>ลำดับการทำงาน</h3></div></header><div class="wi-timeline">'+items+'</div><div class="wi-history-foot">ข้อมูลสถานะที่ระบบบันทึก • ไม่ใช่ประวัติเวลาแบบละเอียด</div></section></aside>';
+}
+async function wiSelectReviewFile(id){
+ const viewer=q('wiDocumentViewer');if(!viewer||!app.detail)return;
+ document.querySelectorAll('.wi-file-option').forEach(el=>el.classList.toggle('is-active',el.dataset.fileId===id));
+ const f=(app.detail.files||[]).find(x=>x.id===id);
+ const fallback=(wiReview&&wiReview.files||[]).find(x=>x.id===id);
+ const name=(f||fallback||{}).name||'เอกสาร';
+ if(!f&&!fallback){viewer.innerHTML='<div class="wi-file-placeholder">ไม่พบไฟล์นี้ในแฟ้ม</div>';return;}
+ const isImage=Boolean(f&&/^image\/(?:jpeg|png|webp)$/.test(f.mime_type||''));
+ const url=f&&link(f.url);
+ if(!isImage){
+  viewer.innerHTML='<div class="wi-file-placeholder"><span>▤</span><b>'+esc(name)+'</b><small>เอกสาร PDF หรือไฟล์ที่ไม่รองรับภาพตัวอย่าง</small>'+(url?'<a class="btn" target="_blank" rel="noopener noreferrer" href="'+esc(url)+'">เปิดเอกสารใน Google Drive ↗</a>':'<small>เปิดจากแฟ้ม Google Drive ที่ได้รับสิทธิ์</small>')+'</div>';
+  return;
+ }
+ viewer.innerHTML='<div class="wi-file-placeholder"><span class="loader"></span><b>กำลังโหลดภาพต้นฉบับ...</b></div>';
+ try{
+  const ret=await call('webImageData',app.detail.case.id,id);
+  const cur=q('wiDocumentViewer');if(!cur||!document.querySelector('.wi-file-option.is-active[data-file-id="'+CSS.escape(id)+'"]'))return;
+  if(!ret||!/^(image\/jpeg|image\/png|image\/webp)$/.test(ret.mime||'')||!/^[-A-Za-z0-9+/=]+$/.test(ret.data||''))throw new Error('ชนิดไฟล์ภาพไม่ผ่านการตรวจสอบ');
+  const img=document.createElement('img');img.className='wi-preview-image';img.alt='ภาพเอกสาร '+name;img.src='data:'+ret.mime+';base64,'+ret.data;
+  cur.replaceChildren(img);
+ }catch(e){const cur=q('wiDocumentViewer');if(cur)cur.innerHTML='<div class="wi-file-placeholder"><b>ยังโหลดภาพตัวอย่างไม่ได้</b><small>'+esc(e.message||'ไม่ทราบสาเหตุ')+'</small>'+(url?'<a class="btn" target="_blank" rel="noopener noreferrer" href="'+esc(url)+'">เปิดใน Drive ↗</a>':'')+'</div>';}
+}
+function drawFileReview(){
+ const area=q('wiReviewArea');if(!area||!wiReview)return;
+ const r=wiReview,s=app.detail.subject||{},fields=Array.isArray(r.fields)?r.fields:[], warnings=Array.isArray(r.warnings)?r.warnings:[],missing=Array.isArray(r.missing)?r.missing:[];
+ const readOnly=r.source!=='WEB';
+ const status='<div class="wi-status"><span class="pill '+(r.status==='APPROVED'?'':'warn')+'">'+esc(r.status)+'</span><span class="muted small">'+r.fileCount+' ไฟล์ · '+(r.canAnalyze?'ผ่านเงื่อนไขส่งวิเคราะห์':'รอตรวจสอบข้อมูล')+'</span></div>';
+ let middle='<section class="wi-pane wi-extracted-pane"><header class="wi-pane-head"><div><span class="wi-overline">DOCUMENT INTELLIGENCE</span><h3>ข้อมูลที่สกัดได้</h3></div><span class="wi-counter">'+fields.length+' ช่อง</span></header>';
+ if(readOnly){middle+='<div class="wi-alert">หน้าตรวจยืนยันเฉพาะเคสที่รับจาก Web App เพื่อป้องกันการแก้ข้อมูล Telegram/LINE โดยไม่ตั้งใจ</div>';}
+ else if(!r.hasFiles){middle+='<div class="wi-file-placeholder"><span>▣</span><b>ยังไม่มีไฟล์เอกสาร</b><small>เพิ่มทรัพย์พร้อมรูปภาพ/PDF เพื่อให้ Gemini อ่านข้อมูล</small></div>';}
+ else if(r.status==='REVIEW_REQUIRED'){
+  if(r.summary)middle+='<div class="wi-intro"><b>AI สกัดข้อมูลเบื้องต้น</b><p>'+esc(r.summary)+'</p></div>';
+  if(r.errorCode)middle+='<div class="wi-alert">ข้อผิดพลาดรอบก่อน: '+esc(r.errorCode)+'</div>';
+  middle+='<div class="wi-extract-grid"><div class="wi-row wi-row-header"><div>เลือก</div><div>ชื่อรายการ / ค่าเดิม</div><div>ค่าที่ตรวจแก้</div><div>ที่มาของข้อมูล</div></div>';
+  const found={};fields.forEach(f=>{if(wiReviewLabels[f.key])found[f.key]=f;});
+  middle+=Object.keys(wiReviewLabels).map(key=>{
+   const proposed=found[key];let old=s[key];if(key==='road_access')old=s.road_access_claim;if(key==='zoning_claim')old=s.zoning_claim;
+   const oldVal=(old===null||old===undefined||old==='')?'—':String(old);
+   const value=proposed?proposed.value:(oldVal==='—'?'':oldVal);
+   const source=proposed?'AI ระบุ: '+proposed.value:'ไม่พบในไฟล์ · ทีมกรอกเองได้';
+   return '<div class="wi-row"><div><input type="checkbox" class="wi-accept" data-key="'+esc(key)+'" aria-label="เลือก '+esc(wiReviewLabels[key])+'"></div><div><b>'+esc(wiReviewLabels[key])+'</b><span class="wi-evidence">ข้อมูลเดิม: '+esc(oldVal)+'</span></div><div><input class="wi-field" data-field="'+esc(key)+'" value="'+esc(value)+'" placeholder="กรอกค่าที่ตรวจแล้ว"></div><div class="wi-source">'+esc(source)+(proposed?'<span class="wi-evidence">หลักฐาน: '+esc(proposed.evidence||'ไม่ระบุ')+'</span>':'')+'</div></div>';
+  }).join('');
+  middle+='</div><div class="wi-actions"><button type="button" class="btn dark" onclick="confirmFileReview()">✓ ยืนยันค่าที่เลือก</button><button type="button" class="btn" onclick="skipFileReview()">ข้าม ใช้ข้อมูลในฟอร์ม</button></div><div class="warnbox">บันทึกเฉพาะช่องที่เจ้าหน้าที่เลือกเท่านั้น • ค่าจาก AI ไม่ใช่การรับรองกรรมสิทธิ์ มูลค่าตลาด หรือสีผังเมืองจากราชการ</div>';
+ }else{
+  const disabled=r.status==='EXTRACTING'&&!r.canRetry;
+  if(r.errorCode)middle+='<div class="wi-alert">ข้อผิดพลาดครั้งก่อน: '+esc(r.errorCode)+' · ไฟล์เดิมยังเก็บในแฟ้ม</div>';
+  middle+='<div class="wi-intro"><b>ขั้นตอนตรวจข้อมูลเอกสาร</b><p>ตรวจเอกสารต้นทางทางซ้าย แล้วสั่ง AI สกัดข้อมูล ทีมจะต้องตรวจและยืนยันค่าที่ถูกต้องก่อนเริ่มวิเคราะห์ตลาด</p></div>';
+  middle+='<div class="wi-actions">';
+  if(r.status==='APPROVED')middle+='<button type="button" class="btn dark" disabled>✓ ทีมยืนยันข้อมูลแล้ว</button>';
+  else if(r.status==='SKIPPED')middle+='<button type="button" class="btn dark" onclick="extractFilesNow()">◈ อ่านไฟล์ด้วย Gemini ภายหลัง</button>';
+  else middle+='<button type="button" class="btn dark" '+(disabled?'disabled':'')+' onclick="extractFilesNow()">◈ '+(disabled?'กำลังอ่านเอกสาร':'อ่านรูป/PDF ด้วย Gemini')+'</button>';
+  if(r.status!=='APPROVED'&&r.status!=='SKIPPED')middle+='<button type="button" class="btn" onclick="skipFileReview()">ใช้เฉพาะข้อมูลที่กรอก</button>';
+  middle+='</div>';
+  if(r.status==='APPROVED')middle+='<div class="hint">ทีมยืนยันข้อมูลจากเอกสารแล้ว จึงส่งวิเคราะห์ตลาดได้เมื่อข้อมูลครบ</div>';
+  if(r.status==='SKIPPED')middle+='<div class="wi-alert">เลือกวิเคราะห์เฉพาะข้อมูลจากแบบฟอร์ม โดยไม่ได้ใช้ข้อมูลจากภาพ/PDF</div>';
+ }
+ middle+='</section>';
+ area.innerHTML=status+'<div class="wi-workspace">'+wiReviewFilePanel(r)+middle+wiReviewInfoPanel(r)+'</div>';
+ const first=r.files&&r.files[0];if(first&&first.id)wiSelectReviewFile(first.id);
+}
+
+async function extractFilesNow(){
+ if(!app.detail||!confirm('ส่งไฟล์ในเคสนี้ให้ Gemini ช่วยอ่าน? ระบบจะใช้โควตา AI และยังไม่แก้ข้อมูลจนกว่าคุณยืนยัน'))return;
+ const area=q('wiReviewArea');area.innerHTML='<div class="hint"><span class="loader"></span> กำลังอ่านเอกสารและจัดข้อมูลสำหรับตรวจทาน กรุณาอย่ากดซ้ำ...</div>';
+ try{await call('webExtractCaseFiles',app.detail.case.id);toast('AI อ่านไฟล์แล้ว กรุณาตรวจทุกค่า');}catch(e){toast(e.message,true);}finally{await refreshFileReview();}
+}
+async function confirmFileReview(){
+ if(!app.detail||!wiReview)return;
+ const selected=Array.from(document.querySelectorAll('.wi-accept:checked')).map(x=>x.dataset.key);
+ if(!selected.length){toast('กรุณาเลือกข้อมูลอย่างน้อย 1 ช่อง หรือใช้ปุ่มข้ามการอ่านไฟล์',true);return;}
+ const edits={};selected.forEach(k=>{const node=Array.from(document.querySelectorAll('.wi-field')).find(e=>e.dataset.field===k);if(node)edits[k]=node.value;});
+ if(!confirm('ยืนยันบันทึกเฉพาะ '+selected.length+' ช่องที่เลือกลงแฟ้มจริง? ข้อมูลนี้ยังไม่ใช่การรับรองทะเบียนที่ดิน'))return;
+ try{const res=await call('webConfirmFileReview',app.detail.case.id,wiReview.reviewId,selected,edits);toast(res.message);await openCase(app.detail.case.id);setTab('review');}
+ catch(e){toast(e.message,true);}
+}
+async function skipFileReview(){
+ if(!app.detail||!confirm('ยืนยันข้ามการอ่านไฟล์? ระบบจะใช้เฉพาะข้อมูลในแบบฟอร์ม ไม่อ้างอิงข้อมูลจากภาพ/PDF'))return;
+ try{const res=await call('webSkipFileReview',app.detail.case.id);toast(res.message);await openCase(app.detail.case.id);setTab('review');}
+ catch(e){toast(e.message,true);}
+}
+async function tickStatus(){if(app.view!=='detail'||!app.detail)return;try{const id=app.detail.case.id;var cur=await call('webGetStatus',id);if(!app.detail||app.detail.case.id!==id)return;var old=app.detail.status;app.detail.status=cur.status;app.detail.stage=cur.stage;app.detail.case.updated_at=cur.updated_at;app.detail.hasResult=cur.hasResult;app.detail.analysisCurrent=cur.analysisCurrent;if(app.detail.version!==undefined&&Number(cur.version)!==Number(app.detail.version)){await openCase(id);return;}showStatus();q('detailStatus').textContent=cur.status;if(old!==cur.status&&cur.hasResult&&!/READY|RUNNING|QUEUED/.test(cur.status)){await openCase(app.detail.case.id);toast('ผลวิเคราะห์ล่าสุดพร้อมแล้ว');}}catch(e){/* avoid repeated toast on polling error */}}
+
+/* v1.3.3 comparable leads: separate from verified comparables; never use as valuation basis */
+function webCompEscapeV133(x){return esc(x==null?'':String(x));}
+function webCompCoverageMarkupV133(data){
+ const s=data.stats||{},leads=Array.isArray(data.leads)?data.leads:[];
+ let html='<div class="cover-metrics"><span>ลิงก์ที่บอตเก็บ '+webCompEscapeV133(s.savedSources==null?'—':s.savedSources)+'</span><span>ทรัพย์เทียบในแฟ้ม '+webCompEscapeV133(s.comparables==null?'—':s.comparables)+'</span><span>ลิงก์ในสรุป '+leads.length+'</span><span>คัดหน้ารวมออก '+(s.excludedGeneric||0)+'</span></div>';
+ if(s.discovery&&s.discovery.serperUrls!=null)html+='<div class="small muted" style="margin:8px 0">รอบค้นล่าสุด: ผลจาก Serper '+webCompEscapeV133(s.discovery.serperUrls)+' ลิงก์ · ไล่หน้ารวมที่อนุญาต '+webCompEscapeV133(s.discovery.categoryPages||0)+' หน้า · พบลิงก์จากหน้ารวม '+webCompEscapeV133(s.discovery.expandedListings||0)+' · คัดเป็นผู้สมัครรายแปลง '+webCompEscapeV133(s.discovery.candidateListings||0)+' (ยังไม่ยืนยันข้อมูล)</div>';
+ const qual=s.discovery&&s.discovery.quality;if(data.searchedAt)html+='<div class="small muted">รอบค้นล่าสุด '+esc(String(data.searchedAt).replace('T',' ').slice(0,19))+' UTC · ผลเดิมที่ทีมตรวจแล้วจะไม่ถูกทับ</div>';if(data.searchedAt&&data.subjectCurrent===false)html+='<div class="cover-alert">ผลค้นนี้เป็นข้อมูลรอบเดิมหรือข้อมูลก่อนแก้ไข กดเปรียบเทียบใหม่ก่อนอ้างอิง</div>';if(qual&&data.subjectCurrent!==false){const n=Number(qual.near)||0,sp=Number(qual.support)||0,dup=Number(qual.duplicates)||0,reads=(s.discovery.waves||[]).reduce((a,w)=>a+(Number(w.opened)||0),0);html+='<div class="cover-alert" style="margin:12px 0;border-left:4px solid '+(n>=3?'#158060':'#b45309')+'"><b>'+(n>=3?'ผ่านเกณฑ์การค้นเบื้องต้น':'หลักฐานยังไม่พอ — ค้น/ตรวจเพิ่ม')+'</b><div style="margin-top:5px">ตัวเทียบใกล้เคียง '+n+' · ประกอบ '+sp+' · พบซ้ำ '+dup+' · เปิดประกาศ '+reads+' · เครดิต '+(Number(s.discovery.credits)||0)+'</div><div class="small muted">ทำเลจากข้อความ ไม่ใช่ระยะจริง · ราคาประกาศไม่ใช่ราคาซื้อขายจริง · ต้องยืนยันพิกัด ผังเมือง และสถานะขายก่อนนำเสนอราคาประเมิน</div></div>'; }
+ html+='<div class="small muted">แปลงเป้าหมาย '+webCompEscapeV133(data.areaLabel||'—')+' · วงปกติ 5 กม. / เสริม 8 กม. ต้องมีหมุดสองแปลงก่อนยืนยันระยะ</div>';
+ if(!leads.length)html+='<p class="cover-alert">ไม่พบลิงก์รายแปลงที่มีข้อมูลพอคัดเข้าแฟ้มตรวจจากผลเดิม (หน้ารวมถูกคัดออก) สามารถค้นเพิ่มโดยกดยืนยันการใช้เครดิตได้</p>';
+ else html+='<details class="cr134-excluded"><summary>ดูรายการลิงก์จากรอบค้น ('+leads.length+') และหลักฐานเดิม</summary><p class="small muted">รายการด้านล่างเป็นเพียงลิงก์ที่ค้นพบ ต้องเปิดอ่าน ราคา/เนื้อที่/หมุด/สถานะขายก่อนนำเข้าตารางประเมิน</p>'+leads.slice(0,15).map((l,i)=>'<div class="cover-lead"><b>'+ (i+1)+'. '+webCompEscapeV133(l.title||'ประกาศรอตรวจ')+'</b><small>'+webCompEscapeV133(l.reason||'รอตรวจราคา ขนาด และตำแหน่ง')+'</small>'+(link(l.url)?'<a target="_blank" rel="noopener noreferrer" href="'+webCompEscapeV133(link(l.url))+'">เปิดประกาศต้นทาง ↗</a>':'')+'</div>').join('')+'</details>';
+ if(Array.isArray(data.excluded)&&data.excluded.length){html+='<details class="cr134-excluded"><summary>ดูหน้ารวม/ผลค้นที่คัดออกจากชุดเดิม ('+data.excluded.length+')</summary><div class="small muted">เก็บเพื่อการตรวจสอบย้อนหลัง ไม่ใช่ตัวเทียบรายแปลง</div>'+data.excluded.map(x=>'<div class="cover-lead"><b>'+webCompEscapeV133(x.title)+'</b><small>'+webCompEscapeV133(x.reason)+'</small>'+(link(x.url)?'<a target="_blank" rel="noopener noreferrer" href="'+webCompEscapeV133(link(x.url))+'">เปิดหน้าอ้างอิง ↗</a>':'')+'</div>').join('')+'</details>';}
+ html+='<div class="comp-review134" id="compReviewPanelV134"><div class="cr134-head"><h4>คิวตรวจทรัพย์เทียบที่ค้นพบ</h4><div class="cr134-actions"><button class="btn" type="button" onclick="wca138PreflightUI()">ตรวจเชื่อมฐานราคา</button><button class="btn" type="button" id="cr134ReadBtn" onclick="webCompReviewReadUIV134()">◉ อ่านหน้าประกาศ 3 รายการ (ไม่เรียก AI)</button><button class="btn" type="button" onclick="webCompRecoverSearchV139UI()">↻ กู้ผลค้นเดิม (0 เครดิต)</button></div></div><div id="compReviewBodyV134">กำลังเปิดคิวตรวจ...</div></div>';
+ return html;
+}
+async function webCompCoverageLoadV133(){
+ const holder=q('compCoverageDetailV133');if(!holder||!app.detail)return;
+ const id=app.detail.case.id;v154Coverage=null;
+ try{const r=await call('webCompCoverageV133',id);if(!app.detail||app.detail.case.id!==id||q('compCoverageDetailV133')!==holder)return;v154Coverage=r;holder.innerHTML=webCompCoverageMarkupV133(r);await webCompReviewLoadUIV134();}
+ catch(e){if(app.detail&&app.detail.case.id===id&&q('compCoverageDetailV133')===holder){holder.textContent='โหลดข้อมูลรอบค้นไม่สำเร็จ: '+e.message;v154ShowLoadError('ไม่สามารถอ่านผลค้นจากแฟ้ม: '+e.message);}}
+}
+async function webCompSearchV133UI(){
+ if(!app.detail||v152CaseBusy||v152Job&&v152Job.running){toast('มีรอบค้นเดิมกำลังทำงาน',true);return;}
+ if(!window.confirm('ค้นรายแปลง v1.5.4: เริ่มจากคลังทำเลและหลักฐานเดิม ตรวจซ้ำหน้าประกาศจริง ใช้สูงสุด 4 คำค้นจริงสำหรับที่ดินและบ้าน (ไม่เกินโควตาเดิม) หรือ 2 คำค้นสำหรับประเภทอื่น อาจใช้เวลาประมาณ 3 นาที ไม่ใช้ Gemini ไม่อนุมัติและไม่ตีราคาอัตโนมัติ เริ่มค้นหรือไม่?'))return;
+ const h=q('compCoverageDetailV133');if(h)h.textContent='กำลังค้นแบบปรับตามประเภทและขนาด เปิดตรวจรายประกาศ แยกรายการไม่เข้าเกณฑ์...';
+ try{const r=await call('webCompSearchV133',app.detail.case.id);toast(r.message||('ค้นแล้ว พบลิงก์ใหม่ '+(r.added||0)+' รายการ')); await webCompCoverageLoadV133();if(r.added>0&&!r.cached&&!r.inProgress&&!(r.stats&&r.stats.waves))await webCompReviewReadUIV134(true);}
+ catch(e){toast(e.message,true);await webCompCoverageLoadV133();}
+}
+
+async function webCompRecoverSearchV139UI(){
+ if(!app.detail)return;
+ if(!window.confirm('นำผลค้นเดิมเข้าคิวตรวจอีกครั้งโดยไม่เรียก Serper หรือ Gemini (อาจเปิดหน้ารวมที่ robots.txt อนุญาต) ดำเนินการหรือไม่?'))return;
+ try{const r=await call('webCompRecoverSearchV139',app.detail.case.id);toast(r.message||'กู้ผลค้นเดิมเรียบร้อย');await webCompCoverageLoadV133();}
+ catch(e){toast('กู้คิวไม่สำเร็จ: '+e.message,true);}
+}
+
+/* v1.3.4: Intake of discovery leads to a dedicated review tab, with no automatic valuation. */
+var wcr134RowsClient=[];
+var wcr134ExcludedV136=[];
+function wcr134DisplayState(state){return ({PENDING:'รอเปิดประกาศ',READING:'กำลังอ่านหน้าประกาศ',READY_REVIEW:'อ่านราคา/ขนาดได้ · รอทีมตรวจ',TEAM_REVIEWED:'ทีมตรวจแล้ว · อนุมัติได้',PROMOTED:'อนุมัติเข้าตารางเทียบแล้ว',PARTIAL:'ข้อมูลไม่ครบ',BLOCKED:'เว็บไม่เปิด/ถูกจำกัด',MANUAL:'ต้องเปิดตรวจด้วยคน',UNAVAILABLE:'ประกาศไม่พร้อมขาย',ERROR:'เกิดข้อผิดพลาด'})[state]||state;}
+function wcr134NumUI(v){
+ if(v===null||v===undefined||String(v).trim()==='')return '—';
+ const n=Number(v);return Number.isFinite(n)?n.toLocaleString('en-US',{maximumFractionDigits:2}):'—';
+}
+function wcr134MoneyMillionUI(v){
+ if(v===null||v===undefined||String(v).trim()==='')return '—';
+ const n=Number(v);return Number.isFinite(n)&&n>0?wcr134NumUI(n/1000000):'—';
+}
+function wcr134ReadableStatus(s){return ({publisher_not_supported:'เว็บไซต์/URL นี้ไม่รองรับการอ่านอัตโนมัติ',not_checked:'ยังไม่ทดลองอ่าน',reading_in_progress:'กำลังอ่านอยู่ โปรดอย่ากดซ้ำ',stale_read_retry:'การอ่านครั้งก่อนหมดเวลา · กลับเข้าคิวแล้ว',ok:'อ่านหน้าประกาศได้',page_blocked_http_403:'เว็บปฏิเสธการเข้าถึง',page_blocked_http_429:'เว็บจำกัดจำนวนคำขอ',page_challenge:'เว็บมีหน้าตรวจสอบผู้ใช้',robots_disallowed:'เว็บไซต์ไม่อนุญาตให้บอตอ่าน',read_error:'อ่านหน้าเกิดข้อผิดพลาด',manual_observed_unverified:'ทีมอ่านจากประกาศเอง / ยังไม่ยืนยัน'})[s]||String(s||'');}
+function wcr134ExcludedHtmlV136_(){
+ if(!wcr134ExcludedV136.length)return '';
+ return '<details class="cr134-excluded"><summary>หน้ารวมและลิงก์ที่คัดออก ('+wcr134ExcludedV136.length+') — ดูเหตุผลและนำกลับมาตรวจได้</summary>'+wcr134ExcludedV136.slice(0,20).map((r,i)=>'<div class="cover-lead"><b>'+esc(r.title||'รายการที่คัดออก')+'</b><small>'+esc(r.reason||'ไม่ใช่ประกาศรายแปลง')+'</small>'+(link(r.url)?'<a href="'+esc(link(r.url))+'" target="_blank" rel="noopener noreferrer">เปิดหน้าเดิม ↗</a>':'')+' <button class="btn" onclick="wcr134RestoreV136('+i+')" type="button">นำกลับเข้าคิวตรวจ</button></div>').join('')+'</details>';
+}
+/* v1.5.4: Show search results in the comparison tab immediately, separately from approved valuation. */
+var v154Coverage=null;
+function v154Candidates(rows){
+ const seen=new Set(),result=[];
+ (Array.isArray(rows)?rows:[]).forEach((r,i)=>{
+  const tier=String(r.evidence||'').match(/กลุ่ม\s+(NEAR|SUPPORT)\b/i),area=Number(r.area),price=Number(r.price),url=link(r.url);
+  if(!tier||!['READY_REVIEW','TEAM_REVIEWED'].includes(r.state)||!Number.isFinite(area)||!Number.isFinite(price)||area<=0||price<=0||!url||seen.has(url))return;
+  seen.add(url);result.push({r,i,tier:tier[1].toUpperCase(),area,price,url});
+ });
+ return result.sort((a,b)=>Number(b.tier==='NEAR')-Number(a.tier==='NEAR')||(Date.parse(b.r.observedAt)||0)-(Date.parse(a.r.observedAt)||0));
+}
+function v154RenderFound(data){
+ const box=q('v154DiscoveredPanel');if(!box||!app.detail||data.caseId!==app.detail.case.id)return;
+ const d=app.detail,s=d.subject||{},items=v154Candidates(data.rows),c=v154Coverage&&v154Coverage.caseId===data.caseId?v154Coverage:null,
+ stats=c&&c.stats&&c.stats.discovery||{},quality=stats.quality||{},stage=stats.stage||{},current=!!(c&&c.searchedAt&&c.subjectCurrent!==false),
+ condo=['condo','apartment'].includes(s.property_type),target=Number(condo?s.usable_sqm:s.land_sqw),ask=Number(d.case.price||s.asking_price),targetUnit=target>0&&ask>0?ask/target:null;
+ const n=items.filter(x=>x.tier==='NEAR').length,other=items.length-n;
+ const meta=q('caseMeta'),last=meta&&meta.lastElementChild;if(last){const label=last.querySelector('span'),value=last.querySelector('strong');if(label&&value){label.textContent=(current?'ผลค้นรอตรวจ':'คิวผลค้นเดิม')+' / '+(s.property_type==='land'?'หลักประเมิน':'รายการเดิม');value.textContent=items.length+' / '+primaryCompsV142(d).length+' รายการ';}}
+ const kpi=current?'<div class="v154-metrics"><span>รอบล่าสุด: ใกล้เคียง <b>'+esc(Number(quality.near)||0)+'</b> · ประกอบ '+esc(Number(quality.support)||0)+'</span><span>เพิ่มเข้าคิว <b>'+esc(Number(stage.added)||0)+'</b> · อ่านข้อมูลซ้ำ/ปรับปรุง '+esc(Number(stage.updated)||0)+'</span><span>เครดิต '+esc(Number(stats.credits)||0)+'</span></div>':'<div class="v154-alert">ยังไม่มีผลค้นล่าสุดที่ตรงกับข้อมูลทรัพย์ปัจจุบัน หรือเป็นผลก่อนปรับข้อมูล กรุณากดเปรียบเทียบใหม่ก่อนนำไปอ้างอิง</div>';
+ const number=v=>Number.isFinite(v)?v.toLocaleString('en-US',{maximumFractionDigits:2}):'—';
+ const areaLabel=v=>{if(condo)return number(v)+' ตร.ม.';let rai=Math.floor(v/400),ng=Math.floor((v-rai*400)/100),wa=v-rai*400-ng*100;return rai+' ไร่ '+ng+' งาน '+number(wa)+' ตร.ว.';};
+ const timestamp=c&&c.searchedAt?new Date(c.searchedAt).toLocaleString('th-TH',{timeZone:'Asia/Bangkok'}):'ยังไม่มี';
+ let html='<div class="v154-head"><div><span class="v154-kicker">ผลค้นจากประกาศจริง • ยังไม่ใช่ราคาประเมิน</span><h4>ตารางทรัพย์ที่ค้นพบ / รอทีมตรวจ ('+items.length+')</h4><p>แสดงทันทีเมื่อระบบอ่านราคาและเนื้อที่ได้และจัดกลุ่ม NEAR/SUPPORT ไม่ต้องรออนุมัติหรือเรียก AI</p></div><button class="btn primary" type="button" onclick="refreshCaseComparisonV152()">↻ เปรียบเทียบใหม่ (0 เครดิต)</button></div>'+kpi+
+ '<div class="v154-metrics"><span>คิวที่มีข้อมูลราคา+เนื้อที่: ใกล้เคียง '+n+' · ประกอบ '+other+'</span><span>เวลารอบค้น: '+esc(timestamp)+'</span></div>'+
+ '<div class="v154-alert">ราคาประกาศไม่ใช่ราคาซื้อขายจริง · ยังต้องยืนยันพิกัด ระยะ ผังเมือง สภาพและสถานะขาย · แสดงในภาพสรุปเป็นหลักฐานรอตรวจเท่านั้น ไม่รวมเป็นราคาประเมิน</div>';
+ html+=investorManualFormV155(d);
+ if(!items.length){box.innerHTML=html+'<div class="empty">ยังไม่มีรายการ NEAR/SUPPORT ที่อ่านราคาและเนื้อที่ได้ครบ ให้กดค้นเปรียบเทียบใหม่หรือขยายค้นเมื่อหลักฐานไม่พอ</div>';return;}
+ html+='<div class="table-wrap"><table class="table v154-table"><thead><tr><th>ทรัพย์ / สถานะ</th><th>เนื้อที่</th><th>สัดส่วนขนาด</th><th>ราคา (ลบ.)</th><th>'+ (condo?'บาท/ตร.ม.':'บาท/ตร.ว.')+'</th><th>'+ (condo?'—':'ลบ./ไร่')+'</th><th>เทียบราคาต่อหน่วยเป้าหมาย</th><th>ระยะ / หลักฐาน</th></tr></thead><tbody>';
+ html+='<tr class="v154-target"><td><b>T0 ทรัพย์เป้าหมาย</b></td><td>'+esc(d.case.area_label||'—')+'</td><td>100%</td><td>'+number(ask>0?ask/1e6:NaN)+'</td><td>'+number(targetUnit||NaN)+'</td><td>'+number(!condo&&targetUnit?targetUnit*400/1e6:NaN)+'</td><td>จุดอ้างอิง</td><td>ทรัพย์ที่วิเคราะห์</td></tr>';
+ items.forEach((x,j)=>{const r=x.r,unit=x.price/x.area,ratio=target>0?x.area/target:NaN,pr=targetUnit?unit/targetUnit:NaN;
+ html+='<tr><td><b>'+esc((j+1)+'. '+(r.title||'ประกาศรายแปลง'))+'</b><div class="v154-tag '+(x.tier==='NEAR'?'v154-near':'v154-support')+'">'+(x.tier==='NEAR'?(current?'ใกล้เคียงเบื้องต้น':'ใกล้เคียงตามผลเดิม'):'ประกอบ')+'</div><small>'+esc(r.state==='TEAM_REVIEWED'?'ทีมตรวจแล้ว · รออนุมัติ':'รอทีมตรวจ')+'</small></td>'+
+ '<td>'+esc(areaLabel(x.area))+'<small>'+number(x.area)+(condo?' ตร.ม.':' ตร.ว.')+'</small></td><td>'+number(ratio*100)+(Number.isFinite(ratio)?'%':'')+'</td><td>'+number(x.price/1e6)+'</td><td>'+number(unit)+'</td><td>'+number(!condo?unit*400/1e6:NaN)+'</td><td>'+number(pr)+(Number.isFinite(pr)?' เท่า':'')+'</td>'+
+ '<td>'+ (r.distanceKm==null?'รอยืนยันระยะ':esc(number(Number(r.distanceKm))+' กม.'))+'<small>'+esc(r.observedAt?'ตรวจอ่าน '+r.observedAt:'ไม่ทราบวันอ่าน')+'</small><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">เปิดประกาศ ↗</a><br><button class="btn" type="button" onclick="v154ReviewRow('+x.i+')">ตรวจ/แก้</button></td></tr>';
+ });
+ box.innerHTML=html+'</tbody></table></div><p class="small muted">รายการที่ไม่มีราคา/เนื้อที่ ไม่ผ่านเกณฑ์เบื้องต้น หรืออนุมัติเข้าฐานแล้ว จะไม่รวมในตารางรอตรวจนี้ สามารถดูประวัติและผลตรวจทั้งหมดในคิวด้านล่าง</p>';
+}
+function investorManualFormV155(d){
+ const condo=['condo','apartment'].includes(d.subject.property_type);
+ return '<details class="v155-manual"><summary>＋ เพิ่มประกาศรายทรัพย์ที่ทีมพบเอง (รอตรวจ ไม่เข้าฐานราคา)</summary><div class="cr134-fields"><label>URL รายประกาศ<input type="url" id="v155ManualUrl" class="input" placeholder="https://..."></label><label>ชื่อและทำเล<input id="v155ManualTitle" class="input" maxlength="145"></label><label>เนื้อที่ ('+(condo?'ตร.ม.':'ตร.ว.')+')<input id="v155ManualArea" class="input" type="number" step="any" min="0"></label><label>ราคารวม (บาท)<input id="v155ManualPrice" class="input" type="number" step="any" min="0"></label></div><div class="field"><label for="v155ManualNote">หลักฐานและข้อจำกัด (เช่น ราคาตามหน้า, สีตามผู้ประกาศ, ยังไม่ยืนยันระยะ)</label><textarea id="v155ManualNote" class="input" maxlength="260"></textarea></div><label class="small"><input type="checkbox" id="v155ManualChecked"> อ่านราคาและเนื้อที่จากประกาศรายทรัพย์จริง ไม่ใช่หน้ารวม/ให้เช่า/ปิดขาย</label> <button class="btn primary" id="v155ManualSave" type="button" onclick="investorManualAddV155()">บันทึกเข้าคิวรอตรวจ</button></details>';
+}
+async function investorManualAddV155(){
+ if(!app.detail)return;const id=app.detail.case.id,btn=q('v155ManualSave');
+ const input={url:q('v155ManualUrl').value,title:q('v155ManualTitle').value,area:q('v155ManualArea').value,price:q('v155ManualPrice').value,note:q('v155ManualNote').value,checked:q('v155ManualChecked').checked};
+ if(!input.checked||!input.url||!input.title||!input.note||!investorPositiveV155(input.area)||!investorPositiveV155(input.price)){toast('กรอกข้อมูลและยืนยันว่าอ่านประกาศจริงก่อนบันทึก',true);return;}
+ busy(btn,true,'กำลังบันทึก...');
+ try{const r=await call('webCompReviewAddV155',id,input);toast(r.message);if(app.detail&&app.detail.case.id===id)await webCompReviewLoadUIV134();}
+ catch(e){toast(e.message,true);}finally{if(q('v155ManualSave')===btn)busy(btn,false,'บันทึกเข้าคิวรอตรวจ');}
+}
+function v154ShowLoadError(msg){const h=q('v154DiscoveredPanel');if(h)h.innerHTML='<div class="warnbox">'+esc(msg)+'</div>';}
+function v154ReviewRow(i){const row=q('cr134-edit-row-'+i);if(!row)return;if(row.classList.contains('hidden'))wcr134Toggle(i);row.scrollIntoView({behavior:'smooth',block:'center'});}
+function wcr134Render(data){
+ const host=q('compReviewBodyV134');if(!host)return;
+ const rows=Array.isArray(data.rows)?data.rows:[];wcr134RowsClient=rows;wcr134ExcludedV136=Array.isArray(data.excluded)?data.excluded:[];v154RenderFound(data);
+ let html='<p class="cr134-hint">เฉพาะลิงก์ที่ดูเป็นประกาศรายแปลงจึงเข้าคิวตรวจ หน้ารวมและหน้าค้นหาถูกแยกออก • ช่องที่ไม่ทราบแสดงเป็น — ไม่ใช่ราคา 0 • การบันทึกผลตรวจยังไม่ใช่การรับรองมูลค่าตลาด</p>';
+ html+='<div class="cr134-kpis"><span>ทั้งหมด '+rows.length+'</span><span>รออ่าน '+(data.counts?.pending||0)+'</span><span>กำลังอ่าน '+(data.counts?.reading||0)+'</span><span>อ่านราคา/ขนาดได้ '+(data.counts?.ready||0)+'</span><span>ข้อมูลไม่ครบ '+(data.counts?.partial||0)+'</span><span>เปิดเว็บอัตโนมัติไม่ได้ '+(data.counts?.blocked||0)+'</span></div>';
+ if((data.counts?.excluded||0)>0)html+='<p class="cr134-hint">คัดหน้ารวม/ผลค้นออกจากคิวตรวจ '+data.counts.excluded+' รายการแล้ว (บันทึกยังอยู่ในชีตตรวจสอบ)</p>';
+ if((data.counts?.blocked||0)>0)html+='<p class="cr134-hint">มี '+(data.counts?.blocked||0)+' รายการที่ระบบเปิดเว็บอัตโนมัติไม่ได้: กด <b>เปิดหน้าประกาศ</b> และ <b>ตรวจ/แก้</b> เพื่อบันทึกเฉพาะข้อมูลที่มีหลักฐาน ไม่จำเป็นต้องเสียเครดิตค้นใหม่</p>';
+ if(!rows.length){host.innerHTML=html+'<div class="muted small">ยังไม่มีประกาศรายแปลงที่เข้าเกณฑ์คิวตรวจ</div>'+wcr134ExcludedHtmlV136_();const rb=q('cr134ReadBtn');if(rb)rb.disabled=true;return;}
+ html+='<div class="cr134-grid"><table><thead><tr><th>ประกาศ / หลักฐาน</th><th>ขนาด (ตร.ว.)</th><th>ราคา (ล้านบาท)</th><th>ระยะ กม.</th><th>ผลตรวจ</th><th>แก้ไข</th></tr></thead><tbody>';
+ rows.forEach((r,i)=>{
+  const safeUrl=link(r.url);const state=/^(PENDING|READING|READY_REVIEW|TEAM_REVIEWED|PROMOTED|PARTIAL|BLOCKED|MANUAL|UNAVAILABLE|ERROR)$/.test(r.state)?r.state:'PENDING';
+  html+='<tr><td><span class="cr134-source">'+esc((i+1)+'. '+r.title)+'</span>'+(safeUrl?'<a class="cr134-link" href="'+esc(safeUrl)+'" target="_blank" rel="noopener noreferrer">เปิดหน้าประกาศ ↗</a>':'')+'<small>'+esc(r.evidence||'')+'</small><small>เปิดตรวจเมื่อ '+esc(r.observedAt||'ยังไม่ทราบ')+'</small></td>'+
+  '<td class="mono">'+wcr134NumUI(r.area)+'</td><td class="mono">'+wcr134MoneyMillionUI(r.price)+'</td><td class="mono">'+wcr134NumUI(r.distanceKm)+'</td><td><span class="cr134-state '+state+'">'+esc(wcr134DisplayState(state))+'</span><small>'+esc(wcr134ReadableStatus(r.pageStatus))+'</small></td>'+
+  '<td>'+(state==='PROMOTED'?'<span class="pill">เข้าตารางแล้ว</span>':('<button type="button" class="btn" onclick="wcr134Toggle('+i+')">ตรวจ/แก้</button>'+(state==='TEAM_REVIEWED'?'<button type="button" class="btn primary" style="margin:4px 0 0 6px" onclick="wca138ApproveUI('+i+')">✓ อนุมัติเข้าตาราง</button>':'')))+'</td></tr>'+
+  '<tr id="cr134-edit-row-'+i+'" class="hidden"><td colspan="6"><div id="cr134-edit-'+i+'" class="cr134-editor"></div></td></tr>';
+ });
+ html+='</tbody></table></div><p class="cr134-hint">หมายเหตุ: เมื่อทีมตรวจแล้วให้กดปุ่มอนุมัติเข้าตาราง ระบบเพิ่มลง Comparables โดยไม่เปลี่ยนราคาประเมินเดิม และไม่เรียก AI โดยอัตโนมัติ</p>';
+ html+=wcr134ExcludedHtmlV136_();
+ host.innerHTML=html;const rb=q('cr134ReadBtn');if(rb){rb.disabled=!(data.counts?.pending>0);rb.title=rb.disabled?'ไม่มีลิงก์รอการอ่านอัตโนมัติแล้ว':'อ่านเฉพาะลิงก์ที่ยังไม่ทดลอง';}
+}
+async function wcr134RestoreV136(i){
+ if(!app.detail||!wcr134ExcludedV136[i])return;
+ if(!window.confirm('นำลิงก์กลับเข้าคิวตรวจ (ยังไม่เพิ่มเป็นตัวเทียบหรือฐานราคา) ใช่หรือไม่?'))return;
+ try {const r=await call('webCompReviewRestoreV136',app.detail.case.id,wcr134ExcludedV136[i].url);toast(r.message);await webCompReviewLoadUIV134();}
+ catch(e){toast('นำกลับเข้าคิวไม่สำเร็จ: '+e.message,true);}
+}
+async function webCompReviewLoadUIV134(){
+ const h=q('compReviewBodyV134');if(!h||!app.detail)return;
+ const id=app.detail.case.id;
+ try{const r=await call('webCompReviewListV134',id);if(app.detail&&app.detail.case.id===id&&q('compReviewBodyV134')===h)wcr134Render(r);}
+ catch(e){if(app.detail&&app.detail.case.id===id&&q('compReviewBodyV134')===h){h.textContent='ไม่สามารถเปิดคิวตรวจ: '+e.message+' (ตรวจว่าเพิ่ม WebCompReviewV134.gs แล้ว)';v154ShowLoadError('เปิดรายการราคาและเนื้อที่ไม่สำเร็จ: '+e.message);}}
+}
+async function webCompReviewReadUIV134(auto){
+ if(!app.detail)return;
+ const id=app.detail.case.id,holder=q('compReviewBodyV134');
+ if(holder)holder.innerHTML='<div class="hint"><span class="loader"></span> กำลังอ่านหน้าประกาศ โดยไม่ใช้ Gemini/Serper... หน้าใดเปิดไม่ได้จะเก็บไว้ให้ทีมตรวจ</div>';
+ try{const r=await call('webCompReviewReadV134',id,3);toast('ตรวจแล้ว '+r.attempted+' รายการ | ค้าง '+r.remaining+' รายการ');}
+ catch(e){toast('ตรวจหน้าประกาศไม่สำเร็จ: '+e.message,true);}finally{if(app.detail&&app.detail.case.id===id)await webCompReviewLoadUIV134();}
+}
+function wcr134Toggle(i){
+ const r=wcr134RowsClient[i],panel=q('cr134-edit-row-'+i),box=q('cr134-edit-'+i);if(!r||!panel||!box)return;
+ if(!panel.classList.contains('hidden')){panel.classList.add('hidden');return;}panel.classList.remove('hidden');
+ const fields=[['land_sqw','เนื้อที่ (ตร.ว.)',r.area],['total_price','ราคารวม (บาท)',r.price],['latitude','ละติจูด',r.latitude],['longitude','ลองจิจูด',r.longitude]];
+ box.innerHTML='<p class="small muted">กรอกเฉพาะค่าที่ตรวจสอบกับประกาศแล้ว • ถ้าไม่มีหลักฐานให้เว้นว่าง</p><div class="cr134-fields">'+fields.map(f=>'<label>'+esc(f[1])+'<input type="number" step="any" data-field="'+f[0]+'" value="'+(f[2]===null||f[2]===undefined?'':esc(f[2]))+'"></label>').join('')+'</div><textarea data-field="note" placeholder="ระบุหลักฐาน แหล่งข้อมูล สถานะยังขายอยู่ และเหตุผลที่แก้ไข (จำเป็น)"></textarea><div class="flex" style="margin-top:9px"><button type="button" class="btn dark" onclick="wcr134SaveUI('+i+')">บันทึกผลตรวจ</button><button type="button" class="btn" onclick="wcr134Toggle('+i+')">ยกเลิก</button></div>';
+}
+async function wca138ApproveUI(i){
+ if(!app.detail||!wcr134RowsClient[i])return;
+ const item=wcr134RowsClient[i],caseId=app.detail.case.id;
+ if(item.state!=='TEAM_REVIEWED'){toast('ต้องบันทึกผลตรวจให้ครบก่อน',true);return;}
+ const message='ยืนยันอนุมัติประกาศนี้เข้า Comparables ของเคส '+caseId+'\n\n'+
+ 'โปรดตรวจยืนยันครบ 3 เรื่องก่อนกดตกลง:\n'+
+ '1) URL เป็นประกาศรายแปลงจริง ไม่ใช่หน้ารวม\n'+
+ '2) ราคาและเนื้อที่ตรงกับหลักฐานต้นทาง\n'+
+ '3) ตรวจสถานะว่ายังเปิดขายอยู่ ไม่ใช่ขายแล้ว\n\n'+
+ 'ราคานี้เป็นราคาประกาศ ไม่ใช่มูลค่าตลาดที่รับรอง และยังไม่เปลี่ยนผลประเมิน';
+ if(!window.confirm(message))return;
+ try{
+  const r=await call('webCompApproveV138',caseId,item.url,{singleListing:true,priceAndArea:true,saleStatus:true});
+  toast(r.message||'เพิ่มทรัพย์เทียบแล้ว');
+  await openCase(caseId);setTab('compare');
+ }catch(e){toast('อนุมัติไม่สำเร็จ: '+e.message,true);}
+}
+async function wca138PreflightUI(){
+ try{const r=await call('webCompApprovePreflightV138');toast(r.ok?'ตรวจเชื่อมฐาน Comparables ผ่าน ไม่ใช้เครดิต':'ตรวจฐานไม่ผ่าน',!r.ok);}
+ catch(e){toast('ตรวจฐานไม่ผ่าน: '+e.message,true);}
+}
+async function wcr134SaveUI(i){
+ if(!app.detail)return;const row=wcr134RowsClient[i],box=q('cr134-edit-'+i);if(!row||!box)return;
+ const v={};box.querySelectorAll('[data-field]').forEach(el=>v[el.dataset.field]=el.value.trim());
+ if(!v.note){toast('กรุณาเขียนหลักฐาน/เหตุผลที่แก้ไข',true);return;}
+ try{const r=await call('webCompReviewSaveV134',app.detail.case.id,row.url,v);toast(r.message);await webCompReviewLoadUIV134();}
+ catch(e){toast(e.message,true);}
+}
+
+refreshDashboard();app.timer=setInterval(tickStatus,15000);
+/* Investor PNG export v1.1 — runs entirely in the browser, no Slides API or AI needed.
+   Only uses the already loaded case/comparables; never estimates market value. */
+var investorCanvasReady=false;
+var investorCurrentBlob=null;
+var investorCurrentFile='';
+function investorTrim(s,max){let v=String(s==null?'':s).replace(/\s+/g,' ').trim();return v.length>max?v.slice(0,max-1)+'…':v;}
+function investorMoney(v,dec){return v==null||!Number.isFinite(Number(v))?'—':Number(v).toLocaleString('en-US',{minimumFractionDigits:dec||0,maximumFractionDigits:dec||0});}
+function investorArea(c){return c.area_label||'—';}
+/* v1.5.5 Investor evidence snapshot. Never mix unapproved data into valuation. */
+var investorEvidenceV155=null;
+const investorDptV155='https://townsquare.dpt.go.th/lup/';
+const investorDolV155='https://landsmaps.dol.go.th/';
+const investorSmpLawV155='https://www.reic.or.th/Upload/4_536_1756804759_9326.pdf';
+function investorPositiveV155(v){return v!==null&&v!==undefined&&v!==''&&Number.isFinite(Number(v))&&Number(v)>0?Number(v):null;}
+function investorDistanceV155(v){return v!==null&&v!==undefined&&v!==''&&Number.isFinite(Number(v))&&Number(v)>=0?Number(v):null;}
+function investorDomainV155(url){try{return new URL(url).hostname.replace(/^www\./,'');}catch(e){return 'ไม่มีลิงก์';}}
+function investorAreaV155(n,condo,house){if(!investorPositiveV155(n))return '—';if(condo||house)return investorMoney(n,2).replace(/\.00$/,'')+(condo?' ตร.ม.':' ตร.ว.');return investorMoney(n/400,2).replace(/\.00$/,'')+' ไร่';}
+function investorZoneClaimV155(title,evidence){const t=String(title||'')+' '+String(evidence||'');const m=t.match(/(?:ผัง(?:เมือง|สี)?(?:ที่ดิน)?\s*[:：]?\s*|ที่(?:ดิน)?\s*สี|สี)(เขียว(?:ลาย|พิเศษ)?|ม่วง(?:ลาย|เข้ม)?|เหลือง|ส้ม|แดง|น้ำตาล|ชมพู|ฟ้า)/);return m?m[1]:'';}
+function investorBuildV155(d,review,coverage){
+ const s=d.subject||{},condo=['condo','apartment'].includes(s.property_type),house=s.property_type==='house',target=investorPositiveV155(condo?s.usable_sqm:s.land_sqw),ask=investorPositiveV155(d.case.price);
+ const current=!!(coverage&&coverage.caseId===d.case.id&&coverage.searchedAt&&coverage.subjectCurrent===true),
+ known=[],pending=[],seen=new Set();
+ for(const c of primaryCompsV142(d)){
+  const a=investorPositiveV155(c.area_value||c.area_sqw),p=investorPositiveV155(c.total_price),url=link(c.url);
+  if(!a||!p||(url&&seen.has(url)))continue;if(url)seen.add(url);
+  known.push({title:c.title||'ทรัพย์ในแฟ้ม',area:a,price:p,url,zone:c.zoning||'',distance:investorDistanceV155(c.distance_km),state:s.property_type==='land'?'หลักฐานในฐานเดิม':'รายการเดิมในแฟ้ม',evidence:c.evidence||'',category:'known'});
+ }
+ const items=v154Candidates(review&&review.rows);
+ const localTitle=x=>s.subdistrict&&String(x.r.title||'').includes(s.subdistrict)?1:0;
+ items.sort((a,b)=>localTitle(b)-localTitle(a)||Number(b.tier==='NEAR')-Number(a.tier==='NEAR')||Math.abs(Math.log(a.area/(target||a.area)))-Math.abs(Math.log(b.area/(target||b.area))));
+ for(const x of items){
+  if(seen.has(x.url))continue;seen.add(x.url);
+  const r=x.r;
+  pending.push({title:r.title||'ประกาศรายทรัพย์',area:x.area,price:x.price,url:x.url,zone:investorZoneClaimV155(r.title,r.evidence),distance:investorDistanceV155(r.distanceKm),
+    state:(target&&x.area/target>=.8&&x.area/target<=1.2?'ขนาด 80–120%':'กรอบค้นเสริม')+' · '+(r.state==='TEAM_REVIEWED'?'ทีมตรวจแล้ว/รออนุมัติ':'รอตรวจ'),evidence:r.evidence||'',observedAt:r.observedAt,category:'pending',tier:x.tier});
+ }
+ const rows=known.concat(pending).map((r,i)=>({...r,ref:(r.category==='known'?'A':'L')+String(i+1).padStart(2,'0')}));
+ const sourceRows=(review&&Array.isArray(review.rows)?review.rows:[]).filter(r=>link(r.url)&&!['EXCLUDED_DISCOVERY','UNAVAILABLE','READING'].includes(r.state));
+ const landmarks=sourceRows.filter(r=>r.landmarks&&Array.isArray(r.landmarks.lines)&&r.landmarks.lines.length).map(r=>({url:link(r.url),title:r.title||'ประกาศ',lines:r.landmarks.lines,method:r.landmarks.method,at:r.landmarks.at,local:!!(s.subdistrict&&String(r.title||'').includes(s.subdistrict)),ref:(rows.find(x=>x.url===link(r.url))||{}).ref||'S'})).sort((a,b)=>Number(b.local)-Number(a.local));
+ const zone=String(s.zoning||'').trim(),claim=String(s.zoning_claim||'').trim(),pin=!!(d.pin&&d.pin.lat!=null&&d.pin.lon!=null&&Number.isFinite(Number(d.pin.lat))&&Number.isFinite(Number(d.pin.lon)));
+ const road=investorTrim(s.road_access||s.road_access_claim||'',170),desc=String(s.web_description||''),pdfEvidence=/PDF/i.test(desc),docPin=pdfEvidence&&/พิกัดจากเอกสาร\s*\d+\.\d+\s*,\s*\d+\.\d+/.test(desc),taxMatch=pdfEvidence?desc.match(/ราคาประเมินราชการ\s*([\d,]+(?:\.\d+)?)\s*บาท\/ตร\.ว\./):null,docTax=taxMatch?investorPositiveV155(taxMatch[1].replace(/,/g,'')):null,
+ around=pdfEvidence&&desc.match(/พื้นที่โดยรอบระบุ([^;]{1,100})/),smp=String(s.province||'').includes('สมุทรปราการ'),zoneColor=investorZoneClaimV155(claim,zone);
+ return {caseId:d.case.id,landmarks,sourceRows,condo,house,target,ask,known:known.length,pending:pending.length,near:pending.filter(x=>target&&x.area/target>=.8&&x.area/target<=1.2).length,rows,current,searchedAt:coverage&&coverage.searchedAt||'',readAt:new Date().toISOString(),zone,claim,pin,road,docPin,docTax,around:around?around[1].trim():'',smp,zoneColor,
+  fileCount:(d.files||[]).length,photoCount:(d.files||[]).filter(f=>/^image\//.test(f.mime_type||'')).length,
+  reviewCount:review&&review.counts&&review.counts.total||0,blocked:review&&review.counts&&review.counts.blocked||0};
+}
+function investorSources(d){
+ const v=investorEvidenceV155;if(!v||v.caseId!==d.case.id)throw Error('ยังไม่ได้อ่านหลักฐานของเคสนี้');
+ const lines=['หลักฐานประกอบ Investor Brief '+v.caseId,'ร่างตรวจทาน · ราคาประกาศไม่ใช่ราคาซื้อขายจริง · คิวรอตรวจไม่ใช่ตัวเทียบหลัก','อ่านคิว ณ '+new Date(v.readAt).toLocaleString('th-TH',{timeZone:'Asia/Bangkok'}),'รอบค้นล่าสุด: '+(v.searchedAt||'ไม่มี')+' | '+(v.current?'ตรงกับข้อมูลทรัพย์ปัจจุบัน':'ยังไม่ยืนยันว่าตรงกับข้อมูลปัจจุบัน'),''];
+ for(const r of v.rows){
+   lines.push('['+r.ref+'] '+r.title,'เนื้อที่: '+investorAreaV155(r.area,v.condo,v.house)+' | ประกาศ '+investorMoney(r.price)+' บาท | '+investorMoney(r.price/r.area,2)+' บาท/'+(v.condo?'ตร.ม.':'ตร.ว.'),'สถานะ: '+r.state+' | '+(r.distance!==null?investorMoney(r.distance,2)+' กม. (รอตรวจ)':'ระยะยังไม่ยืนยัน')+' | ผังจากประกาศ/แฟ้ม: '+(r.zone||'ไม่ระบุ'),'ที่มา: '+(r.url||'ไม่มี URL')+(r.observedAt?' | อ่าน '+r.observedAt:''),'หลักฐาน: '+(r.evidence||'ยังต้องตรวจรายละเอียด'),'');
+ }
+ if(!v.rows.length)lines.push('ไม่มีรายการที่มีข้อมูลครบในรอบอ่านนี้ ไม่ได้แปลว่าไม่มีทรัพย์ขายในตลาด','');
+ lines.push('แปลงเป้าหมาย: ผังที่บันทึก '+(v.zone||'ยังไม่ตรวจ')+' / ตามเอกสารหรือผู้แจ้ง '+(v.claim||'ไม่ระบุ')+' (ยังไม่รับรองรายแปลง)');
+ if(v.road)lines.push('ทางเข้าและสภาพตามข้อมูลแฟ้ม: '+v.road);
+ if(v.docPin)lines.push('พบพิกัดใน PDF แต่ยังไม่รับรองว่าตรงรูปแปลงทางการ (ไม่เผยแพร่พิกัดดิบ)');
+ if(v.docTax)lines.push('ราคาประเมินราชการที่ระบุใน PDF: '+investorMoney(v.docTax)+' บาท/ตร.ว. ยังไม่ได้ตรวจบัญชีปัจจุบัน ไม่ใช่มูลค่าตลาด');
+ if(v.around)lines.push('ลักษณะพื้นที่โดยรอบตาม PDF: '+v.around+' (ยังไม่ตรวจภาคสนาม)');
+ if(v.landmarks.length){
+  lines.push('','ข้อมูลสถานที่จากประกาศ (อ้างอิงแปลงประกาศเท่านั้น ไม่ใช่ระยะจาก T0)');
+  for(const lm of v.landmarks){
+   lines.push('['+lm.ref+'] '+lm.title+' | '+(lm.local?'ชื่อประกาศตรงชื่อตำบล':'พื้นที่เปรียบเทียบอื่น/ยังไม่ยืนยันตำบล')+' | '+(lm.method==='manual'?'ทีมอ่านจากหน้า':'ระบบดึงข้อความรอตรวจ'),...lm.lines.map(x=>'  • '+x),'ที่มา '+lm.url+(lm.at?' | อ่าน/บันทึก '+lm.at:''));
+  }
+  lines.push('สถานที่อาจอยู่ต่างพื้นที่ ระยะตามประกาศเป็นระยะของประกาศนั้น ไม่ใช่ระยะจากแปลงเป้าหมาย ต้องยืนยันพิกัดและเส้นทางจริง','');
+ }else lines.push('ยังไม่มีข้อมูลชื่อสถานที่จากประกาศที่บันทึกไว้ (ไม่ได้แปลว่าไม่มีสถานที่ใกล้เคียง)');
+ lines.push('ตรวจการใช้ประโยชน์ที่ดินอย่างเป็นทางการ: '+investorDptV155,'ค้นรูปแปลงกรมที่ดิน: '+investorDolV155);
+ if(v.smp)lines.push('ข้อบัญญัติผังเมืองรวมสมุทรปราการ พ.ศ. 2568 (ราชกิจจานุเบกษา 22 ส.ค. 2568): '+investorSmpLawV155);
+ lines.push('ต้องยืนยันโฉนดและพิกัดตรงแปลง ผังเมือง ข้อกำหนดถนน/การเข้าถึง สถานะขาย ราคาตั้งขายและวงเงินที่ต้องการ ก่อนสรุปมูลค่าหรือเสนอวงเงิน');
+ return lines.join('\n');
+}
+function investorRound(ctx,x,y,w,h,r,fill){ctx.fillStyle=fill;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill();}
+function investorWrite(ctx,t,x,y,font,color,maxWidth){ctx.font=font;ctx.fillStyle=color;ctx.textBaseline='alphabetic';const v=investorTrim(t,150);if(Number.isFinite(maxWidth)&&ctx.measureText(v).width>maxWidth)ctx.fillText(v,x,y,maxWidth);else ctx.fillText(v,x,y);}
+function investorTextLines(ctx,text,x,y,maxWidth,lineHeight,maxLines,font,color){
+ ctx.font=font;ctx.fillStyle=color;ctx.textBaseline='alphabetic';
+ let words=String(text||'').trim().split(/\s+/).filter(Boolean);if(!words.length)return y;
+ let lines=[],line='';
+ for(const w of words){let test=line?line+' '+w:w;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=w;}else line=test;}
+ if(line)lines.push(line);
+ // Thai often has no spaces: fall back to grapheme wrapping so titles cannot overflow.
+ let wrap=[];
+ for(let line of lines){if(ctx.measureText(line).width<=maxWidth){wrap.push(line);continue;}
+   let out=''; for(const ch of Array.from(line)){if(ctx.measureText(out+ch).width>maxWidth&&out){wrap.push(out);out=ch;}else out+=ch;}if(out)wrap.push(out);
+ }
+ wrap.slice(0,maxLines).forEach((line,i)=>{ctx.fillText(i===maxLines-1&&wrap.length>maxLines?investorTrim(line,Math.max(2,line.length-2))+'…':line,x,y+i*lineHeight,maxWidth)});
+ return y+Math.min(maxLines,wrap.length)*lineHeight;
+}
+var investorPhotoLoadSeq=0;
+var investorRenderedPhotoId='';
+var investorPhotoInCanvas=false;
+function investorPhotoFeedback(kind,message){
+ const el=q('investorPhotoFeedback');if(!el)return;
+ el.className=kind==='good'?'investor-photo-good':kind==='failure'?'investor-photo-failure':'investor-photo-pending';
+ el.textContent=message;
+}
+function investorPhotoChoices(files,selectedId){
+ const pick=q('investorPhotoChoice');
+ pick.innerHTML='<option value="">ไม่ใส่ภาพ — ใช้กราฟิกข้อมูล</option>';
+ const photos=(files||[]).filter(f=>/^image\/(?:png|jpeg|webp)$/i.test(f.mime_type));
+ photos.forEach(f=>{const opt=document.createElement('option');opt.value=f.id;opt.textContent=(f.name||'ภาพในแฟ้ม')+' · '+(f.source||'Drive');pick.appendChild(opt)});
+ if(selectedId&&photos.some(f=>String(f.id)===String(selectedId)))pick.value=selectedId;
+ q('investorPhotoCount').textContent=photos.length?'พบภาพในแฟ้ม '+photos.length+' รายการ · ต้องเลือกภาพที่ส่งต่อได้':'ยังไม่มีภาพในแฟ้มที่ระบบอ่านได้ · ใช้ปุ่มเพิ่มภาพด้านล่าง';
+}
+async function investorDecodeDataUrl(url){
+ const img=new Image();
+ await new Promise((resolve,reject)=>{img.onload=()=>resolve();img.onerror=()=>reject(new Error('เบราว์เซอร์อ่านไฟล์ภาพไม่ได้'));img.src=url;});
+ if(!img.naturalWidth||!img.naturalHeight)throw new Error('ภาพไม่มีข้อมูลพิกเซล');
+ return img;
+}
+async function investorLoadPhoto(d,fileId){
+ const f=(d.files||[]).find(x=>String(x.id)===String(fileId)&&/^image\/(?:jpeg|png|webp)$/i.test(x.mime_type));
+ if(!f)throw new Error('ไม่มีภาพที่เลือกในแฟ้มเคสนี้');
+ let ret;
+ try{ret=await call('webInvestorPhotoData',d.case.id,f.id);}
+ catch(e){
+  // Compatibility with v1.2 when the optional server file has not been added.
+  try{ret=await call('webImageData',d.case.id,f.id);}
+  catch(legacy){throw new Error('เปิดภาพจาก Drive ไม่สำเร็จ: '+String(legacy.message||e.message));}
+ }
+ if(!ret||!ret.data||!/^image\/(?:png|jpeg|webp)$/i.test(ret.mime))throw new Error('ไฟล์ใน Drive ไม่ได้ส่งข้อมูลภาพที่รองรับ');
+ const img=await investorDecodeDataUrl('data:'+ret.mime+';base64,'+ret.data);
+ return {img:img,thumbnail:!!ret.thumbnail,file:f};
+}
+var investorLoadedPhotoV133=null;
+function investorPhotoFitV133(){const el=q('investorPhotoFitV133');return el&&el.value==='cover'?'cover':'contain';}
+function investorDrawPhoto(ctx,img,x,y,w,h,fit){
+  const iw=img.naturalWidth||img.width,ih=img.naturalHeight||img.height;
+  if(!(iw>0&&ih>0))throw new Error('ภาพไม่มีขนาดที่อ่านได้');
+  ctx.save();ctx.beginPath();ctx.roundRect(x,y,w,h,15);ctx.clip();
+  ctx.fillStyle='#17332f';ctx.fillRect(x,y,w,h);
+  const scale=(fit==='cover'?Math.max:Math.min)(w/iw,h/ih),dw=iw*scale,dh=ih*scale;
+  ctx.drawImage(img,x+(w-dw)/2,y+(h-dh)/2,dw,dh);
+  ctx.restore();
+}
+function investorFitTextV133(ctx,text,x,y,maxWidth,size,minSize,color,weight){
+  let font=size;
+  while(font>minSize){ctx.font=(weight||'750')+' '+font+'px "Noto Sans Thai",sans-serif';if(ctx.measureText(String(text)).width<=maxWidth)break;font-=1;}
+  investorWrite(ctx,text,x,y,(weight||'750')+' '+font+'px "Noto Sans Thai",sans-serif',color,maxWidth);
+}
+
+function invLmPopulateV156(){
+ const p=q('invLmSourceV156'),v=investorEvidenceV155;
+ p.replaceChildren(new Option('เลือกประกาศรายแปลง',''));
+ for(const r of (v.sourceRows||[]))p.add(new Option(r.title+(r.landmarks&&r.landmarks.lines.length?' ✓':'')||r.url,r.url));
+ q('invLmStatusV156').textContent=(v.landmarks||[]).length+' ประกาศมีข้อมูลสถานที่แล้ว';invLmSelectV156();
+}
+function invLmSelectV156(){
+ const v=investorEvidenceV155,url=q('invLmSourceV156').value,r=v&&v.sourceRows.find(x=>x.url===url);
+ q('invLmTextV156').value=r&&r.landmarks?r.landmarks.lines.join('\n'):'';
+ q('invLmCheckedV156').checked=false;q('invLmReadV156').disabled=!r;q('invLmLinkV156').href=r?link(r.url):'#';
+ q('invLmLinkV156').style.visibility=r?'visible':'hidden';invLmConsentV156();
+}
+function invLmConsentV156(){q('invLmSaveV156').disabled=!(q('invLmCheckedV156').checked&&q('invLmSourceV156').value);}
+async function invLmReadV156(){
+ const v=investorEvidenceV155,url=q('invLmSourceV156').value,btn=q('invLmReadV156');if(!v||!url)return;
+ btn.disabled=true;q('invLmStatusV156').textContent='กำลังอ่านหน้าประกาศ...';
+ try{const r=await call('webCompReviewPreviewLandmarksV156',v.caseId,url);
+  if(investorEvidenceV155!==v||q('invLmSourceV156').value!==url)return;
+  if(r.lines&&r.lines.length)q('invLmTextV156').value=r.lines.join('\n');
+  q('invLmCheckedV156').checked=false;invLmConsentV156();q('invLmStatusV156').textContent=r.message;
+ }catch(e){q('invLmStatusV156').textContent=e.message;}finally{if(investorEvidenceV155===v&&q('invLmSourceV156').value===url)btn.disabled=false;}
+}
+async function invLmSaveV156(){
+ const v=investorEvidenceV155,url=q('invLmSourceV156').value,txt=q('invLmTextV156').value;
+ if(!v||!url||!q('invLmCheckedV156').checked)return;
+ q('invLmSaveV156').disabled=true;q('invLmStatusV156').textContent='กำลังบันทึก...';
+ try{const reply=await call('webCompReviewSaveLandmarksV156',v.caseId,url,{text:txt,checked:true});
+  if(investorEvidenceV155!==v||!app.detail||app.detail.case.id!==v.caseId)return;
+  const review=await call('webCompReviewListV134',v.caseId);
+  if(investorEvidenceV155!==v||!app.detail||app.detail.case.id!==v.caseId||review.caseId!==v.caseId)return;
+  investorEvidenceV155=investorBuildV155(app.detail,review,{caseId:v.caseId,searchedAt:v.searchedAt,subjectCurrent:v.current});
+  invLmPopulateV156();q('invLmSourceV156').value=url;invLmSelectV156();
+  investorRender(app.detail,investorLoadedPhotoV133);q('investorConfirm').checked=false;investorSetConsent();q('invLmStatusV156').textContent=reply.message+' · '+investorEvidenceV155.landmarks.length+' ประกาศมีข้อมูลสถานที่';toast(reply.message);
+ }catch(e){q('invLmStatusV156').textContent=e.message;invLmConsentV156();}
+}
+function investorRender(d,photo){
+ if(!d||!d.case)throw new Error('ไม่มีแฟ้มทรัพย์ที่เลือก');
+ const v=investorEvidenceV155;if(!v||v.caseId!==d.case.id)throw Error('กรุณารออ่านคิวหลักฐานของเคสนี้');
+ const canvas=q('investorCanvas'),ctx=canvas.getContext('2d');if(!ctx)throw new Error('เบราว์เซอร์ไม่รองรับ Canvas');
+ canvas.width=1920;canvas.height=1080;
+ const P={bg:'#f5f8f6',white:'#fff',ink:'#142c27',muted:'#526b62',green:'#12634f',line:'#d7e5dd',pale:'#e7f1eb',amber:'#8e4e0b',warning:'#fff3df',navy:'#24384a'};
+ const font=(n,w=500)=>w+' '+n+'px "Noto Sans Thai",sans-serif';
+ const txt=(t,x,y,n,w,color=P.ink,m=undefined)=>investorWrite(ctx,t,x,y,font(n,w),color,m);
+ const fit=(t,x,y,width,n=20,min=15,color=P.ink,w='650')=>investorFitTextV133(ctx,t,x,y,width,n,min,color,w);
+ const box=(x,y,w,h,c=P.white)=>{investorRound(ctx,x,y,w,h,14,c);ctx.strokeStyle=P.line;ctx.lineWidth=1.5;ctx.beginPath();ctx.roundRect(x,y,w,h,14);ctx.stroke()};
+ const ln=(x1,y,x2)=>{ctx.strokeStyle=P.line;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x1,y);ctx.lineTo(x2,y);ctx.stroke()};
+ const bullet=(text,x,y,width)=>investorTextLines(ctx,'• '+text,x,y,width,photo?21:23,2,font(photo?16:18,500),P.ink);
+ ctx.fillStyle=P.bg;ctx.fillRect(0,0,1920,1080);ctx.fillStyle=P.green;ctx.fillRect(0,0,1920,13);
+ txt('MY PROPERTY  /  INVESTOR BRIEF',50,55,20,800,P.green);
+ txt('สรุปทรัพย์เพื่อพิจารณาเบื้องต้น',50,111,43,800);
+ fit(d.case.location||'ทำเลยังไม่ยืนยัน',52,149,1275,25,18,P.muted,'600');
+ box(1405,31,465,117,P.warning);
+ txt('สถานะพิจารณา · ยังไม่อนุมัติวงเงิน',1427,64,20,700,P.amber);
+ fit(d.case.id,1427,109,420,35,19,P.ink,'800');
+ const currentZone=v.zoneColor?'สี'+v.zoneColor+' (รอตรวจ)':v.claim&&!/^(ไม่ระบุ|ยังไม่|unknown)/i.test(v.claim)?investorTrim(v.claim,28)+' (รอตรวจ)':v.zone&&!/ยังไม่|ไม่ทราบ|unknown|^[-—]$/i.test(v.zone)?investorTrim(v.zone,28)+' (รอตรวจ)':'ยังไม่ยืนยัน';
+ const stat=[['ขนาดทรัพย์',d.case.area_label||'—'],['ราคาตั้งขาย',v.ask?investorMoney(v.ask/1e6,2)+' ล้านบาท':'ยังไม่ยืนยัน'],['ค้นพบ / ฐานเดิม',v.pending+' รอตรวจ / '+v.known+' ในฐาน'],['ผังเมืองเป้าหมาย',currentZone]];
+ stat.forEach((t,i)=>{const x=50+i*464;box(x,168,438,95);txt(t[0],x+19,199,18,650,P.muted);fit(t[1],x+19,241,399,27,17,i===1&&!v.ask||i===3?P.amber:P.ink,'750')});
+ box(50,280,1818,419);
+ txt('หลักฐานตลาด | ตารางเปรียบเทียบราคาประกาศ',70,319,30,800,P.green);
+ const date=v.searchedAt&&Number.isFinite(Date.parse(v.searchedAt))?new Date(v.searchedAt).toLocaleString('th-TH',{timeZone:'Asia/Bangkok',dateStyle:'short',timeStyle:'short'}):'ไม่มีรอบค้น';
+ fit('ค้นล่าสุด '+date+' · '+(v.current?'ข้อมูลเป้าหมายตรงรอบค้น':'คิวเดิม/ต้องตรวจซ้ำ')+' · ไม่ใช่ราคาซื้อขายจริง',72,347,1775,18,15,P.muted,'500');
+ const cols=[72,740,920,1040,1200,1360,1510,1655], widths=[645,160,108,145,145,135,130,195];
+ ctx.fillStyle=P.pale;ctx.fillRect(65,359,1787,34);
+ ['ทรัพย์ / สถานะหลักฐาน','เนื้อที่','ขนาด %','ราคา (ลบ.)',v.condo?'บาท/ตร.ม.':'บาท/ตร.ว.',v.condo||v.house?'—':'ลบ./ไร่','ระยะ (กม.)','ผัง (ยังไม่รับรอง)'].forEach((label,i)=>fit(label,cols[i],382,widths[i],17,14,P.green,'700'));
+ function tableRow(r,y,z,target=false){
+   const unit=r.price&&r.area?r.price/r.area:null,ratio=r.area&&v.target?r.area/v.target*100:null;
+   if(target||z%2===1){ctx.fillStyle=target?'#eef6f1':'#f8faf8';ctx.fillRect(65,y,1787,43);}
+   const title=target?'T0  ทรัพย์เป้าหมาย':r.ref+'  '+r.title;
+   fit(investorTrim(title,88),cols[0],y+19,widths[0],17,14,P.ink,'700');
+   txt(target?'รอยืนยันข้อมูลรายแปลง':investorTrim(r.state+' · '+investorDomainV155(r.url),88),cols[0],y+37,14,500,target?P.muted:r.category==='pending'?P.amber:P.green,widths[0]);
+   [target?(d.case.area_label||'—'):investorAreaV155(r.area,v.condo,v.house),ratio!==null?investorMoney(ratio,1)+'%':'—',r.price?investorMoney(r.price/1e6,2):'—',unit?investorMoney(unit):'—',!v.condo&&!v.house&&unit?investorMoney(unit*400/1e6,2):'—',target?'อ้างอิง':r.distance!==null?investorMoney(r.distance,2)+'*':'รอยืนยัน',r.zone||'ไม่ระบุ'].forEach((a,i)=>fit(a,cols[i+1],y+27,widths[i+1],18,13,i===5&&r.distance===null||i===6?P.amber:P.ink,'600'));
+   ln(65,y+43,1852);
+ }
+ tableRow({area:v.target,price:v.ask,distance:null,zone:currentZone},394,0,true);
+ const approved=v.rows.filter(r=>r.category==='known'),leads=v.rows.filter(r=>r.category==='pending');
+ const showApproved=Math.min(approved.length,leads.length?2:5),showLeads=Math.min(leads.length,5-showApproved);
+ const shown=approved.slice(0,5-showLeads).concat(leads.slice(0,showLeads));
+ if(!shown.length)txt('ยังไม่มีรายการที่อ่านราคาและขนาดครบในคิวนี้ · ไม่ได้หมายความว่าไม่มีทรัพย์ขายในตลาด',75,490,23,700,P.amber);
+ shown.forEach((r,i)=>tableRow(r,437+i*43,i));
+ fit('แสดง '+shown.length+'/'+v.rows.length+' รายการ · หลักฐานเต็มและ URL ทุกแปลงในปุ่มคัดลอกลิงก์ · ตัวเลขจากประกาศเท่านั้น · * ระยะยังต้องตรวจ',72,674,1775,17,14,P.muted,'500');
+ // No large empty photo area: use the lower space for zoning, risks and next actions.
+ const leftW=photo?670:895,rightX=leftW+66,rightW=photo?800:907;
+ box(50,716,leftW,287);box(rightX,716,rightW,287);
+ txt('ผังเมือง / ศักยภาพการใช้ที่ดิน',70,752,25,800,P.green,leftW-35);
+ let yy=785;
+ const zoneEvidence=v.claim?'เอกสาร/ผู้แจ้ง: '+v.claim:v.zone?'ในแฟ้ม: '+v.zone+' (ยังไม่รับรอง)':'ยังไม่มีหลักฐานระบุสีผังรายแปลง';
+ yy=bullet(zoneEvidence,70,yy,leftW-35)+3;
+ const potential=v.smp&&v.zoneColor==='เหลือง'?'หากเป็นสีเหลืองตามผังปี 2568: ย.1–ย.4 ที่อยู่อาศัยหนาแน่นน้อย; ศึกษาโครงการที่อยู่อาศัยตามรหัสย่อย ไม่รับรองโกดัง/โรงงาน':v.zoneColor?'มีข้อมูลสีเบื้องต้นเท่านั้น ตรวจรหัสผังและประเภทกิจการที่อนุญาตก่อนศึกษาพัฒนา':'ยังไม่ระบุสิทธิพัฒนา ต้องตรวจรหัสผังและข้อจำกัดกิจการก่อน';
+ yy=bullet(potential,70,yy,leftW-35)+3;
+ yy=bullet(v.road?'ทางเข้า/สภาพจากแฟ้ม: '+v.road:v.pin?'มีหมุดในแฟ้ม ต้องตรวจตรงโฉนดและขอบเขตผัง':'ต้องยืนยันพิกัดจากโฉนด/รูปแปลงกรมที่ดิน',70,yy,leftW-35)+3;
+ if(v.docPin&&!v.pin&&yy<946)fit('PDF มีพิกัด · ยังไม่ตรวจยืนยันรูปแปลงทางการ',70,yy,leftW-35,17,13,P.amber,'600');
+ fit(v.smp?'แหล่งตรวจ: ผังสมุทรปราการ 2568 / DPT / LandsMaps':'แหล่งตรวจ: DPT Landuse Plan · LandsMaps กรมที่ดิน',70,982,leftW-37,17,14,P.green,'650');
+ txt('ทำเลและสถานที่สำคัญจากประกาศ',rightX+20,752,25,800,P.green,rightW-40);
+ let ry=779;
+ const sources=v.landmarks.filter(x=>x.local),other=v.landmarks.filter(x=>!x.local);
+ if(sources.length){
+   for(const lm of sources.slice(0,2)){
+    const short=lm.lines.join(' · ');
+    fit(lm.ref+' · '+(lm.method==='manual'?'ทีมอ่านประกาศ':'ข้อความอัตโนมัติรอตรวจ')+' · ชื่อตำบลตรง / ระยะ T0 ไม่ยืนยัน',rightX+20,ry,rightW-40,15,13,P.green,'700');
+    ry+=23;
+    ry=investorTextLines(ctx,short,rightX+20,ry,rightW-40,photo?20:21,2,font(photo?15:17,500),P.ink)+4;
+   }
+ }else if(other.length){
+   ry=investorTextLines(ctx,'มีสถานที่ในประกาศพื้นที่เปรียบเทียบอื่น ต้องยืนยันตำแหน่งก่อนใช้กับทรัพย์เป้าหมาย',rightX+20,ry,rightW-40,21,2,font(17,500),P.amber)+3;
+ }else{
+   ry=investorTextLines(ctx,'ยังไม่มีข้อมูลชื่อสถานที่จากประกาศในแฟ้ม ไม่ได้หมายความว่าทำเลไม่มีสถานที่สำคัญ',rightX+20,ry,rightW-40,21,2,font(17,500),P.muted)+4;
+ }
+ if(other.length)fit('พื้นที่อื่น (ไม่อ้างว่าใกล้ T0): '+investorTrim(other[0].lines.slice(0,2).join(' / '),80)+' · อีก '+other.length+' แหล่ง ดูหลักฐาน',rightX+20,ry,rightW-40,16,13,P.muted,'500'),ry+=24;
+ if(v.docTax&&ry<=929)fit('PDF ประเมินราชการ '+investorMoney(v.docTax)+' บาท/ตร.ว. (ยังไม่ตรวจบัญชีปัจจุบัน)',rightX+20,ry,rightW-40,16,13,P.muted,'500'),ry+=22;
+ fit('ตรวจระยะจาก T0, ทางเข้า, สถานะขาย, ผังเมือง, โฉนดและราคาตั้งขาย/วงเงิน',rightX+20,956,rightW-40,16,13,P.amber,'650');
+ fit('ข้อมูลสถานที่ทั้งหมดในลิงก์หลักฐาน · ยังไม่สรุปมูลค่าหรือวงเงิน',rightX+20,982,rightW-40,16,13,P.amber,'750');
+ if(photo){
+   box(1552,716,316,287);
+   txt('ภาพทรัพย์ที่ทีมเลือก',1570,752,20,700,P.green);
+   investorDrawPhoto(ctx,photo,1570,769,280,174,investorPhotoFitV133());
+   txt('ต้องยืนยันว่าเป็นแปลงเป้าหมาย',1570,973,14,600,P.muted,280);
+ } // photo slot only when a real user-selected photo exists
+ ctx.fillStyle=P.green;ctx.fillRect(0,1019,1920,61);
+ txt('ร่างภายใน · ตรวจทานหลักฐานก่อนส่ง · ไม่ใช่ราคาประเมินหรืออนุมัติวงเงิน',50,1057,20,700,'#fff',1330);
+ fit('ไฟล์ในแฟ้ม '+v.fileCount+' · '+(photo?'มีภาพเลือกแล้ว':'ไม่มีภาพที่เลือก')+' · '+new Date(v.readAt).toLocaleDateString('th-TH',{timeZone:'Asia/Bangkok'}),1370,1057,500,18,13,'#fff','500');
+ return canvas;
+}
+function investorPhotoFitChangedV133(){
+ if(!app.detail||!investorEvidenceV155||q('investorModal').classList.contains('hidden'))return;
+ investorRender(app.detail,investorLoadedPhotoV133);
+ q('investorConfirm').checked=false;investorSetConsent();
+}
+async function investorDownloadFullPhotoV133(){if(!await v153InvestorGate())return;
+ if(!investorLoadedPhotoV133||!investorCanvasReady||!q('investorConfirm').checked||q('investorPhotoChoice').value!==investorRenderedPhotoId){toast('ต้องเลือกภาพและยืนยันก่อนดาวน์โหลด',true);return;}
+ const d=app.detail,canvas=document.createElement('canvas');canvas.width=1920;canvas.height=1080;
+ const ctx=canvas.getContext('2d');ctx.fillStyle='#08191b';ctx.fillRect(0,0,1920,1080);
+ investorDrawPhoto(ctx,investorLoadedPhotoV133,30,125,1860,822,investorPhotoFitV133());
+ ctx.fillStyle='#0d4b40';ctx.fillRect(0,0,1920,108);ctx.fillRect(0,965,1920,115);
+ investorWrite(ctx,'ภาพประกอบทรัพย์ '+d.case.id,55,69,'800 37px "Noto Sans Thai",sans-serif','#ffffff',1770);
+ investorWrite(ctx,'ที่มา: ภาพในแฟ้มที่ทีมเลือก · ยังต้องยืนยันว่าเป็นแปลงเป้าหมาย · ห้ามเผยแพร่ข้อมูลส่วนบุคคล',55,1014,'600 21px "Noto Sans Thai",sans-serif','#e4fff5',1790);
+ investorWrite(ctx,'ร่างภายใน เพื่อประกอบการพิจารณาเท่านั้น',55,1050,'500 20px "Noto Sans Thai",sans-serif','#c9e4d9');
+ canvas.toBlob(blob=>{if(!blob){toast('ไม่สามารถสร้างภาพใหญ่',true);return;}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Investor-Photo-'+d.case.id+'.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);},'image/png');
+}
+async function v153InvestorGate(){const d=app.detail;if(!d||!d.case)return false;const id=d.case.id;try{const r=await call('webInvestorFreshV153',id);if(!app.detail||app.detail.case.id!==id)return false;if(!r.ok||d.version!==undefined&&Number(r.version)!==Number(d.version)){toast('ข้อมูลเคสเปลี่ยนหรือยังวิเคราะห์ไม่เสร็จ กรุณาเปิดแฟ้มล่าสุดก่อนส่งออก',true);return false;}return true;}catch(e){toast('ตรวจผลวิเคราะห์ล่าสุดไม่สำเร็จ: '+e.message,true);return false;}}
+async function openInvestorExport(){if(!await v153InvestorGate()){return;}
+ if(!app.detail||!app.detail.case){toast('กรุณาเปิดแฟ้มทรัพย์ก่อน',true);return;}
+ investorPhotoLoadSeq++;const initialRenderSeq=investorPhotoLoadSeq,detail=app.detail,id=detail.case.id;investorEvidenceV155=null;
+ investorCanvasReady=false;investorRenderedPhotoId='';investorPhotoInCanvas=false;investorLoadedPhotoV133=null;
+ q('investorModal').classList.remove('hidden');q('investorModal').setAttribute('aria-hidden','false');
+ q('investorCaseName').textContent='เคส '+app.detail.case.id+' · ภาพสรุป 1920 × 1080';
+ q('investorConfirm').checked=false;q('investorDownload').disabled=true;
+ q('investorAddPhoto').value='';
+ investorPhotoChoices(app.detail.files,'');const cv=q('investorCanvas');cv.getContext('2d').clearRect(0,0,cv.width,cv.height);
+ q('invLmSourceV156').replaceChildren(new Option('กำลังอ่านข้อมูล…',''));invLmSelectV156();q('invLmStatusV156').textContent='กำลังอ่านแฟ้ม';q('investorModalStatus').textContent='กำลังอ่านคิวประกาศและหลักฐานล่าสุด (0 เครดิต)...';q('investorPhotoChoice').disabled=true;q('investorUploadBtn').disabled=true;
+ investorPhotoFeedback('pending','ยังไม่ใส่รูปทรัพย์ ต้องเลือกไฟล์และรอให้แสดงในตัวอย่างก่อน หากไม่ต้องการรูป สามารถใช้กราฟิกข้อมูลได้');
+ try{
+  const [review,coverage]=await Promise.all([call('webCompReviewListV134',id),call('webCompCoverageV133',id)]);
+  if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+  if(initialRenderSeq!==investorPhotoLoadSeq||q('investorModal').classList.contains('hidden')||!app.detail||app.detail.case.id!==id)return;
+  if(!review||review.caseId!==id||!Array.isArray(review.rows)||!coverage||coverage.caseId!==id)throw Error('อ่านข้อมูลไม่ตรงกับเคส');
+  investorEvidenceV155=investorBuildV155(detail,review,coverage);invLmPopulateV156();q('investorSmpLawLink').classList.toggle('hidden',!investorEvidenceV155.smp);
+  investorRender(detail,null);investorCanvasReady=true;
+  q('investorPhotoChoice').disabled=false;q('investorUploadBtn').disabled=false;
+  q('investorModalStatus').textContent='ภาพสรุปพร้อม · '+investorEvidenceV155.pending+' ประกาศรอตรวจ / '+investorEvidenceV155.known+' รายการในฐานเดิม · ผังเมืองต้องยืนยันรายแปลง · 0 เครดิต';
+  investorSetConsent();
+ }catch(e){investorCanvasReady=false;q('investorModalStatus').textContent='อ่านหลักฐาน/สร้างภาพไม่สำเร็จ โปรดปิดและเปิดใหม่: '+e.message;investorPhotoFeedback('failure',e.message);toast(e.message,true);}
+}
+async function investorSelectPhoto(fileId){
+ if(!app.detail||!investorEvidenceV155||investorEvidenceV155.caseId!==app.detail.case.id||q('investorModal').classList.contains('hidden'))return;
+ const job=++investorPhotoLoadSeq,caseId=app.detail.case.id;
+ investorCanvasReady=false;investorRenderedPhotoId='';investorPhotoInCanvas=false;investorLoadedPhotoV133=null;
+ q('investorConfirm').checked=false;investorSetConsent();
+ if(!fileId){
+  investorRender(app.detail,null);investorCanvasReady=true;
+  investorPhotoFeedback('pending','เลือกส่งออกแบบไม่มีรูปทรัพย์ — ภาพจะใช้กราฟิกข้อมูลและระบุว่าไม่มีภาพประกอบ');
+  q('investorModalStatus').textContent='ภาพกราฟิกพร้อมดาวน์โหลดหลังตรวจทาน';investorSetConsent();return;
+ }
+ investorPhotoFeedback('pending','กำลังโหลดรูปจากแฟ้ม กรุณาดูผลในภาพตัวอย่างก่อนยืนยัน...');
+ q('investorModalStatus').textContent='กำลังโหลดภาพ...';
+ try{
+  const result=await investorLoadPhoto(app.detail,fileId);
+  if(job!==investorPhotoLoadSeq||q('investorModal').classList.contains('hidden')||caseId!==app.detail.case.id)return;
+  investorRender(app.detail,result.img);investorLoadedPhotoV133=result.img;
+  investorRenderedPhotoId=String(fileId);investorPhotoInCanvas=true;investorCanvasReady=true;
+  investorPhotoFeedback('good','ใส่ภาพ '+(result.file.name||'ที่เลือก')+' ในภาพ PNG แล้ว'+(result.thumbnail?' (ใช้ภาพย่อจาก Drive เพราะไฟล์ต้นฉบับใหญ่)':'')+' — ตรวจว่าภาพถูกแปลงและเผยแพร่ได้');
+  q('investorModalStatus').textContent='รูปแสดงในตัวอย่างแล้ว · ตรวจทานก่อนดาวน์โหลด';
+  investorSetConsent();
+ }catch(e){
+  if(job!==investorPhotoLoadSeq)return;
+  investorRender(app.detail,null);investorLoadedPhotoV133=null;
+  investorCanvasReady=false;investorRenderedPhotoId='';investorPhotoInCanvas=false;
+  investorPhotoFeedback('failure','ยังใส่ภาพไม่ได้: '+String(e.message||e)+' • กรุณาเลือกภาพอื่น แนบรูปใหม่ หรือเลือก “ไม่ใส่ภาพ” ก่อนส่งออก');
+  q('investorModalStatus').textContent='ยังไม่พร้อมส่งออก เพราะภาพที่เลือกอ่านไม่สำเร็จ';
+  investorSetConsent();
+ }
+}
+async function investorUploadPhoto(){
+ if(!app.detail||!app.detail.case){toast('กรุณาเปิดแฟ้มก่อน',true);return;}
+ const field=q('investorAddPhoto'),f=field.files&&field.files[0],button=q('investorUploadBtn');
+ if(!f){toast('เลือกไฟล์ JPG PNG หรือ WEBP ก่อน',true);return;}
+ if(!/^(image\/jpeg|image\/png|image\/webp)$/.test(f.type)){toast('รองรับ JPG PNG WEBP เท่านั้น',true);return;}
+ if(f.size>4*1024*1024){toast('ภาพต้องไม่เกิน 4 MB',true);return;}
+ investorPhotoLoadSeq++;investorCanvasReady=false;investorRenderedPhotoId='';investorPhotoInCanvas=false;investorLoadedPhotoV133=null;q('investorConfirm').checked=false;investorSetConsent();
+ busy(button,true,'กำลังแนบภาพ...');
+ investorPhotoFeedback('pending','กำลังบันทึกไฟล์เข้าสู่โฟลเดอร์ของเคส...');
+ try{
+  const id=app.detail.case.id;
+  const ret=await call('webUploadFile',id,f.name,f.type,await fileBase64(f));
+  if(!ret||!ret.id)throw new Error('บันทึกไฟล์แล้วแต่ไม่ได้รับรหัสไฟล์จากระบบ');
+  const refreshed=await call('webGetCase',id);
+  if(!refreshed||refreshed.case.id!==id)throw new Error('ไม่สามารถอ่านแฟ้มหลังบันทึกได้');
+  app.detail=refreshed;
+  investorPhotoChoices(refreshed.files,ret.id);
+  field.value='';
+  await investorSelectPhoto(ret.id);
+  if(investorPhotoInCanvas)toast('บันทึกและแสดงภาพในรายงานแล้ว');
+ }catch(e){investorPhotoFeedback('failure','แนบภาพไม่สำเร็จ: '+e.message);toast(e.message,true);}
+ finally{busy(button,false,'＋ เพิ่มภาพในแฟ้มและนำมาใช้');}
+}
+function closeInvestorExport(){investorPhotoLoadSeq++;investorEvidenceV155=null;investorCanvasReady=false;q('investorModal').classList.add('hidden');q('investorModal').setAttribute('aria-hidden','true');}
+function investorSetConsent(){const pick=q('investorPhotoChoice'),valid=investorCanvasReady&&q('investorConfirm').checked&&(String(pick.value||'')===investorRenderedPhotoId);q('investorDownload').disabled=!valid;const full=q('investorDownloadPhotoV133');if(full)full.disabled=!(valid&&investorLoadedPhotoV133);}
+async function investorDownloadPNG(){if(!await v153InvestorGate())return;
+ if(!app.detail||!investorCanvasReady||!q('investorConfirm').checked||String(q('investorPhotoChoice').value||'')!==investorRenderedPhotoId){toast('กรุณารอภาพที่เลือกและยืนยันก่อนส่งออก',true);return;}
+ const canvas=q('investorCanvas'),name='Investor-Brief-'+app.detail.case.id+'.png';
+ canvas.toBlob(blob=>{
+  if(!blob){toast('ไม่สามารถเข้ารหัสภาพ PNG',true);return;}
+  const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;a.target='_blank';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000);
+  q('investorModalStatus').textContent='สร้างไฟล์ '+name+' แล้ว หากเบราว์เซอร์บล็อกดาวน์โหลด ให้คลิกขวาที่ภาพเพื่อบันทึก';
+ },'image/png');
+}
+async function investorCopyLinks(){
+ if(!app.detail||!await v153InvestorGate())return;
+ if(!investorEvidenceV155||investorEvidenceV155.caseId!==app.detail.case.id){toast('กรุณารออ่านหลักฐานก่อนคัดลอก',true);return;}
+ const text=investorSources(app.detail);
+ try{await navigator.clipboard.writeText(text);toast('คัดลอกลิงก์และข้อจำกัดแล้ว');}
+ catch(e){const area=q('investorLinkText');area.value=text;area.classList.remove('hidden');area.focus();area.select();toast('คัดลอกอัตโนมัติไม่ได้ เลือกข้อความที่แสดงเพื่อคัดลอก');}
+}
+
+
+/* v1.3.2 case editing — all writes go through server-side allowlist and locking. */
+let wce132Snapshot=null,wce132Busy=false;
+function wce132Val(id,v){const el=q('wce_'+id);if(el)el.value=v==null?'':String(v);}
+async function openCaseEditV132(){
+ if(!app.detail)return;
+ const modal=q('wceModal');modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');
+ q('wceTitle').textContent='แก้ไขข้อมูลแฟ้ม '+app.detail.case.id;q('wceSummary').textContent='กำลังอ่านข้อมูลล่าสุดจากชีต...';
+ q('wceSave').disabled=true;q('wceSaveRefresh').disabled=true;
+ try{
+  const r=await call('webGetCaseEditV132',app.detail.case.id);wce132Snapshot=r;
+  const p=r.payload||{};
+  q('wce_files').value='';
+  for(const [id,k] of Object.entries({type:'property_type',deal:'deal_type',price:'asking_price',province:'province',district:'district',subdistrict:'subdistrict',land:'land_sqw',usable:'usable_sqm',deed:'deed_number',lat:'latitude',lon:'longitude',doc:'document_type',zone:'zoning_claim',phone:'contact_phone',access:'road_access',desc:'web_description'}))wce132Val(id,p[k]);
+  q('wceSummary').textContent='ข้อมูลในแฟ้มล่าสุด · เวอร์ชัน '+r.version+' · '+(r.updated_at||'').replace('T',' ').slice(0,19);
+  q('wceSave').disabled=/AI_RUNNING|ANALYSIS_QUEUED|MARKET_RUNNING|READY/.test(r.status);
+  q('wceSaveRefresh').disabled=q('wceSave').disabled;if(q('wceSave').disabled)q('wceSummary').textContent+=' · กำลังวิเคราะห์ กรุณารอให้งานเสร็จ';
+ }catch(e){q('wceSummary').textContent='เปิดข้อมูลไม่ได้: '+e.message;toast(e.message,true);}
+}
+function closeCaseEditV132(){if(wce132Busy)return;q('wceModal').classList.add('hidden');q('wceModal').setAttribute('aria-hidden','true');wce132Snapshot=null;}
+async function saveCaseEditV132(e){
+ e.preventDefault();if(wce132Busy||!wce132Snapshot)return;const refreshAfter=e.submitter&&e.submitter.id==='wceSaveRefresh';if(refreshAfter&&(v152CaseBusy||v152Job&&v152Job.running)){toast('กรุณารอรอบค้นเดิมให้เสร็จ',true);return;}
+ const p={};for(const [id,k] of Object.entries({type:'property_type',deal:'deal_type',price:'asking_price',province:'province',district:'district',subdistrict:'subdistrict',land:'land_sqw',usable:'usable_sqm',deed:'deed_number',lat:'latitude',lon:'longitude',doc:'document_type',zone:'zoning_claim',phone:'contact_phone',access:'road_access',desc:'web_description'}))p[k]=q('wce_'+id).value.trim();
+ if((p.property_type==='land'||p.property_type==='house')&&!p.land_sqw){toast('กรุณาระบุเนื้อที่ ตร.ว.',true);return;}
+ if((p.property_type==='condo'||p.property_type==='apartment')&&!p.usable_sqm){toast('กรุณาระบุพื้นที่ใช้สอย ตร.ม.',true);return;}
+ if((!p.latitude)!==(!p.longitude)){toast('กรุณาระบุพิกัดทั้งสองช่องหรือเว้นทั้งคู่',true);return;}
+ const addedFiles=Array.from(q('wce_files').files||[]);
+ const invalidFile=addedFiles.find(f=>f.size>4*1024*1024||!/^(image\/jpeg|image\/png|image\/webp|application\/pdf)$/.test(f.type));
+ if(invalidFile){toast('ไฟล์ '+invalidFile.name+' ไม่รองรับหรือเกิน 4 MB',true);return;}
+ const original=wce132Snapshot.payload||{},material=['property_type','province','district','subdistrict','land_sqw','usable_sqm','asking_price','latitude','longitude'].some(k=>String(original[k]??'')!==String(p[k]??''));
+ if(material&&!confirm('ข้อมูลสำคัญเปลี่ยน ผลวิเคราะห์เดิมอาจไม่ตรงกับข้อมูลล่าสุด ต้องตรวจและวิเคราะห์ใหม่ก่อนใช้ราคาประเมิน ต้องการบันทึกใช่ไหม?'))return;if(refreshAfter&&!confirm('บันทึกข้อมูลแล้วเปิดอ่านประกาศเปรียบเทียบใหม่ 0 เครดิต ใช่หรือไม่?'))return;
+ wce132Busy=true;q('wceSaveRefresh').disabled=true;q('wceDialog').classList.add('wce-saving');q('wceSave').textContent='กำลังบันทึก...';
+ try{
+  const savedCaseId=wce132Snapshot.id;
+  const r=await call('webSaveCaseEditV132',savedCaseId,p,wce132Snapshot.version,wce132Snapshot.updated_at);
+  let uploaded=0,failed=[];
+  for(const file of addedFiles){try{await call('webUploadFile',savedCaseId,file.name,file.type,await fileBase64(file));uploaded++;}catch(ex){failed.push(file.name+': '+ex.message);}}
+  toast(r.message+(uploaded?' · เพิ่มไฟล์ '+uploaded+' รายการ':''),failed.length>0);
+  if(failed.length){alert('บันทึกข้อมูลแล้ว แต่มีไฟล์บางส่วนอัปโหลดไม่สำเร็จ:\n'+failed.join('\n'));}
+  wce132Busy=false;q('wceDialog').classList.remove('wce-saving');closeCaseEditV132();
+  await refreshDashboard();await openCase(savedCaseId);if(refreshAfter&&app.detail&&app.detail.case.id===savedCaseId)await refreshCaseComparisonV152(true);
+ }catch(err){toast(err.message,true);}finally{wce132Busy=false;q('wceSaveRefresh').disabled=q('wceSave').disabled;q('wceDialog').classList.remove('wce-saving');q('wceSave').textContent='✓ บันทึกอัปเดตแฟ้ม';}
+}
+
+/* v1.5.2 — one-click fresh comparison for saved cases. */
+var v152Job=null, v152CaseBusy=false, v152OpenSeq=0;
+function v152Label(s){return ({PASS:'ผ่านเกณฑ์ค้น · รอทีมตรวจ',HOLD:'ต้องตรวจ/เติมข้อมูล',BUSY:'ยังประมวลผล',ERROR:'ค้นหรือบันทึกไม่สำเร็จ',WAIT:'รอค้น',RUN:'กำลังค้น',STOP:'ยังไม่ได้ค้น'})[s]||s;}
+function v152BatchRender(){const p=q('v152BatchPanel'),b=q('v152BatchBtn');if(!p||!b)return;const j=v152Job;b.disabled=!!(j&&j.running)||v152CaseBusy;if(!j)return;p.classList.remove('hidden');const rr=j.rows||[],done=rr.filter(r=>!['WAIT','RUN','STOP'].includes(r.state)).length,pass=rr.filter(r=>r.state==='PASS').length; q('v152BatchSummary').textContent=(j.error?'เปิดรายการไม่สำเร็จ: '+j.error:j.running?'กำลังค้นทีละแฟ้ม':'รอบค้นสิ้นสุด')+' · ตรวจแล้ว '+done+'/'+rr.length+' · ผ่านเกณฑ์ค้น '+pass+' · รอตรวจ/ข้อจำกัด '+(done-pass)+' · เครดิต '+rr.reduce((a,r)=>a+(Number(r.credits)||0),0);q('v152BatchStop').disabled=!j.running||j.stop;q('v152BatchList').innerHTML=rr.map(r=>'<tr><td><button class="btn" type="button" data-v152-id="'+esc(r.id)+'" onclick="v152OpenExisting(this.dataset.v152Id,false)">'+esc(r.id)+'</button></td><td>'+esc(v152Label(r.state))+'</td><td>'+esc(r.near??'—')+'</td><td>'+esc(r.support??'—')+'</td><td>'+esc(r.reason||'')+'</td></tr>').join('');}
+async function v152OpenExisting(id,refresh){await openCase(id);if(!app.detail||app.detail.case.id!==id)return;setTab('compare');if(refresh)await refreshCaseComparisonV152();}
+function v152ShowCase(id,r){if(app.view!=='detail'||!app.detail||app.detail.case.id!==id)return;const h=q('v152CaseResult');if(h){h.classList.remove('hidden');h.textContent=v152Label(r.state)+' · ใกล้เคียง '+(r.near||0)+' · ประกอบ '+(r.support||0)+' · เครดิต '+(r.credits||0)+' · '+(r.reason||'')+(r.cached?' · ใช้รอบล่าสุดเพื่อป้องกันกดซ้ำ':'');}}
+async function refreshCaseComparisonV152(alreadyConfirmed){if(!app.detail||v152CaseBusy||v152Job&&v152Job.running){toast('มีรอบค้นเดิมกำลังทำงาน กรุณารอ',true);return;}const id=app.detail.case.id;if(!alreadyConfirmed&&!confirm('ค้นและเปิดอ่านประกาศใหม่จากข้อมูลแฟ้มนี้ โดยไม่ใช้เครดิต Serper หรือ Gemini ไม่ทับผลทีมตรวจ ไม่แก้ราคาประเมิน เริ่มค้นหรือไม่?'))return;v152CaseBusy=true;v152BatchRender();const b=q('v152RefreshBtn');busy(b,true,'กำลังค้นประกาศ...');setTab('compare');v152ShowCase(id,{state:'RUN',reason:'กำลังเปิดอ่านประกาศจริง'});try{const r=await call('webCompRefreshV152',id);if(app.view==='detail'&&app.detail&&app.detail.case.id===id&&app.tab==='compare')await webCompCoverageLoadV133();v152ShowCase(id,r);toast(v152Label(r.state)+' · '+id,r.state!=='PASS');}catch(e){v152ShowCase(id,{state:'ERROR',reason:e.message});toast('ค้นใหม่ไม่สำเร็จ: '+e.message,true);}finally{v152CaseBusy=false;busy(b,false,'↻ เปรียบเทียบใหม่ (0 เครดิต)');v152BatchRender();}}
+async function v152RefreshAll(){if(v152CaseBusy||v152Job&&v152Job.running)return;if(!confirm('ค้นเปรียบเทียบใหม่จากแฟ้มเดิมทั้งหมด (รวม LINE/Telegram/WEB) ทีละแฟ้ม ไม่ใช้เครดิต Serper/Gemini ไม่อนุมัติหรือเปลี่ยนราคาประเมินอัตโนมัติ อาจใช้เวลาหลายนาที โปรดเปิดหน้านี้ไว้ เริ่มหรือไม่?'))return;const j=v152Job={running:true,stop:false,rows:[]};v152BatchRender();try{const plan=await call('webCompRefreshPlanV152');j.rows=(plan||[]).map(x=>({id:x.id,state:x.state|| (x.reason?'HOLD':'WAIT'),reason:x.reason||''}));v152BatchRender();for(const r of j.rows){if(r.state!=='WAIT')continue;if(j.stop){r.state='STOP';continue;}r.state='RUN';v152BatchRender();try{Object.assign(r,await call('webCompRefreshV152',r.id));}catch(e){r.state='ERROR';r.reason=e.message;}v152BatchRender();}toast('ค้นทั้งรายการสิ้นสุด · ตรวจสถานะแต่ละแฟ้มก่อนนำเสนอ');}catch(e){toast('เปิดรายการแฟ้มไม่ได้: '+e.message,true);j.error=e.message;}finally{j.running=false;v152BatchRender();}}
+function v152Stop(){if(v152Job&&v152Job.running){v152Job.stop=true;v152BatchRender();}}
+
+</script>
+
+<div class="e2e-shade" id="propertyE2eShade" role="dialog" aria-modal="true" aria-label="ทดสอบระบบ My Property">
+  <section class="e2e-box">
+    <div class="e2e-header"><div><h2>ตรวจระบบจริง • MY PROPERTY</h2><div class="e2e-note">ทดสอบการเชื่อมต่อ Apps Script, Google Sheets, Drive, คิวตรวจ และ Serper โดยแยกผล PASS / FAIL / WARN / SKIP</div></div><button class="btn" onclick="propertyE2E_Close()">ปิด ×</button></div>
+    <label class="small" for="propertyE2eCase">เลขเคสสำหรับตรวจแบบอ่านอย่างเดียว</label>
+    <div style="margin:8px 0 12px"><input id="propertyE2eCase" class="e2e-input" value="P1795401875532365" autocomplete="off"></div>
+    <div class="e2e-actions"><button onclick="propertyE2E_Run('safe')">① ตรวจ Sheets / Drive / คิว — ไม่ใช้เครดิต</button>
+    <button onclick="propertyE2E_Race()">② ทดสอบคำสั่งพร้อมกัน 6 ครั้ง — ไม่ใช้เครดิต</button>
+    <button class="e2e-full" onclick="propertyE2E_Run('full')">③ ตรวจ Serper + อ่านประกาศจริง 1 คำค้น</button></div>
+    <div class="e2e-note">การทดสอบจะสร้างชีต โฟลเดอร์ และรายการคิวชื่อ E2E ชั่วคราวแล้วลบออก ไม่แก้รายการทรัพย์หรือราคาที่ใช้ประเมิน คำสั่งที่ ③ ใช้ Serper จริง 1 คำค้น</div>
+    <div class="e2e-results" id="propertyE2eResults" aria-live="polite"><div class="e2e-result">ยังไม่ได้เริ่มทดสอบจริง</div></div>
+  </section>
+</div>
+
+<script>
+function propertyE2E_Open(){document.getElementById('propertyE2eShade').classList.add('open');}
+function propertyE2E_Close(){document.getElementById('propertyE2eShade').classList.remove('open');}
+function propertyE2E_JsonText(v){try{return JSON.stringify(v,null,2)}catch(e){return String(v)}}
+function propertyE2E_Show(x){
+ const root=document.getElementById('propertyE2eResults');root.replaceChildren();
+ const head=document.createElement('div');head.className='e2e-result';head.textContent='ชุดตรวจ '+(x.mode||'')+'  |  ผ่าน '+(x.passed||0)+'  ไม่ผ่าน '+(x.failed||0)+'  เตือน '+(x.warnings||0)+'  ข้าม '+(x.skipped||0);root.appendChild(head);
+ (x.steps||[]).forEach(r=>{const card=document.createElement('article');card.className='e2e-result';const h=document.createElement('header'),name=document.createElement('b'),status=document.createElement('b');name.textContent=r.step;status.textContent=r.status;status.className='e2e-'+String(r.status||'skip').toLowerCase();h.append(name,status);card.appendChild(h);const detail=document.createElement('pre');detail.textContent=propertyE2E_JsonText(r.error||r.details||{});card.appendChild(detail);root.appendChild(card);});
+}
+function propertyE2E_SetLoading(message,lock){document.getElementById('propertyE2eResults').textContent=message;document.querySelectorAll('.e2e-actions button').forEach(b=>b.disabled=lock);}
+async function propertyE2E_Run(mode){
+ const id=document.getElementById('propertyE2eCase').value.trim();if(!/^[A-Za-z0-9_-]{3,80}$/.test(id)){alert('เลขเคสไม่ถูกต้อง');return;}
+ if(mode==='full'&&!confirm('กำลังจะเรียก Serper จริง 1 คำค้นซึ่งมีค่าใช้เครดิต API และลองเปิดประกาศ 1 แห่ง ยืนยันหรือไม่?'))return;
+ propertyE2E_SetLoading('กำลังทดสอบใน Apps Script จริง...',true);
+ try{const data=await call(mode==='full'?'propertyE2E_RunFull':'propertyE2E_RunSafe',id);propertyE2E_Show(data);}
+ catch(e){document.getElementById('propertyE2eResults').textContent='FAIL: '+String(e.message||e)}
+ finally{document.querySelectorAll('.e2e-actions button').forEach(b=>b.disabled=false)}
+}
+async function propertyE2E_Race(){
+ propertyE2E_SetLoading('กำลังส่งคำสั่ง 6 ชุดเข้า Apps Script พร้อมกัน...',true);
+ const token='e2e_'+Date.now()+'_'+Math.floor(Math.random()*100000);
+ try{
+   const results=await Promise.all(Array.from({length:6},()=>call('propertyE2E_ConcurrentClaim',token).catch(e=>({status:'error',message:String(e.message||e)}))));
+   const winners=results.filter(x=>x.status==='winner').length,duplicates=results.filter(x=>x.status==='duplicate_blocked').length;
+   const verdict=winners===1&&duplicates===5?'PASS':'FAIL';
+   propertyE2E_Show({mode:'LIVE concurrent google.script.run (6 calls)',passed:verdict==='PASS'?1:0,failed:verdict==='FAIL'?1:0,steps:[{step:'idempotent_claim_6_requests',status:verdict,details:{winner_count:winners,duplicate_blocked_count:duplicates,results:results.map(x=>x.status)}}]});
+ }catch(e){document.getElementById('propertyE2eResults').textContent='FAIL: '+String(e.message||e)}
+ finally{try{await call('propertyE2E_ClearConcurrentClaim',token)}catch(e){} document.querySelectorAll('.e2e-actions button').forEach(b=>b.disabled=false)}
+}
+</script>
+<style>
+
+/* MY PROPERTY v1.5.3 — Pearl White / Emerald. Presentation layer only. */
+:root{color-scheme:light;--bg:#ffffff;--bg-2:#f7f9f8;--panel:#fff;--panel-soft:#f5f8f7;--ink:#172c2c;--ink-2:#294542;--muted:#536b68;--line:#dce7e3;--line-2:#c2d5ce;--brand:#0f6757;--brand-2:#087760;--brand-3:#177e68;--brand-soft:#e4f4ed;--accent:#956006;--accent-soft:#fff7e7;--danger:#a13736;--danger-soft:#fff2f1;--shadow:0 15px 38px #173d2910;--shadow-sm:0 4px 16px #173d2910;--type-land:#146547;--type-house:#1758a1;--type-condo:#6b3c9c;--type-apartment:#96500d;--price:#8c5209;--area:#4d4598;--status-done:#087565;--status-reviewed:#1758a1;--status-pending:#8a5d08;--status-hold:#a14b18;--status-error:#b12f42}
+html,body{background:#fff;color:var(--ink)}body{background:#fff}button,input,textarea,select{color-scheme:light}::selection{background:#c8efe0;color:#163d31}a,a:hover{color:#086957}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline-color:#0f886c}
+.side{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:4px 0 24px #113e2410}.side:after{display:none}.logo{border-color:var(--line)}.logo-mark{background:#e4f4ec;border-color:#b8dece;color:#0a6d54;box-shadow:none}.logo b,.side-foot b{color:#203a35}.logo small,.side-foot{color:#58736b}.side-foot{border-color:var(--line)}.nav{color:#425e56}.nav span{color:#58776b}.nav:hover{background:#f2f7f4;border-color:#d6e6dd;color:#144b3e}.nav.active{background:#e4f4ed;border-color:#c2e4d4;color:#0d604c;box-shadow:inset 3px 0 #138263}.nav.active span{color:#0f7157}.system-indicator,.online-dot{background:#198660;box-shadow:0 0 0 4px #d9f0e3}
+.main{background:#fff}.top h1,.case-title h2{color:#182e29}.top p,.case-title p{color:var(--muted)}.workspace-crumb,.crumb-separator{color:#647b70}.workspace-crumb .crumb-current{color:#087760}.top-right{background:#fff;border-color:var(--line);box-shadow:var(--shadow-sm)}.top-right .session-label{color:#17694e;border-color:#d9e5de}.user{color:#4b635b}.avatar{background:#e3f4ec;border-color:#c2e1d3;color:#12654d}
+.hero{background:linear-gradient(120deg,#fff 0%,#f3faf6 100%);border-color:#cce3d8;box-shadow:var(--shadow-sm);color:#183d31;min-height:215px}.hero:before{border-color:#b3decb88;box-shadow:0 0 0 30px #c0e5d328,0 0 0 64px #c0e5d31c,0 0 0 100px #c0e5d312}.hero:after{background:radial-gradient(circle,#c0e6d4,transparent 70%)}.hero .tag,.hero h2 em{color:#14745a}.hero .tag:before{background:#14745a}.hero h2{color:#17382d}.hero p{color:#48665b}
+.btn{background:#fff;border-color:#c5d7cf;color:#244e40;box-shadow:none}.btn:hover{background:#f2f8f5;border-color:#72b9a1;color:#0b624b}.btn.primary{background:#0f7157;border-color:#0f7157;color:#fff}.btn.primary:hover{background:#095b45;border-color:#095b45;color:#fff}.btn.dark{background:#245345;border-color:#245345;color:#fff;box-shadow:none}.btn.dark:hover{background:#153e32;color:#fff;border-color:#153e32}.btn.ghost,.back{color:#146b53}.btn.ghost:hover{background:#e7f3eb;color:#125b45}.btn:disabled{opacity:.52}
+.stat,.panel{background:#fff;border-color:var(--line);box-shadow:var(--shadow-sm)}.stat:before{background:linear-gradient(90deg,#7eba9e,transparent 76%)}.stat:after{background:radial-gradient(circle,#d9efe3,transparent 70%)}.stat small,.panel-head small,.muted,.small.muted{color:var(--muted)}.stat strong,.panel-head h3,.empty b,.subsection,.fact b,.note b{color:#1b372e}.stat .dot{background:#1a8b64}.stat:nth-child(2) .dot{background:#b47c25}.stat:nth-child(3) .dot{background:#5571bd}.stat:nth-child(4) .dot{background:#b65958}
+.input,.wi-field,select.input{background:#fff;border-color:#c7d9d1;color:#1d382f}.input::placeholder,.wi-field::placeholder{color:#70877c}.input:focus,.wi-field:focus{border-color:#2a9473;box-shadow:0 0 0 3px #2e9a6f22}.field label{color:#314f43}.field small{color:#58746a}.table-wrap{border-color:var(--line)}.table,.table td{color:#2b433b}.table th{background:#f0f6f3;color:#375c4d;border-color:#d5e4dc}.table td,.table th{border-bottom-color:#e4ece7}.table tbody tr:nth-child(even),.table tbody tr:nth-child(2n){background:#fafcfb}.table tbody tr:hover,.table tbody tr:nth-child(2n):hover{background:#edf7f1}.table tbody tr:focus-within{background:#e6f4eb;box-shadow:inset 3px 0 #268761}.row-link{color:#0b6953}.ui-location{color:#263e36}.ui-muted-data{color:#60766d}.table .ui-action{border-color:#c6dfd1;color:#145f49}.ui-badge-type-unknown,.ui-badge-src-other,.ui-badge-status-neutral{color:#556961;background:#edf1ef}.ui-badge-src-telegram{color:#165c8d;background:#e8f2fb}.ui-badge-src-line{color:#176328;background:#e8f6e8}.ui-badge-src-web{color:#6541a9;background:#f0eafa}.ui-badge-status-running{color:#14647c;background:#e7f4f8}.comps-table .ui-group-a{color:#166347}.comps-table .ui-group-b{color:#24529b}.comps-table .ui-group-c{color:#8c550c}.comps-table .ui-group-d{color:#52655d}.comps-table .ui-zone{color:#35587b}.comps-table .ui-evidence{color:#17694f}
+.pill{background:#e5f3eb;border-color:#c1decc;color:#176546}.pill.warn{background:#fff4db;border-color:#e5cb93;color:#835408}.pill.gray{background:#f1f4f2;border-color:#d4dfd9;color:#4c6459}.pill.dark{background:#e6f0fa;border-color:#c6d9ec;color:#25557d}.empty{color:#61796c}.case-meta>div{background:#fff;border-color:#d9e7de;box-shadow:var(--shadow-sm)}.case-meta span,.fact small{color:#587269}.case-meta strong{color:#263f35}.case-meta>div:nth-child(3) strong{color:#255a9c}.case-meta>div:nth-child(4) strong{color:#176b4c}.tabs{border-color:var(--line);overflow-x:auto}.tab{background:#f3f7f4;border-color:#d4e3da;color:#486859}.tab:hover{background:#e8f4ec;color:#145b43}.tab.active{background:#e3f2e8;border-color:#9acbb1;color:#125b43;box-shadow:none}.photo,.photo .file-label,.fact{background:#f8fbf9;border-color:#d8e6de;color:#385a4b}.photo button{color:#146d51}.report{background:#fff;border-color:var(--line);color:#283e34}.note{border-color:#dce7df}.hint{background:#f0f8f3;border-color:#c8e1d0;color:#365c48}.warnbox,.wi-alert{background:#fff6e7;border-color:#e4c694;color:#80540c}.intake-panel .panel-head,.intake-panel .form-actions{border-color:var(--line)}input[type=checkbox]{accent-color:#157a55}.loader{border-color:#c6ddd1;border-top-color:#197d5c}.status-line{color:#245f48}.toast{background:#185c47;border-color:#257a5d;color:#fff}.toast.error{background:#963d37;border-color:#aa5752;color:#fff}
+.investor-modal,.wce-modal,.e2e-shade{background:#18392b66;backdrop-filter:blur(4px)}.investor-dialog,.wce-dialog,.e2e-box{background:#fff;color:var(--ink);border-color:#d3e3d9;box-shadow:0 18px 70px #1d392b3b}.investor-head p,.investor-info,.investor-photo-caption,.investor-photo-format{color:#506e61}.investor-preview{background:#f4f7f5;border-color:#d4e4da}.investor-consent{background:#edf7f0;border-color:#c7e0cd;color:#315b44}.investor-photo-failure{background:#fff0ed;border-color:#e4b4a8;color:#963e31}.investor-photo-good{background:#e8f6eb;border-color:#bddfc4;color:#1e6944}.investor-photo-pending{background:#f4f6f4;border-color:#d3dfd4;color:#526c5b}.investor-photo-upload{background:#f8fbf9;border-color:#a7cbb3;color:#355b45}
+.wi-pane,.wi-extract-grid,.wi-document-viewer,.wi-row{background:#fff;border-color:#d6e4db;box-shadow:none}.wi-pane-head,.wi-actions,.wi-check-notes,.wi-history-foot{border-color:#dbe8df}.wi-pane-head h3,.wi-row b,.wi-file-placeholder b,.wi-circle strong,.wi-check-stats b,.wi-timeline-item b{color:#294b38}.wi-overline{color:#17714f}.wi-counter,.wi-file-icon,.wi-timeline-icon{background:#e1f2e7;border-color:#c1ddc9;color:#1b6a49}.wi-file-option{background:#f8fbf9;border-color:#d7e5db;color:#3c5b49}.wi-file-option:hover,.wi-file-option.is-active{border-color:#87bda0;background:#e7f4eb;color:#215c3d}.wi-file-text small,.wi-file-placeholder,.wi-file-placeholder small,.wi-pane-caption,.wi-source,.wi-evidence,.wi-history-foot,.wi-timeline-item small,.wi-check-notes .wi-soft,.wi-circle span,.wi-check-stats{color:#597365}.wi-file-arrow,.wi-file-placeholder>span:not(.loader){color:#217c55}.wi-document-viewer{background:repeating-linear-gradient(45deg,#f7faf8,#f7faf8 12px,#eef5f0 12px,#eef5f0 24px)}.wi-extracted-pane .wi-intro{background:#edf7ef;border-color:#c5dec9;color:#305a40}.wi-extracted-pane .wi-intro p{color:#52725d}.wi-row:hover,.wi-row-header{background:#edf6ef;color:#335f43}.wi-row-header{border-color:#d5e4d8}.wi-circle{border-color:#d6e6db;border-top-color:#20875a;border-right-color:#20875a;box-shadow:none}.wi-check-notes{color:#825c23}.wi-timeline-item:not(:last-child):after{background:#c4dbca}
+.wce-head,.wce-actions{background:#fff;border-color:var(--line)}.wce-section,.wce-updated{color:#156c4e}.wce-grid .field label{color:#395a47}.wce-grid .field .input{background:#fff;color:#244234;border-color:#c8dad0}.wce-grid .field .input::placeholder{color:#74897c}.wce-help{color:#536e60}.wce-warning{border-color:#e4c794;background:#fff7e8;color:#80550e}.wce-edit-highlight{background:#f0f8f3;border-color:#b9dbc5;color:#244c36}
+.comp-coverage,.comp-review134{background:#fff;border-color:#c6dfcf}.comp-coverage h4,.comp-review134 .cr134-head h4{color:#254e37}.comp-coverage .cover-metrics span,.comp-review134 .cr134-kpis span{background:#f1f7f3;border-color:#d1e3d6;color:#365c43}.comp-coverage .cover-lead{border-color:#dfebe2;color:#274937}.comp-coverage .cover-lead small,.comp-review134 .cr134-hint,.cr134-grid small{color:#5a7564}.comp-coverage .cover-lead a,.cr134-link{color:#176e4c}.comp-coverage .cover-alert{color:#845b13}.cr134-grid{border-color:#d5e5d9}.cr134-grid th{background:#eef6f0;color:#325b42}.cr134-grid td{border-color:#e0eae2;color:#2d4937}.cr134-grid tr:hover,.cr134-grid tr.cr134-row-selected{background:#eef7f0}.cr134-grid .cr134-source{color:#224b34}.cr134-state{background:#f3f5f3;color:#536c59;border-color:#cedbcf}.cr134-state.READING{color:#215d82;border-color:#b6d1e1;background:#ecf5fa}.cr134-state.READY_REVIEW,.cr134-state.TEAM_REVIEWED,.cr134-state.PROMOTED{color:#166340;border-color:#badfc4;background:#e9f6eb}.cr134-state.PARTIAL,.cr134-state.PENDING{color:#8b5a0d;border-color:#e5cca0;background:#fff5e5}.cr134-state.BLOCKED,.cr134-state.MANUAL,.cr134-state.UNAVAILABLE,.cr134-state.ERROR{color:#9e3c40;border-color:#e6b8b6;background:#fff0f0}.cr134-editor,.cr134-excluded{background:#f7faf8;border-color:#cde0d2}.cr134-fields label,.cr134-excluded summary{color:#395b43}.cr134-fields input,.cr134-editor textarea{background:#fff;color:#253f32;border-color:#c4d8c9}.cr134-fields input:focus,.cr134-editor textarea:focus{border-color:#22875a}
+.e2e-header h2{color:#284b36}.e2e-note,.e2e-result small,.e2e-result pre{color:#536e5c}.e2e-actions button{background:#fff;border-color:#c5daca;color:#24633e}.e2e-actions button:hover{background:#edf7ee}.e2e-actions .e2e-full{background:#156d48;color:white;border-color:#156d48}.e2e-input{background:#fff;border-color:#c8dccb;color:#274637}.e2e-result{background:#f8fbf8;border-color:#d6e5d9}.e2e-pass{color:#176d45}.e2e-fail{color:#a03536}.e2e-warn{color:#976219}.e2e-skip{color:#617667}.e2e-running{color:#216889}
+@media(max-width:760px){.side{background:#fff;border-bottom-color:#d4e4d9}.hero{min-height:0}.main{padding-inline:14px}.top-right{max-width:100%}.nav.active{box-shadow:none}.nav label{font-size:11px}.wce-modal,.e2e-shade{padding:8px}.wce-dialog{max-height:96vh}}
+@media print{body,.main,.panel,.report{background:#fff!important;color:#111!important}.side,.top-right,.btn{display:none!important}.panel{box-shadow:none!important}}
+
+
+.v154-findings{margin:14px 0 18px;padding:16px;background:#f5fbf8;border:1px solid #c6e3d6;border-radius:14px;color:#17362c}
+.v154-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.v154-head h4{margin:6px 0;font-size:19px;font-weight:800;color:#145c46}
+.v154-head p{margin:0 0 10px;font-size:12px;color:#40685b}
+.v154-kicker{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#137656;font-weight:800}
+.v154-metrics{display:flex;flex-wrap:wrap;gap:8px;margin:9px 0;font-size:12px}
+.v154-metrics span{padding:8px 10px;background:#fff;border:1px solid #d5e7df;border-radius:8px}
+.v154-alert{color:#775319;background:#fff9e9;border:1px solid #e8d4a7;padding:10px 12px;border-radius:9px;font-size:12px;margin:10px 0}
+.v154-table{background:white;border-radius:8px;font-size:12px}
+.v154-table td{vertical-align:top;min-width:75px}.v154-table td:first-child{min-width:185px}.v154-table td:last-child{min-width:150px}
+.v154-table td small{display:block;font-size:11px;color:#64736c;margin:4px 0}
+.v154-table td a{display:inline-block;margin:5px 0;color:#08775c}
+.v154-table .v154-target td{background:#e9f5ee;font-weight:700}
+.v154-tag{display:inline-block;border-radius:6px;padding:3px 7px;margin:5px 0 0;font-size:11px;font-weight:700}
+.v154-near{background:#e0f5e9;color:#156a45}.v154-support{background:#fff2d7;color:#8a5b0c}
+.v155-manual{margin:12px 0;padding:12px;border:1px solid #d7e5dd;background:#f6faf7;border-radius:9px}.v155-manual summary{cursor:pointer;font-weight:700;color:#12634f}.v155-manual .cr134-fields{margin:10px 0}.v155-manual label{color:#294c3e}.v155-manual textarea{width:100%;min-height:70px}
+</style>
+</body>
+</html>
